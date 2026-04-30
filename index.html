@@ -80,6 +80,8 @@ input:focus,button:focus{outline:none}
 .cat-btn.on{border-color:var(--gold);background:var(--gold);color:#fff}
 .cat-btn .ce{font-size:20px;display:block;margin-bottom:3px}
 .cat-btn .cl{font-size:10px;font-weight:700}
+.cat-btn .cs{font-size:9px;color:#aaa;font-weight:500;margin-top:2px;display:block}
+.cat-btn.on .cs{color:rgba(255,255,255,.55)}
 
 .search-wrap{position:relative;margin-bottom:8px}
 .search-wrap input{
@@ -212,10 +214,7 @@ input:focus,button:focus{outline:none}
 .detail-icon{font-size:14px;flex-shrink:0;margin-top:1px}
 .detail-text{font-size:11px;color:#5a4a30;line-height:1.6}
 .detail-text strong{color:var(--ink)}
-.alt-section{margin-top:10px}
-.alt-label{font-size:9px;font-weight:800;letter-spacing:2px;color:#8a7a60;text-transform:uppercase;margin-bottom:7px}
-.alt-tags{display:flex;flex-wrap:wrap;gap:5px}
-.alt-tag{padding:4px 11px;border-radius:20px;background:#edf9f1;color:#2d6e45;font-size:11px;font-weight:700}
+
 
 /* ── SUMMARY BANNER ──────────────────────────────────────── */
 .summary-banner{
@@ -343,6 +342,60 @@ input:focus,button:focus{outline:none}
 .about-sister-icon{font-size:24px;flex-shrink:0}
 .about-sister-text strong{font-size:12px;font-weight:800;color:var(--ink);display:block;margin-bottom:1px}
 .about-sister-text span{font-size:11px;color:#8a7a60}
+
+/* ── INDIE SECTION ──────────────────────────────────────── */
+.indie-section{margin-top:4px}
+.indie-header{display:flex;align-items:center;gap:12px;padding:20px 4px 12px}
+.indie-header-line{flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.indie-header-left{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.indie-header-text{font-size:9px;font-weight:800;letter-spacing:3px;color:var(--gold);text-transform:uppercase;white-space:nowrap}
+.icard{background:#fff;border-radius:22px;margin-bottom:14px;overflow:hidden;
+  border:1.5px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,.08);
+  animation:fadeUp .4s ease both;position:relative}
+.icard.sponsored{border-color:rgba(200,169,110,.5);box-shadow:0 4px 24px rgba(200,169,110,.12)}
+.sponsored-tag{position:absolute;top:12px;right:12px;z-index:3;
+  background:rgba(15,31,18,.75);border:1px solid rgba(200,169,110,.5);
+  border-radius:20px;padding:3px 10px;font-size:8px;font-weight:800;
+  letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;backdrop-filter:blur(4px)}
+.icard-photo{width:100%;height:175px;overflow:hidden;position:relative;
+  background:var(--green);cursor:pointer}
+.icard-photo img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .5s ease}
+.icard:hover .icard-photo img{transform:scale(1.04)}
+.icard-photo-overlay{position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 20%,rgba(10,20,11,.9))}
+.icard-photo-badges{position:absolute;top:12px;left:12px;display:flex;gap:5px;flex-wrap:wrap}
+.ibadge-pill{border-radius:20px;padding:3px 10px;font-size:9px;font-weight:800;
+  backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15)}
+.ibadge-pill.indie{background:rgba(45,110,69,.9);color:#fff}
+.ibadge-pill.women{background:rgba(192,99,109,.9);color:#fff}
+.ibadge-pill.bcorp{background:rgba(20,70,35,.92);color:#6ee7b7}
+.icard-photo-name{position:absolute;bottom:12px;left:14px;right:14px}
+.icard-photo-name h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;
+  color:#fff;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.icard-photo-name .icard-owner{font-size:10px;color:rgba(255,255,255,.65);margin-top:3px;font-weight:600}
+.photo-skel{width:100%;height:175px;
+  background:linear-gradient(90deg,#ddd6c8 25%,#ede5d8 50%,#ddd6c8 75%);
+  background-size:400% 100%;animation:skelShimmer 1.6s infinite linear}
+.icard-body{padding:14px 16px 16px}
+.icard-desc{font-size:12px;color:#5a4a30;line-height:1.75;margin-bottom:12px}
+.icard-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.icard-tag{padding:4px 10px;border-radius:20px;font-size:10px;font-weight:700;
+  background:var(--mist);color:#6a5a40;border:1px solid var(--border)}
+.icard-actions{display:flex;gap:8px}
+.icard-btn{flex:1;padding:12px 8px;border-radius:13px;border:none;cursor:pointer;
+  font-weight:800;font-size:12px;font-family:'DM Sans',sans-serif;transition:all .2s;
+  text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px}
+.icard-btn.primary{background:var(--green);color:#fff;box-shadow:0 4px 16px rgba(15,31,18,.2)}
+.icard-btn.primary:hover{background:var(--green-mid);transform:translateY(-1px)}
+.icard-btn.secondary{background:var(--mist);color:var(--ink);border:1.5px solid var(--border)}
+.icard-btn.secondary:hover{background:#e8e0d0}
+.icard-more{overflow:hidden;max-height:0;transition:max-height .4s ease}
+.icard-more.open{max-height:300px}
+.icard-more-inner{padding:14px 0 4px;border-top:1px solid var(--border);margin-top:12px}
+.icard-more-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;
+  font-size:11px;color:#5a4a30;line-height:1.6}
+.icard-more-icon{font-size:14px;flex-shrink:0;margin-top:1px}
 </style>
 </head>
 <body>
@@ -367,25 +420,31 @@ input:focus,button:focus{outline:none}
 
     <div class="setup-rule"></div>
 
-    <div class="cat-label">What are you checking?</div>
+    <div class="cat-label">Jump right in — tap a category</div>
     <div class="cat-grid" id="cat-grid">
-      <button class="cat-btn" onclick="toggleCat(this,'shampoo')">
+      <button class="cat-btn" onclick="catSearch(this,'shampoo')">
         <span class="ce">🧴</span><span class="cl">Shampoo & Conditioner</span>
+        <span class="cs">Tap to reveal ownership</span>
       </button>
-      <button class="cat-btn" onclick="toggleCat(this,'color')">
+      <button class="cat-btn" onclick="catSearch(this,'color')">
         <span class="ce">🎨</span><span class="cl">Color & Developer</span>
+        <span class="cs">Tap to reveal ownership</span>
       </button>
-      <button class="cat-btn" onclick="toggleCat(this,'styling')">
+      <button class="cat-btn" onclick="catSearch(this,'styling')">
         <span class="ce">💨</span><span class="cl">Styling Products</span>
+        <span class="cs">Tap to reveal ownership</span>
       </button>
-      <button class="cat-btn" onclick="toggleCat(this,'tools')">
+      <button class="cat-btn" onclick="catSearch(this,'tools')">
         <span class="ce">✂️</span><span class="cl">Tools & Shears</span>
+        <span class="cs">Tap to reveal ownership</span>
       </button>
-      <button class="cat-btn" onclick="toggleCat(this,'treatment')">
+      <button class="cat-btn" onclick="catSearch(this,'treatment')">
         <span class="ce">✨</span><span class="cl">Treatments & Masks</span>
+        <span class="cs">Tap to reveal ownership</span>
       </button>
-      <button class="cat-btn" onclick="toggleCat(this,'retail')">
+      <button class="cat-btn" onclick="catSearch(this,'retail')">
         <span class="ce">🛍️</span><span class="cl">Retail & Distributors</span>
+        <span class="cs">Tap to reveal ownership</span>
       </button>
     </div>
 
@@ -395,7 +454,7 @@ input:focus,button:focus{outline:none}
         placeholder="Enter brand(s), e.g. Wella, Olaplex, K18..."
         onkeydown="if(event.key==='Enter')doLookup()"/>
     </div>
-    <p class="hint">Enter one or more brands separated by commas. We'll show who actually owns each brand — corporate investors, big corporations, or truly independent businesses.</p>
+    <p class="hint">Or type any brand name(s) to search directly.</p>
     <button class="lookup-btn" id="lookup-btn" onclick="doLookup()">WHO OWNS IT? →</button>
 
     <div class="ex-wrap">
@@ -546,8 +605,118 @@ input:focus,button:focus{outline:none}
 </div>
 
 <script>
+
+// ── CATEGORY → BRANDS MAPPING ─────────────────────────────
+const CAT_BRANDS = {
+  shampoo:  ['Redken','Matrix','Pureology','Biolage','Kerastase','Nexxus','TRESemmé','Davines','Paul Mitchell','Surface Hair'],
+  color:    ['Wella','Redken','Matrix','Schwarzkopf','Pulp Riot','Pravana','Igora','Manic Panic','Arctic Fox','Oway','Framesi'],
+  styling:  ['Redken','Matrix','Wella','Sebastian Professional','Schwarzkopf','Paul Mitchell','Davines'],
+  tools:    ['Ivy Ann Shears','Wahl','Andis','Olivia Garden','Chi','Conair'],
+  treatment:['Olaplex','K18','Kerastase','Briogeo','Davines','Surface Hair'],
+  retail:   ['Sally Beauty','CosmoProf','Ulta Beauty','Regis'],
+};
+
+// ── SPONSORED INDIE BRANDS ─────────────────────────────────
+const SPONSORED = [
+  {
+    id:'ivy-ann-shears',name:'Ivy Ann Shears',
+    owner:'Woman-Owned · Independently Operated · Wilmington, NC',
+    desc:'Cold-forged ATS-314 Japanese steel shears, handcrafted in Sanjo, Japan. Built by a cosmetologist, for cosmetologists. Direct-to-consumer — no middlemen, no commissioned reps, no corporate markup.',
+    tags:['✂️ Professional Shears','🇯🇵 Sanjo, Japan','👩 Woman-Owned','💎 ATS-314 Steel','🚫 No Middlemen'],
+    website:'https://ivyannshears.com',categories:['tools'],
+    keywords:['wahl','andis','olivia garden','chi','conair','clipper','trimmer','tool','shear','scissor'],
+    womenOwned:true,indie:true,bcorp:false,sponsored:true,
+    moreInfo:'Each pair is cold-forged from ATS-314 Japanese steel — not stamped. Hand-finished convex edges for clean effortless cuts. Lifetime sharpening program. No PE investors, no corporate parent, ever.',
+    photo:'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&q=85',
+  }
+];
+
+// ── INDIE BRAND DIRECTORY ──────────────────────────────────
+const INDIE_DIR = [
+  {id:'davines',name:'Davines',owner:'Family-Owned Italian Benefit Corp · Since 1983',
+    desc:'The gold standard of indie professional hair care. Certified B-Corp, family-owned, and committed to sustainability without sacrificing luxury results.',
+    tags:['🌿 B-Corp','🇮🇹 Italy','👨\u200D👩\u200D👧 Family-Owned','♻️ Sustainable'],
+    website:'https://www.davines.com',categories:['shampoo','treatment','styling','color'],
+    keywords:['loreal','redken','matrix','wella','schwarzkopf','henkel','unilever','kerastase','pureology','nexxus','living proof'],
+    womenOwned:false,indie:true,bcorp:true,sponsored:false,
+    moreInfo:'Davines operates as a Benefit Corporation — legally bound to prioritize people and planet alongside profit. Carbon-neutral packaging, ingredients from small farms worldwide.',
+    photo:'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=85'},
+  {id:'paul-mitchell',name:'Paul Mitchell',owner:'Privately Held · Founding Family · Since 1980',
+    desc:"One of the last truly indie legacy salon brands. Family-owned for 40+ years, never sold to a corporation. Started with $700 and a dream — still going strong.",
+    tags:['💚 Indie Since 1980','🌱 Cruelty-Free','💇 Stylist-Founded','🚫 Never Sold'],
+    website:'https://www.paulmitchell.com',categories:['shampoo','styling','color','treatment'],
+    keywords:['loreal','redken','matrix','wella','coty','unilever','bumble','biolage','pureology','schwarzkopf'],
+    womenOwned:false,indie:true,bcorp:false,sponsored:false,
+    moreInfo:'Founded in 1980 with just $700. Never taken a corporate buyout despite decades of offers. Profits support stylists, salons, and animal welfare causes.',
+    photo:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=85'},
+  {id:'manic-panic',name:'Manic Panic',owner:'Woman-Founded · Independently Owned Since 1977',
+    desc:'The original indie hair color brand — nearly 50 years strong. Vegan, cruelty-free, and still independent despite decades of corporate acquisition offers.',
+    tags:['👩 Woman-Founded','🌈 Vegan','🐰 Cruelty-Free','⚡ Indie Since 1977'],
+    website:'https://manicpanic.com',categories:['color'],
+    keywords:['pulp riot','arctic fox','wella','loreal','redken','matrix','igora','pravana','color'],
+    womenOwned:true,indie:true,bcorp:false,sponsored:false,
+    moreInfo:'Founded by sisters Tish and Snooky Bellomo. One of the longest-standing indie beauty brands in the world. Never sold to a corporation despite decades of offers.',
+    photo:'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&q=85'},
+  {id:'arctic-fox',name:'Arctic Fox',owner:'Woman-Founded · Independently Owned',
+    desc:'Vivid, vegan hair color that stays indie. Woman-founded, cruelty-free, and donates a portion of every sale to animal rescue organizations.',
+    tags:['👩 Woman-Founded','🦊 Vegan','🐰 Cruelty-Free','💜 Gives Back'],
+    website:'https://arcticfoxhaircolor.com',categories:['color'],
+    keywords:['pulp riot','manic panic','wella','loreal','matrix','igora','color','vivid','overtone'],
+    womenOwned:true,indie:true,bcorp:false,sponsored:false,
+    moreInfo:'Donates a portion of every purchase to animal rescue. 100% vegan formula with no harsh chemicals. Fades beautifully without brassiness.',
+    photo:'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=85'},
+  {id:'oway',name:'Oway',owner:'Family-Owned · Bologna, Italy · Certified Organic',
+    desc:'Certified organic professional color and care grown on their own biodynamic farm in Italy. Zero-waste production, refillable formats, family-owned.',
+    tags:['🌿 Certified Organic','🇮🇹 Italy','👨\u200D👩\u200D👧 Family-Owned','🌱 Biodynamic Farm'],
+    website:'https://oway.us',categories:['color','shampoo','treatment'],
+    keywords:['pulp riot','wella','loreal','redken','matrix','schwarzkopf','igora','color','pravana'],
+    womenOwned:false,indie:true,bcorp:false,sponsored:false,
+    moreInfo:'Grows their own ingredients on a biodynamic farm in the Apennine mountains. Refillable professional sizes, plastic-negative packaging, family-run since day one.',
+    photo:'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=800&q=85'},
+  {id:'framesi',name:'Framesi',owner:'Family-Owned · Milan, Italy · Since 1945',
+    desc:"Eight decades of Italian craftsmanship, still in family hands. One of Europe's most respected indie professional color and care brands — never acquired.",
+    tags:['🇮🇹 Milan, Italy','👨\u200D👩\u200D👧 Family Since 1945','💎 Pro Color'],
+    website:'https://www.framesi.it',categories:['color','shampoo','treatment'],
+    keywords:['wella','loreal','schwarzkopf','matrix','color','professional','igora','redken','pravana'],
+    womenOwned:false,indie:true,bcorp:false,sponsored:false,
+    moreInfo:"Eight decades of craftsmanship, still in family hands. All products manufactured in their own facility in Milan — no outside investors ever.",
+    photo:'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=85'},
+  {id:'wahl',name:'Wahl Clipper',owner:'Family-Owned · Sterling, IL · Since 1919',
+    desc:'Over 100 years of American craftsmanship, still family-owned. The gold standard for professional clippers — never sold to a corporation.',
+    tags:['🇺🇸 Made in USA','👨\u200D👩\u200D👧 Family Since 1919','✂️ Pro Tools','💯 100+ Years'],
+    website:'https://www.wahlpro.com',categories:['tools'],
+    keywords:['andis','conair','clipper','trimmer','tool','fade','shear','scissor','olivia garden'],
+    womenOwned:false,indie:true,bcorp:false,sponsored:false,
+    moreInfo:'The Wahl family has owned and operated this company for over 100 years from Sterling, Illinois. Four generations, never a corporate sale.',
+    photo:'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=85'},
+  {id:'olivia-garden',name:'Olivia Garden',owner:'Family-Owned · Belgium · Since 1968',
+    desc:'Belgian family-owned professional tools since 1968. Beautifully engineered, ergonomic, sustainable — and completely independent for over 55 years.',
+    tags:['🇧🇪 Belgium','👨\u200D👩\u200D👧 Family Since 1968','🌿 Eco-Friendly','✂️ Professional Tools'],
+    website:'https://oliviagarden.com',categories:['tools'],
+    keywords:['wahl','andis','conair','brush','comb','tool','clipper','shear','scissor'],
+    womenOwned:false,indie:true,bcorp:false,sponsored:false,
+    moreInfo:'Creates tools with recycled and biodegradable materials. Family-owned for 55+ years with a deep commitment to professional quality and sustainability.',
+    photo:'https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800&q=85'},
+  {id:'surface-hair',name:'Surface Hair',owner:'Independently Owned · B-Corp Certified',
+    desc:'B-Corp certified professional care with clean formulas and sustainable packaging. One of the few genuinely indie AND B-Corp certified professional brands.',
+    tags:['🌿 B-Corp Certified','♻️ Sustainable','💚 Clean Formula','✅ Truly Indie'],
+    website:'https://surfacehair.com',categories:['shampoo','treatment','styling'],
+    keywords:['loreal','redken','matrix','wella','kerastase','pureology','nexxus','shampoo','living proof','k18','olaplex'],
+    womenOwned:false,indie:true,bcorp:true,sponsored:false,
+    moreInfo:'Holds B-Corp certification and uses USDA-certified organic ingredients. One of the very few sustainable AND independent professional brands on the market.',
+    photo:'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=800&q=85'},
+  {id:'celeb-luxury',name:'Celeb Luxury',owner:'Independently Owned',
+    desc:'Vivid color-preserving professional care, independently owned and cruelty-free. Made to protect and extend your color investment between appointments.',
+    tags:['💜 Color-Safe','🐰 Cruelty-Free','💚 Indie','🌈 Vivid Friendly'],
+    website:'https://celebluxury.com',categories:['shampoo','color','treatment'],
+    keywords:['pulp riot','manic panic','arctic fox','color','vivid','shampoo','overtone','celeb'],
+    womenOwned:false,indie:true,bcorp:false,sponsored:false,
+    moreInfo:'Made specifically for vivid and fashion color. Independently owned with clean formulas designed to help maintain color results between appointments.',
+    photo:'https://images.unsplash.com/photo-1631730486784-74757d38e388?w=800&q=85'},
+];
+
 // ── STATE ──────────────────────────────────────────────────
-const S = {results:[],votes:{},filter:'all',categories:[]};
+const S = {results:[],votes:{},filter:'all',categories:[],currentCategory:null};
 
 // ── KNOWN BRAND DATABASE ───────────────────────────────────
 // Sources: WWD, Beauty Inc, Cosmetify, PE disclosures 2023–2025
@@ -555,7 +724,7 @@ const KNOWN = {
   // ── COTY / KKR ───────────────────────────────────────────
   "wella professionals":{owner:"Coty / KKR (PE)",tier:0,pe:true},
   "wella":              {owner:"Coty / KKR (PE)",tier:0,pe:true},
-  "clairol":            {owner:"Coty (NYSE: COTY)",tier:0,pe:true},
+  "clairol":            {owner:"Coty Inc. (NYSE: COTY) — publicly traded",tier:1,pe:false},
   "sebastian professional":{owner:"Coty / KKR (PE)",tier:0,pe:true},
   "nioxin":             {owner:"Coty / KKR (PE)",tier:0,pe:true},
   "system professional":{owner:"Coty / KKR (PE)",tier:0,pe:true},
@@ -613,8 +782,8 @@ const KNOWN = {
   "dphi":               {owner:"Luxury Brand Partners (PE-backed)",tier:0,pe:true},
 
   // ── OLAPLEX (formerly PE) ─────────────────────────────────
-  "olaplex":            {owner:"Olaplex Holdings (NASDAQ: OLPX) — formerly Advent Int'l PE",tier:2,pe:false,
-                          note:"Was PE-owned under Advent International. Went public 2021. Now publicly traded — no longer PE but still corporate."},
+  "olaplex":            {owner:"Olaplex Holdings (NASDAQ: OLPX) — publicly traded",tier:1,pe:false,indie:false,
+                          note:"Was investor-owned, went public in 2021. Now a publicly traded corporation on NASDAQ. Not indie."},
 
   // ── RETAILERS ─────────────────────────────────────────────
   "sally beauty":       {owner:"Sally Beauty Holdings (NYSE: SBH)",tier:1,pe:false},
@@ -631,14 +800,16 @@ const KNOWN = {
                           note:"Certified B-Corp. Family owned since 1983. The gold standard for indie in professional beauty."},
   "paul mitchell":      {owner:"John Paul Mitchell Systems — privately held, founding family",tier:4,pe:false,indie:true,
                           note:"Independently owned since 1980. One of the few truly indie legacy salon brands still standing."},
-  "verb products":      {owner:"Privately held / independent",tier:4,pe:false,indie:true},
-  "verb":               {owner:"Privately held / independent",tier:4,pe:false,indie:true},
+  "verb products":      {owner:"Helen of Troy (NASDAQ: HELE, acquired 2022)",tier:1,pe:false,indie:false,
+                          note:"Was an indie fan favorite. Acquired by Helen of Troy in 2022. Now publicly traded corporate-owned."},
+  "verb":               {owner:"Helen of Troy (NASDAQ: HELE, acquired 2022)",tier:1,pe:false,indie:false,
+                          note:"Was an indie fan favorite. Acquired by Helen of Troy in 2022. Now publicly traded corporate-owned."},
   "macadamia professional":{owner:"Macadamia Professional — privately held",tier:4,pe:false,indie:true},
   "brazilian blowout":  {owner:"GIB LLC — privately held",tier:4,pe:false,indie:true},
   "framesi":            {owner:"Framesi — Italian family-owned",tier:4,pe:false,indie:true},
   "chi":                {owner:"Farouk Systems — privately held",tier:4,pe:false,indie:true},
   "farouk":             {owner:"Farouk Systems — privately held (Farouk Shami, founder)",tier:4,pe:false,indie:true},
-  "wahl":               {owner:"Wahl Clipper Corporation — family-owned since 1919",tier:5,pe:false,indie:true},
+  "wahl":               {owner:"Wahl Clipper Corporation — family-owned since 1919",tier:4,pe:false,indie:true},
   "andis":              {owner:"Andis Company — privately held, family-owned",tier:4,pe:false,indie:true},
   "olivia garden":      {owner:"Olivia Garden — privately held, Belgium",tier:4,pe:false,indie:true},
   "surface hair":       {owner:"Surface Hair — independently owned, B-Corp certified",tier:5,pe:false,indie:true,
@@ -655,7 +826,7 @@ const KNOWN = {
                           alternatives:["Oway","Celeb Luxury","Lively Hair Color"]},
 
   // ── OWAY (indie, Italian family) ─────────────────────────
-  "oway":               {owner:"Oway — independently owned, Italian family brand",tier:5,pe:false,indie:true,
+  "oway":               {owner:"Oway — independently owned, Italian family brand",tier:4,pe:false,indie:true,
                           note:"Certified organic, family-owned Italian brand. A true indie alternative for color."},
 
   // ── CELEB LUXURY ─────────────────────────────────────────
@@ -667,10 +838,11 @@ const KNOWN = {
 
   // ── ARCTIC FOX ───────────────────────────────────────────
   "arctic fox":         {owner:"Arctic Fox — independently owned, woman-founded",tier:5,pe:false,indie:true,womenFounded:true,
-                          note:"Founded by Kristen Leanne. Cruelty-free, vegan, woman-founded and still independent."},
+                          note:"Cruelty-free, vegan, woman-founded and still independently owned."},
 
   // ── OVERTONE ─────────────────────────────────────────────
-  "overtone":           {owner:"oVertone — independently owned",tier:4,pe:false,indie:true},
+  "overtone":           {owner:"Henkel AG (acquired 2022)",tier:1,pe:false,indie:false,
+                          note:"Was indie and popular. Acquired by Henkel in 2022. Now fully corporate-owned."},
 
   // ── MANIC PANIC ──────────────────────────────────────────
   "manic panic":        {owner:"Manic Panic — independently owned, woman-founded (Tish & Snooky Bellomo)",tier:5,pe:false,indie:true,womenFounded:true,
@@ -695,8 +867,8 @@ const KNOWN = {
   "walker tape":        {owner:"Walker Tape Co. — privately held",tier:3,pe:false},
 
   // ── COLOR WOW ────────────────────────────────────────────
-  "color wow":          {owner:"Color Wow — independently owned",tier:4,pe:false,indie:true,
-                          note:"Independently owned and focused on professional results. No corporate parent identified."},
+  "color wow":          {owner:"Henkel AG (acquired 2021)",tier:1,pe:false,indie:false,
+                          note:"Was independently owned. Acquired by Henkel in 2021. Now fully corporate-owned."},
 
   // ── INSIGHT COSMETICS ────────────────────────────────────
   "insight cosmetics":  {owner:"Insight Cosmetics — independently owned, Italy",tier:4,pe:false,indie:true},
@@ -723,11 +895,6 @@ const TIER_WHY = {
 };
 
 // ── HELPERS ────────────────────────────────────────────────
-function toggleCat(el,cat){
-  el.classList.toggle('on');
-  const i=S.categories.indexOf(cat);
-  if(i>-1)S.categories.splice(i,1); else S.categories.push(cat);
-}
 function fillExample(t){document.getElementById('brand-input').value=t}
 function setFilter(f,el){
   S.filter=f;
@@ -739,9 +906,22 @@ function goSetup(){
   document.getElementById('setup').style.display='flex';
   document.getElementById('app').style.display='none';
   document.getElementById('brand-input').value='';
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'));
+  S.currentCategory=null;
 }
 
-// ── LOOKUP ─────────────────────────────────────────────────
+// ── CATEGORY INSTANT SEARCH ────────────────────────────────
+function catSearch(el, cat){
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+  S.currentCategory=cat;
+  const brands=CAT_BRANDS[cat]||[];
+  if(!brands.length) return;
+  const label=el.querySelector('.cl').textContent;
+  runLookup(brands, label);
+}
+
+// ── MANUAL LOOKUP ──────────────────────────────────────────
 async function doLookup(){
   const input=document.getElementById('brand-input').value.trim();
   if(!input){
@@ -750,19 +930,25 @@ async function doLookup(){
     setTimeout(()=>el.style.borderColor='',1500);
     return;
   }
+  S.currentCategory=null;
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'));
   const brands=input.split(',').map(b=>b.trim()).filter(Boolean);
-  S.results=[];S.votes={};S.filter='all';
+  runLookup(brands, brands.join(', '));
+}
 
+// ── SHARED LOOKUP ENGINE ───────────────────────────────────
+async function runLookup(brands, queryLabel){
+  S.results=[];S.votes={};S.filter='all';
   document.getElementById('setup').style.display='none';
   document.getElementById('app').style.display='block';
   document.getElementById('loading').style.display='block';
   document.getElementById('cards').innerHTML='';
-  document.getElementById('hdr-query').innerHTML=`Checking: <strong>${brands.join(', ')}</strong>`;
+  document.getElementById('hdr-query').innerHTML=`Checking: <strong>${queryLabel}</strong>`;
 
   const found=[], toAI=[];
   for(const b of brands){
     const lo=b.toLowerCase();
-    const match=Object.entries(KNOWN).find(([k])=>lo.includes(k)||k.includes(lo));
+    const match=Object.entries(KNOWN).find(([k])=>lo===k||lo.includes(k)||k.includes(lo));
     if(match) found.push({name:b,...match[1],fromDB:true});
     else toAI.push(b);
   }
@@ -771,6 +957,7 @@ async function doLookup(){
   if(toAI.length>0){
     document.getElementById('loading-sub').innerHTML=`Researching ${toAI.join(', ')}<br>via AI brand intelligence...`;
     aiResults=await aiLookup(toAI);
+    aiResults=aiResults.map(r=>({...r,indie:r.tier>=4,pe:r.tier===0}));
   }
 
   S.results=[...found,...aiResults];
@@ -846,7 +1033,100 @@ function renderResults(){
 
   let html=`<div class="summary-banner"><div class="sb-icon">${bIcon}</div><div><div class="sb-title">${bTitle}</div><div class="sb-sub">${bSub}</div></div></div>`;
   filtered.forEach((r,i)=>html+=buildCard(r,i));
+
+  // Indie alternatives section — always below corporate results
+  const indieBrands=getRelevantIndieBrands();
+  if(indieBrands.length){
+    html+=`<div class="indie-section"><div class="indie-header"><div class="indie-header-left"></div><div class="indie-header-text">✂️ &nbsp;Shop Indie&nbsp; ✂️</div><div class="indie-header-line"></div></div>`;
+    indieBrands.forEach((b,i)=>html+=buildIndieCard(b,i));
+    html+=`</div>`;
+  }
   cards.innerHTML=html;
+}
+
+// ── PICK RELEVANT INDIE BRANDS ─────────────────────────────
+function getRelevantIndieBrands(){
+  const searchNames=S.results.map(r=>r.name.toLowerCase()).join(' ');
+  const cat=S.currentCategory;
+  const allBrands=[...SPONSORED,...INDIE_DIR];
+  const seen=new Set();
+  let relevant=[];
+  allBrands.forEach(b=>{
+    if(seen.has(b.id)) return;
+    const isAlreadyResult=S.results.some(r=>r.name.toLowerCase()===b.name.toLowerCase());
+    if(isAlreadyResult) return;
+    const catMatch=cat&&b.categories.includes(cat);
+    const kwMatch=b.keywords.some(k=>searchNames.includes(k));
+    if(catMatch||kwMatch){seen.add(b.id);relevant.push(b);}
+  });
+  if(!relevant.length){
+    allBrands.forEach(b=>{
+      if(seen.has(b.id)) return;
+      seen.add(b.id);relevant.push(b);
+    });
+  }
+
+  // ── TOOLS CATEGORY: Ivy Ann always first, then women-owned, sponsored woven in ──
+  if(cat==='tools'){
+    const ivyAnn   = relevant.filter(b=>b.id==='ivy-ann-shears');
+    const women    = relevant.filter(b=>b.id!=='ivy-ann-shears'&&(b.womenOwned||b.womenFounded)&&!b.sponsored);
+    const sponsored= relevant.filter(b=>b.id!=='ivy-ann-shears'&&b.sponsored);
+    const rest     = relevant.filter(b=>b.id!=='ivy-ann-shears'&&!b.womenOwned&&!b.womenFounded&&!b.sponsored);
+    // Order: Ivy Ann, women-owned, then weave sponsored after position 2, then rest
+    const ordered=[...ivyAnn,...women];
+    sponsored.forEach((s,i)=>ordered.splice(3+i*2,0,s)); // sponsored after position 2
+    relevant=[...ordered,...rest];
+  } else {
+    // All other categories: sponsored woven in after position 1
+    const sponsored=relevant.filter(b=>b.sponsored);
+    const nonSponsored=relevant.filter(b=>!b.sponsored);
+    relevant=[...nonSponsored];
+    sponsored.forEach((s,i)=>relevant.splice(2+i*3,0,s));
+  }
+
+  return relevant.slice(0,7);
+}
+
+// ── BUILD INDIE CARD ───────────────────────────────────────
+function buildIndieCard(b,i){
+  const delay=i*.09+.1;
+  const wb=b.womenOwned?`<span class="ibadge-pill women">👩 Woman-Owned</span>`
+    :(b.womenFounded?`<span class="ibadge-pill women">👩 Women-Founded</span>`:'');
+  const bc=b.bcorp?`<span class="ibadge-pill bcorp">🌿 B-Corp</span>`:'';
+  const tags=b.tags.map(t=>`<span class="icard-tag">${t}</span>`).join('');
+  const sp=b.sponsored?`<div class="sponsored-tag">Sponsored</div>`:'';
+  return `<div class="icard ${b.sponsored?'sponsored':''}" style="animation-delay:${delay}s">
+    ${sp}
+    <div class="icard-photo" onclick="window.open('${b.website}','_blank')">
+      <div class="photo-skel" id="skel-${b.id}"></div>
+      <img src="${b.photo}" alt="${b.name}"
+        onload="this.style.display='block';document.getElementById('skel-${b.id}').style.display='none'"
+        onerror="document.getElementById('skel-${b.id}').style.display='none'"
+        style="display:none"/>
+      <div class="icard-photo-overlay"></div>
+      <div class="icard-photo-badges"><span class="ibadge-pill indie">✅ Indie</span>${wb}${bc}</div>
+      <div class="icard-photo-name">
+        <h3>${b.name}</h3>
+        <div class="icard-owner">${b.owner}</div>
+      </div>
+    </div>
+    <div class="icard-body">
+      <p class="icard-desc">${b.desc}</p>
+      <div class="icard-tags">${tags}</div>
+      <div class="icard-actions">
+        <a href="${b.website}" target="_blank" class="icard-btn primary">🌐 Visit Website</a>
+        <button class="icard-btn secondary" onclick="toggleMore('${b.id}')">More Info ▾</button>
+      </div>
+      <div class="icard-more" id="imore-${b.id}">
+        <div class="icard-more-inner">
+          <div class="icard-more-row"><div class="icard-more-icon">💡</div><div>${b.more}</div></div>
+          <div class="icard-more-row"><div class="icard-more-icon">🌐</div>
+            <div><a href="${b.website}" target="_blank" style="color:var(--green-accent);font-weight:700">${b.website.replace('https://','')}</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
 }
 
 function getFiltered(){
@@ -867,8 +1147,7 @@ function buildCard(r,i){
   const wBadge=r.womenOwned?' · 👩 Woman-Owned':(r.womenFounded?' · 👩 Women-Founded':'');
   const bCert=r.note&&r.note.toLowerCase().includes('b-corp')?' · 🌿 B-Corp':'';
   const sub=(r.owner||'Unknown ownership').slice(0,60)+((r.owner||'').length>60?'…':'');
-  const alts=r.alternatives?.length
-    ?`<div class="alt-section"><div class="alt-label">Indie alternatives</div><div class="alt-tags">${r.alternatives.map(a=>`<span class="alt-tag">${a}</span>`).join('')}</div></div>`:'';
+
   const conf=Array.from({length:5},(_,j)=>`<div style="width:7px;height:7px;border-radius:50%;background:${j<(r.confidence||3)?'#c8a96e':'#e8dece'}"></div>`).join('');
 
   return `<div class="card" style="animation-delay:${i*.07}s">
@@ -903,12 +1182,17 @@ function buildCard(r,i){
       ${r.note?`<div class="detail-row"><div class="detail-icon">ℹ️</div><div class="detail-text">${r.note}</div></div>`:''}
       <div class="detail-row"><div class="detail-icon">🏛️</div><div class="detail-text"><strong>Full owner:</strong> ${r.owner||'Not verified'}</div></div>
       <div class="detail-row"><div class="detail-icon">🎯</div><div class="detail-text">${TIER_WHY[r.tier??3]}</div></div>
-      ${alts}
     </div>
   </div>`;
 }
 
 // ── INTERACTIONS ───────────────────────────────────────────
+function toggleMore(id){
+  const el=document.getElementById('imore-'+id);
+  el.classList.toggle('open');
+  const btn=el.closest('.icard-body').querySelector('.icard-btn.secondary');
+  if(btn) btn.textContent=el.classList.contains('open')?'Less Info ▴':'More Info ▾';
+}
 function toggleDetail(i){
   const el=document.getElementById('det-'+i);
   const btn=document.getElementById('exbtn-'+i);
