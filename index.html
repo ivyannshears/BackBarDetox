@@ -396,6 +396,33 @@ input:focus,button:focus{outline:none}
 .icard-more-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;
   font-size:11px;color:#5a4a30;line-height:1.6}
 .icard-more-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+
+/* ── IN-APP SEARCH BAR ───────────────────────────────────── */
+.hdr-search{position:relative;margin-bottom:12px}
+.hdr-search input{
+  width:100%;padding:10px 42px 10px 38px;
+  border-radius:12px;border:1.5px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.1);color:#fff;
+  font-size:13px;font-family:'DM Sans',sans-serif;
+  transition:all .2s
+}
+.hdr-search input:focus{
+  border-color:rgba(200,169,110,.6);
+  background:rgba(255,255,255,.15)
+}
+.hdr-search input::placeholder{color:rgba(255,255,255,.4)}
+.hdr-search-icon{
+  position:absolute;left:12px;top:50%;transform:translateY(-50%);
+  font-size:14px;opacity:.6
+}
+.hdr-search-go{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  background:var(--gold);border:none;border-radius:8px;
+  padding:4px 10px;font-size:10px;font-weight:800;color:#fff;
+  cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:.5px;
+  transition:all .15s
+}
+.hdr-search-go:hover{background:var(--gold-dark)}
 </style>
 </head>
 <body>
@@ -496,6 +523,13 @@ input:focus,button:focus{outline:none}
       </div>
     </div>
     <div class="hdr-query" id="hdr-query"></div>
+    <div class="hdr-search">
+      <span class="hdr-search-icon">🔍</span>
+      <input type="text" id="hdr-brand-input"
+        placeholder="Search another brand..."
+        onkeydown="if(event.key==='Enter')doHdrSearch()"/>
+      <button class="hdr-search-go" onclick="doHdrSearch()">GO</button>
+    </div>
     <div class="filter-row">
       <button class="fpill on"  onclick="setFilter('all',this)">All</button>
       <button class="fpill off" onclick="setFilter('pe',this)">🚩 Investor Owned</button>
@@ -611,7 +645,7 @@ const CAT_BRANDS = {
   shampoo:  ['Redken','Matrix','Pureology','Biolage','Kerastase','Nexxus','TRESemmé','Davines','Paul Mitchell','Surface Hair'],
   color:    ['Wella','Redken','Matrix','Schwarzkopf','Pulp Riot','Pravana','Igora','Manic Panic','Arctic Fox','Oway','Framesi'],
   styling:  ['Redken','Matrix','Wella','Sebastian Professional','Schwarzkopf','Paul Mitchell','Davines'],
-  tools:    ['Ivy Ann Shears','Wahl','Andis','Olivia Garden','Chi','Conair'],
+  tools:    ['Ivy Ann Shears','Framar','Pink Pewter','Sam Villa','Wahl','Andis','Olivia Garden','Chi','Conair'],
   treatment:['Olaplex','K18','Kerastase','Briogeo','Davines','Surface Hair'],
   retail:   ['Sally Beauty','CosmoProf','Ulta Beauty','Regis'],
 };
@@ -633,6 +667,30 @@ const SPONSORED = [
 
 // ── INDIE BRAND DIRECTORY ──────────────────────────────────
 const INDIE_DIR = [
+  {
+    id:'framar',name:'Framar',
+    owner:"Woman-Founded · Family-Owned · Niagara Falls, Canada · Est. 1986",
+    desc:"Female-founded by Maria in 1986, who remains President today. A family-owned Canadian brand that grew from a back-of-salon idea into a global name serving stylists in 190+ countries — never sold.",
+    tags:['👩 Woman-Founded','🇨🇦 Canada','👨\u200D👩\u200D👧 Family-Owned','🌍 190+ Countries','✅ Indie'],
+    website:'https://framar.com',
+    categories:['tools'],
+    keywords:['wahl','andis','olivia garden','foil','tool','color','brush','comb','shear','scissor'],
+    womenOwned:true,indie:true,bcorp:false,sponsored:false,
+    moreInfo:"Maria started Framar from scratch in 1986, running it single-handedly for the first 20 years. She is still President today. Female-founded, family-owned, and fiercely independent — one of the most prominent woman-owned brands in the professional beauty industry.",
+    photo:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=85',
+  },
+  {
+    id:'pink-pewter',name:'Pink Pewter',
+    owner:"Woman-Owned · Latina-Founded · Streamwood, IL",
+    desc:"Founded by licensed cosmetologist Mireya Villarreal, who started making hair accessories for her daughter and built a global brand in 30+ countries. The name came from her daughter's mispronunciation of the word computer. Still independently owned.",
+    tags:['👩 Woman-Owned','🌎 Latina-Founded','💍 Hair Accessories','🌍 30+ Countries','✅ Indie'],
+    website:'https://pinkpewter.com',
+    categories:['tools'],
+    keywords:['wahl','andis','framar','olivia garden','accessory','accessories','foil','wedding','bridal','hair jewelry'],
+    womenOwned:true,indie:true,bcorp:false,sponsored:false,
+    moreInfo:"Mireya Villarreal is a licensed cosmetologist and daughter of Mexican immigrants who built Pink Pewter from scratch — starting with a suitcase of accessories walked into 10 stores, 9 of which said yes. She also founded the Pink Pewter Foundation, a nonprofit supporting beauty industry professionals.",
+    photo:'https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800&q=85',
+  },
   {id:'davines',name:'Davines',owner:'Family-Owned Italian Benefit Corp · Since 1983',
     desc:'The gold standard of indie professional hair care. Certified B-Corp, family-owned, and committed to sustainability without sacrificing luxury results.',
     tags:['🌿 B-Corp','🇮🇹 Italy','👨\u200D👩\u200D👧 Family-Owned','♻️ Sustainable'],
@@ -816,6 +874,21 @@ const KNOWN = {
                           note:"Certified B-Corp. Independently owned. One of the cleanest sustainability stories in pro beauty."},
   "conair":             {owner:"Conair Corporation — privately held (Rizzuto family)",tier:3,pe:false},
 
+
+  // ── FRAMAR (woman-founded, family-owned, Canada) ──────────
+  "framar":             {owner:"Framar — woman-founded, family-owned (Niagara Falls, Canada, est. 1986)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Maria in 1986, who remains President. Female-founded, family-owned Canadian brand serving stylists in 190+ countries. Never sold to a corporation."},
+
+  // ── SAM VILLA (independently owned, Allvus LLC) ───────────
+  "sam villa":          {owner:"Allvus LLC — independently owned styling tools brand",tier:4,pe:false,indie:true,
+                          note:"Independently owned by Sam Villa and co-founders (Allvus LLC). Note: Sam Villa maintains a brand ambassador relationship with Redken, but the tools company itself is independent."},
+
+
+  // ── PINK PEWTER (woman-owned, Latina-founded, Streamwood IL) ─
+  "pink pewter":        {owner:"Pink Pewter — woman-owned, Latina-founded (Mireya Villarreal, Streamwood IL)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by licensed cosmetologist Mireya Villarreal, who started making hair accessories for her daughter and built an international brand sold in 30+ countries. Still independently owned and operated.",
+                          alternatives:["Framar","Ivy Ann Shears","Olivia Garden"]},
+
   // ── IVY ANN SHEARS ────────────────────────────────────────
   "ivy ann shears":     {owner:"Ivy Ann Shears — woman-owned, independently operated (Wilmington, NC)",tier:5,pe:false,indie:true,womenOwned:true,
                           note:"Cold-forged ATS-314 Japanese steel, handcrafted in Sanjo, Japan. Direct-to-consumer, no commissioned reps. Woman-owned, cosmetologist-operated."},
@@ -910,6 +983,17 @@ function goSetup(){
   S.currentCategory=null;
 }
 
+
+// ── IN-APP SEARCH ──────────────────────────────────────────
+function doHdrSearch(){
+  const input=document.getElementById('hdr-brand-input').value.trim();
+  if(!input) return;
+  S.currentCategory=null;
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'));
+  const brands=input.split(',').map(b=>b.trim()).filter(Boolean);
+  document.getElementById('hdr-brand-input').value='';
+  runLookup(brands, brands.join(', '));
+}
 // ── CATEGORY INSTANT SEARCH ────────────────────────────────
 function catSearch(el, cat){
   document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'));
@@ -967,28 +1051,37 @@ async function runLookup(brands, queryLabel){
 
 // ── AI LOOKUP ──────────────────────────────────────────────
 async function aiLookup(brands){
-  const prompt=`You are a professional beauty industry analyst with deep knowledge of brand ownership, corporate acquisitions, and investor activity in professional hair care.
+  const prompt=`You are the world's most thorough professional beauty industry analyst. You have encyclopedic knowledge of brand ownership across ALL segments — not just major brands, but niche accessories, wedding hair, bridal, salon tools, foils, clips, color accessories, ethnic hair care, barbering, and every founder-led brand at every scale.
 
-For each brand, provide ACCURATE current ownership. Return ONLY valid JSON — no explanation, no markdown.
+For EVERY brand — famous or completely obscure — dig as deep as possible. For lesser-known brands, reason through: Who founded it? Is the founder still running it? Has it been acquired? Is there any press about investment? Niche beauty brands are almost always independent unless acquired.
 
 Brands: ${brands.join(', ')}
 
-Return a JSON array:
+Return ONLY a valid JSON array, no explanation, no markdown:
 [{
-  "name": "brand name as given",
-  "owner": "current owner — be specific: investor/firm name, parent corporation, or 'Independently owned'",
+  "name": "brand name exactly as given",
+  "owner": "maximally specific — founder name and company if indie, PE firm if investor-backed, public company ticker if corporate, or 'Independently owned by [founder]' if known",
   "tier": 0-5,
-  "pe": true/false,
-  "indie": true/false,
-  "womenOwned": true/false,
-  "womenFounded": true/false,
-  "note": "1-2 sentences on ownership history or why it matters to stylists",
-  "alternatives": ["2-3 real indie or woman-owned alternatives in the same product category"],
+  "pe": true or false,
+  "indie": true or false,
+  "womenOwned": true only if currently woman-owned and you are certain,
+  "womenFounded": true if founded by a woman even if now sold,
+  "note": "2-3 sentences — founder story if indie, parent company impact if corporate. Be specific.",
+  "alternatives": ["3-4 real indie or woman-owned alternatives in the exact same product category"],
   "confidence": 1-5
 }]
 
-Tier guide: 0=owned by corporate investors (private equity), 1=publicly traded corporation, 2=formerly investor-backed now public, 3=large private company, 4=independent/founder-owned, 5=indie AND woman-owned or B-Corp.
-Only mark womenOwned true if certain. Default to tier 3 with low confidence if unsure. CRITICAL: Never invent or guess founder names, acquisition dates, or specific people — if you are not certain of a specific name or date, omit it entirely from the note.`;
+TIERS: 0=private equity owned, 1=publicly traded corp, 2=recently acquired/was indie, 3=large private company, 4=independent founder-owned, 5=indie AND woman-owned or B-Corp certified.
+
+RESEARCH RULES FOR OBSCURE BRANDS:
+- Hair accessory brands (clips, pins, foils, jewelry): almost always indie unless acquired
+- Brands named after a person: likely still founder-owned — confirm this
+- Latina/Black/minority-founded brands: research carefully, most are still indie
+- Wedding and bridal hair brands: niche, almost always indie
+- If sold at major distributors but small team: may still be indie-owned
+- Do NOT default everything unknown to tier 3 — reason it out first
+- Alternatives must be REAL brands in the EXACT same product category
+- Never invent names or dates — omit if uncertain, but do not refuse to engage`;
 
   try{
     const res=await fetch("https://api.anthropic.com/v1/messages",{
