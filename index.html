@@ -261,6 +261,88 @@ input:focus,button:focus{outline:none}
 .footer-name{font-size:11px;font-weight:900;color:var(--green);letter-spacing:-.3px}
 .footer-name em{color:var(--gold);font-style:normal}
 .footer p{font-size:10px;color:#bbb;line-height:1.6}
+.footer-about-btn{
+  background:none;border:none;cursor:pointer;
+  font-size:10px;font-weight:700;color:var(--gold);
+  font-family:'DM Sans',sans-serif;letter-spacing:.5px;
+  margin-top:4px;text-decoration:underline;padding:0
+}
+
+/* ── ABOUT PANEL ─────────────────────────────────────────── */
+#about-overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(10,18,9,.7);backdrop-filter:blur(4px)
+}
+#about-panel{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+  width:100%;max-width:480px;
+  background:var(--paper);border-radius:24px 24px 0 0;
+  padding:0 0 40px;z-index:501;
+  box-shadow:0 -10px 60px rgba(0,0,0,.3);
+  max-height:88vh;overflow-y:auto;
+  animation:slideUp .3s ease
+}
+@keyframes slideUp{from{transform:translateX(-50%) translateY(100%)}to{transform:translateX(-50%) translateY(0)}}
+.about-handle{
+  width:36px;height:4px;border-radius:2px;
+  background:var(--border);margin:12px auto 0
+}
+.about-header{
+  padding:18px 22px 0;
+  display:flex;align-items:center;gap:14px;
+  border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:4px
+}
+.about-mark{
+  width:48px;height:48px;border-radius:13px;
+  background:var(--green);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden
+}
+.about-mark::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-dark))}
+.about-mark .Dx{font-size:22px;color:#fff}
+.about-header-text h2{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:900;color:var(--ink);letter-spacing:-.5px}
+.about-header-text h2 em{color:var(--gold);font-style:normal}
+.about-header-text p{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--green-accent);text-transform:uppercase;margin-top:2px}
+.about-close{
+  margin-left:auto;width:32px;height:32px;border-radius:50%;
+  background:var(--mist);border:none;cursor:pointer;
+  font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0
+}
+.about-body{padding:18px 22px}
+.about-section{margin-bottom:22px}
+.about-section h3{
+  font-size:9px;font-weight:800;letter-spacing:3px;
+  text-transform:uppercase;color:var(--green-accent);margin-bottom:10px
+}
+.about-section p{font-size:12px;color:#5a4a30;line-height:1.8}
+.tier-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.tier-icon{font-size:16px;flex-shrink:0;width:24px;text-align:center}
+.tier-text{font-size:12px;color:#5a4a30;line-height:1.6}
+.tier-text strong{color:var(--ink);font-weight:700}
+.about-rule{height:1px;background:var(--border);margin:18px 0}
+.about-built-by{
+  background:var(--green);border-radius:16px;padding:16px;
+  display:flex;align-items:center;gap:14px
+}
+.about-built-mark{
+  width:44px;height:44px;border-radius:11px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(200,169,110,.25);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:22px
+}
+.about-built-text{flex:1}
+.about-built-text strong{font-size:13px;font-weight:900;color:#fff;display:block;margin-bottom:2px}
+.about-built-text span{font-size:11px;color:rgba(255,255,255,.5);line-height:1.5;display:block}
+.about-built-text a{color:var(--gold);text-decoration:none;font-weight:700}
+.about-sister{
+  background:var(--mist);border-radius:14px;padding:13px 15px;
+  display:flex;align-items:center;gap:12px;margin-top:12px;
+  border:1px solid var(--border)
+}
+.about-sister-icon{font-size:24px;flex-shrink:0}
+.about-sister-text strong{font-size:12px;font-weight:800;color:var(--ink);display:block;margin-bottom:1px}
+.about-sister-text span{font-size:11px;color:#8a7a60}
 </style>
 </head>
 <body>
@@ -278,7 +360,7 @@ input:focus,button:focus{outline:none}
       </div>
       <div class="slogo-text">
         <div class="slogo-eyebrow">BackBar</div>
-        <div class="slogo-name">Back<em>Bar</em> Detox</div>
+        <div class="slogo-name">BackBar <em>Detox</em></div>
         <div class="slogo-tag">WHO OWNS YOUR SHELF?</div>
       </div>
     </div>
@@ -313,7 +395,7 @@ input:focus,button:focus{outline:none}
         placeholder="Enter brand(s), e.g. Wella, Olaplex, K18..."
         onkeydown="if(event.key==='Enter')doLookup()"/>
     </div>
-    <p class="hint">Enter one or more brands separated by commas. We'll expose PE ownership, parent companies, and flag indie or woman-owned alternatives.</p>
+    <p class="hint">Enter one or more brands separated by commas. We'll show who actually owns each brand — corporate investors, big corporations, or truly independent businesses.</p>
     <button class="lookup-btn" id="lookup-btn" onclick="doLookup()">WHO OWNS IT? →</button>
 
     <div class="ex-wrap">
@@ -342,7 +424,7 @@ input:focus,button:focus{outline:none}
           <span class="Dx" style="font-size:19px;color:#fff"><span class="d">D</span><span class="x">x</span></span>
         </div>
         <div class="hlogo-text">
-          <div class="hlogo-name">Back<em>Bar</em> Detox</div>
+          <div class="hlogo-name">BackBar <em>Detox</em></div>
           <div class="hlogo-sub">Who Owns Your Shelf?</div>
         </div>
       </div>
@@ -357,7 +439,7 @@ input:focus,button:focus{outline:none}
     <div class="hdr-query" id="hdr-query"></div>
     <div class="filter-row">
       <button class="fpill on"  onclick="setFilter('all',this)">All</button>
-      <button class="fpill off" onclick="setFilter('pe',this)">🚩 PE-Owned</button>
+      <button class="fpill off" onclick="setFilter('pe',this)">🚩 Investor Owned</button>
       <button class="fpill off" onclick="setFilter('corp',this)">🏢 Corporate</button>
       <button class="fpill off" onclick="setFilter('indie',this)">✅ Indie</button>
       <button class="fpill off" onclick="setFilter('women',this)">👩 Women-Owned</button>
@@ -372,7 +454,7 @@ input:focus,button:focus{outline:none}
       <div class="loading-title">Detoxing your shelf...</div>
       <div class="loading-sub" id="loading-sub">
         Tracing ownership structures<br>
-        Cross-referencing PE portfolios<br>
+        Checking corporate ownership records<br>
         Finding indie alternatives
       </div>
     </div>
@@ -384,9 +466,82 @@ input:focus,button:focus{outline:none}
       <div class="footer-mark">
         <span class="Dx" style="font-size:9px;color:#fff"><span class="d">D</span><span class="x">x</span></span>
       </div>
-      <span class="footer-name">Back<em>Bar</em> Detox</span>
+      <span class="footer-name">BackBar <em>Detox</em></span>
     </div>
     <p>WHO OWNS YOUR SHELF? · AI-powered · Community verified · Built for stylists</p>
+    <button class="footer-about-btn" onclick="openAbout()">About &amp; How It Works</button>
+  </div>
+</div>
+
+<!-- ── ABOUT OVERLAY ──────────────────────────────────────── -->
+<div id="about-overlay" onclick="closeAbout()"></div>
+<div id="about-panel">
+  <div class="about-handle"></div>
+
+  <div class="about-header">
+    <div class="about-mark">
+      <span class="Dx" style="font-size:22px;color:#fff"><span class="d">D</span><span class="x">x</span></span>
+    </div>
+    <div class="about-header-text">
+      <h2>BackBar <em>Detox</em></h2>
+      <p>Who Owns Your Shelf?</p>
+    </div>
+    <button class="about-close" onclick="closeAbout()">✕</button>
+  </div>
+
+  <div class="about-body">
+
+    <div class="about-section">
+      <h3>What This Is</h3>
+      <p>BackBar Detox is a free tool for hairstylists and beauty professionals to reveal who actually owns the brands on their back bar — corporate investors, large publicly traded companies, or truly independent businesses. Because who profits from your shelf matters.</p>
+    </div>
+
+    <div class="about-rule"></div>
+
+    <div class="about-section">
+      <h3>The Rating System</h3>
+      <div class="tier-row"><div class="tier-icon">🚩</div><div class="tier-text"><strong>Investor Owned</strong> — Owned by corporate investors (private equity). Returns for shareholders come before your craft or your clients.</div></div>
+      <div class="tier-row"><div class="tier-icon">🏢</div><div class="tier-text"><strong>Publicly Traded</strong> — Owned by a public corporation (L'Oréal, Coty, Henkel, Unilever). Quarterly earnings drive decisions.</div></div>
+      <div class="tier-row"><div class="tier-icon">⚠️</div><div class="tier-text"><strong>Recently Acquired</strong> — Ownership has changed recently. May have been indie when you fell in love with it.</div></div>
+      <div class="tier-row"><div class="tier-icon">🔵</div><div class="tier-text"><strong>Large Private</strong> — Held by a larger private company or founding family. Not PE-backed, but not truly independent.</div></div>
+      <div class="tier-row"><div class="tier-icon">✅</div><div class="tier-text"><strong>Independent</strong> — No corporate parent or outside investors found. These brands reinvest in quality and stylist support.</div></div>
+      <div class="tier-row"><div class="tier-icon">⭐</div><div class="tier-text"><strong>Indie / Women-Owned</strong> — The gold standard. Independently owned and woman-led or B-Corp certified. Every dollar stays in independent hands.</div></div>
+    </div>
+
+    <div class="about-rule"></div>
+
+    <div class="about-section">
+      <h3>How It Works</h3>
+      <p>Known brands resolve instantly from our curated database of 60+ professional beauty brands with sourced ownership data. Unknown brands are researched in real time via AI. Community voting lets working stylists confirm or flag any rating. No login required — works in any mobile browser.</p>
+    </div>
+
+    <div class="about-rule"></div>
+
+    <div class="about-section">
+      <h3>Data Sources</h3>
+      <p>Ownership data sourced from WWD, Beauty Inc, corporate acquisition records, investor portfolio disclosures, SEC filings, and company press releases 2020–2025. Always verify independently for business decisions.</p>
+    </div>
+
+    <div class="about-rule"></div>
+
+    <div class="about-built-by">
+      <div class="about-built-mark">✂️</div>
+      <div class="about-built-text">
+        <strong>Built by Ivy Ann Shears</strong>
+        <span>Woman-owned · Cosmetologist-operated · Wilmington, NC<br>
+        Cold-forged ATS-314 Japanese steel, handcrafted in Sanjo, Japan.<br>
+        <a href="https://ivyannshears.com" target="_blank">ivyannshears.com</a></span>
+      </div>
+    </div>
+
+    <div class="about-sister">
+      <div class="about-sister-icon">🩺</div>
+      <div class="about-sister-text">
+        <strong>Also check out HonestDoc</strong>
+        <span>Find independent, non-corporate-owned healthcare providers near you</span>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -493,26 +648,78 @@ const KNOWN = {
   // ── IVY ANN SHEARS ────────────────────────────────────────
   "ivy ann shears":     {owner:"Ivy Ann Shears — woman-owned, independently operated (Wilmington, NC)",tier:5,pe:false,indie:true,womenOwned:true,
                           note:"Cold-forged ATS-314 Japanese steel, handcrafted in Sanjo, Japan. Direct-to-consumer, no commissioned reps. Woman-owned, cosmetologist-operated."},
+
+  // ── PULP RIOT (L'Oréal acquired 2018) ────────────────────
+  "pulp riot":          {owner:"L'Oréal Professional Products (acquired 2018)",tier:1,pe:false,
+                          note:"Founded by David and Alexis Howard, acquired by L'Oréal in 2018. Indie-founded but now fully corporate-owned.",
+                          alternatives:["Oway","Celeb Luxury","Lively Hair Color"]},
+
+  // ── OWAY (indie, Italian family) ─────────────────────────
+  "oway":               {owner:"Oway — independently owned, Italian family brand",tier:5,pe:false,indie:true,
+                          note:"Certified organic, family-owned Italian brand. A true indie alternative for color."},
+
+  // ── CELEB LUXURY ─────────────────────────────────────────
+  "celeb luxury":       {owner:"Celeb Luxury — independently owned",tier:4,pe:false,indie:true},
+
+  // ── PRAVANA (Henkel) ─────────────────────────────────────
+  "pravana":            {owner:"Henkel AG (acquired 2018)",tier:1,pe:false,
+                          note:"Was independently owned, sold to Henkel in 2018."},
+
+  // ── ARCTIC FOX ───────────────────────────────────────────
+  "arctic fox":         {owner:"Arctic Fox — independently owned, woman-founded",tier:5,pe:false,indie:true,womenFounded:true,
+                          note:"Founded by Kristen Leanne. Cruelty-free, vegan, woman-founded and still independent."},
+
+  // ── OVERTONE ─────────────────────────────────────────────
+  "overtone":           {owner:"oVertone — independently owned",tier:4,pe:false,indie:true},
+
+  // ── MANIC PANIC ──────────────────────────────────────────
+  "manic panic":        {owner:"Manic Panic — independently owned, woman-founded (Tish & Snooky Bellomo)",tier:5,pe:false,indie:true,womenFounded:true,
+                          note:"Founded in 1977 by sisters Tish and Snooky Bellomo. One of the original indie beauty brands, still independent."},
+
+  // ── WELLA EIMI ───────────────────────────────────────────
+  "eimi":               {owner:"Coty (corporate-owned) — Wella brand",tier:0,pe:true},
+
+  // ── PAUL LABS / SEXY HAIR ────────────────────────────────
+  "sexy hair":          {owner:"Henkel AG (acquired via Zotos Professional)",tier:1,pe:false},
+  "zotos":              {owner:"Henkel AG",tier:1,pe:false},
+
+  // ── ALTERNA ──────────────────────────────────────────────
+  "alterna":            {owner:"Unilever (acquired 2020)",tier:1,pe:false},
+
+  // ── NOT YOUR MOTHER'S ────────────────────────────────────
+  "not your mother":    {owner:"Henkel AG (acquired 2022)",tier:1,pe:false,
+                          note:"Was indie and widely loved. Acquired by Henkel in 2022."},
+  "not your mothers":   {owner:"Henkel AG (acquired 2022)",tier:1,pe:false},
+
+  // ── GHOST BOND / WALKER TAPE ─────────────────────────────
+  "walker tape":        {owner:"Walker Tape Co. — privately held",tier:3,pe:false},
+
+  // ── COLOR WOW ────────────────────────────────────────────
+  "color wow":          {owner:"Color Wow — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independently owned and focused on professional results. No corporate parent identified."},
+
+  // ── INSIGHT COSMETICS ────────────────────────────────────
+  "insight cosmetics":  {owner:"Insight Cosmetics — independently owned, Italy",tier:4,pe:false,indie:true},
   "ivy ann":            {owner:"Ivy Ann Shears — woman-owned, independently operated (Wilmington, NC)",tier:5,pe:false,indie:true,womenOwned:true},
 };
 
 // ── TIER CONFIG ────────────────────────────────────────────
 const TIERS = {
-  0:{label:"PE-Owned",        color:"#c0636d",bg:"#fdf1f2",bar:"#c0636d",  icon:"🚩",score:5},
+  0:{label:"Corp. Investor Owned", color:"#c0636d",bg:"#fdf1f2",bar:"#c0636d", icon:"🚩",score:5},
   1:{label:"Publicly Traded", color:"#b5622e",bg:"#fef6f0",bar:"#b5622e",  icon:"🏢",score:30},
-  2:{label:"Was PE / Public", color:"#b08030",bg:"#fdfbf0",bar:"#b08030",  icon:"⚠️",score:45},
+  2:{label:"Recently Acquired",color:"#b08030",bg:"#fdfbf0",bar:"#b08030",  icon:"⚠️",score:45},
   3:{label:"Large Private",   color:"#6a6050",bg:"#faf8f4",bar:"#6a6050",  icon:"🔵",score:58},
   4:{label:"Independent",     color:"#2d6e45",bg:"#f0fdf5",bar:"#2d6e45",  icon:"✅",score:82},
   5:{label:"Indie / Women-Owned",color:"#1a5c38",bg:"#eaf7ef",bar:"#1a5c38",icon:"⭐",score:98},
 };
 
 const TIER_WHY = {
-  0:"This brand is PE-owned. Private equity firms prioritize investor returns over product quality and stylist relationships — expect reformulations, price hikes, and shrinking pro margins.",
-  1:"Owned by a publicly traded corporation. Decisions are driven by quarterly earnings. Some large corporate brands maintain quality pro lines, but your loyalty builds their shareholder value.",
-  2:"This brand has PE or corporate history. It may have been acquired or gone public recently. Worth knowing before assuming it's independent.",
-  3:"Privately held by a larger company or founding family. More insulated from Wall Street than PE-backed brands, but not truly independent.",
-  4:"Independently owned — no PE funding or corporate parent identified. These brands typically reinvest in quality and stylist relationships rather than investor returns.",
-  5:"Gold standard: independently owned, often woman- or founder-led, zero PE involvement. Every dollar you spend supports the people actually behind the brand.",
+  0:"This brand is owned by corporate investors (private equity). Their priority is returns for shareholders — not your clients or your craft. Watch for reformulations, price hikes, and disappearing pro support.",
+  1:"Owned by a large corporation traded on the stock market. Quality can be solid, but decisions are made by shareholders and executives — not stylists. Your loyalty goes to their bottom line.",
+  2:"This brand was recently acquired or has changed hands. It may have been indie when you fell in love with it. Worth knowing before assuming nothing has changed.",
+  3:"Privately held — no stock market pressure, but owned by a larger company or business group. More stable than corporate brands, but not independently owned.",
+  4:"Independently owned — no corporate parent or outside investors identified. These brands typically put money back into product quality and stylist support instead of shareholder returns.",
+  5:"The gold standard. Independently owned, often woman- or founder-led. Every dollar you spend goes back to the people who actually make and stand behind the product.",
 };
 
 // ── HELPERS ────────────────────────────────────────────────
@@ -573,7 +780,7 @@ async function doLookup(){
 
 // ── AI LOOKUP ──────────────────────────────────────────────
 async function aiLookup(brands){
-  const prompt=`You are a professional beauty industry analyst with deep knowledge of brand ownership, private equity, and corporate acquisitions in professional hair care.
+  const prompt=`You are a professional beauty industry analyst with deep knowledge of brand ownership, corporate acquisitions, and investor activity in professional hair care.
 
 For each brand, provide ACCURATE current ownership. Return ONLY valid JSON — no explanation, no markdown.
 
@@ -582,7 +789,7 @@ Brands: ${brands.join(', ')}
 Return a JSON array:
 [{
   "name": "brand name as given",
-  "owner": "current owner — be specific: PE firm name, public company ticker, or 'Independently owned'",
+  "owner": "current owner — be specific: investor/firm name, parent corporation, or 'Independently owned'",
   "tier": 0-5,
   "pe": true/false,
   "indie": true/false,
@@ -593,13 +800,13 @@ Return a JSON array:
   "confidence": 1-5
 }]
 
-Tier guide: 0=PE-owned, 1=publicly traded corp, 2=formerly PE now public, 3=large private company, 4=independent/founder-owned, 5=indie AND woman-owned or B-Corp.
+Tier guide: 0=owned by corporate investors (private equity), 1=publicly traded corporation, 2=formerly investor-backed now public, 3=large private company, 4=independent/founder-owned, 5=indie AND woman-owned or B-Corp.
 Only mark womenOwned true if certain. Default to tier 3 with low confidence if unsure.`;
 
   try{
     const res=await fetch("https://api.anthropic.com/v1/messages",{
       method:"POST",
-      headers:{"Content-Type":"application/json"},
+      headers:{"Content-Type":"application/json","anthropic-dangerous-direct-browser-access":"true","anthropic-version":"2023-06-01"},
       body:JSON.stringify({
         model:"claude-sonnet-4-20250514",
         max_tokens:1000,
@@ -633,9 +840,9 @@ function renderResults(){
   const peCount=S.results.filter(r=>r.pe||r.tier===0).length;
   const total=S.results.length;
   let bIcon,bTitle,bSub;
-  if(peCount===0){bIcon='🌿';bTitle='No PE ownership detected.';bSub=`All ${total} brand${total>1?'s':''} checked appear to be independent or corporate — not PE-backed.`;}
-  else if(peCount===total){bIcon='⚠️';bTitle=`All ${total} brand${total>1?'s':''} are PE-backed.`;bSub='Your money is flowing to private equity investors. See indie alternatives in each card below.';}
-  else{bIcon='✂️';bTitle=`${peCount} of ${total} brand${total>1?'s':''} ${peCount>1?'are':'is'} PE-owned.`;bSub='Mixed ownership found. Check each card for details and alternatives.';}
+  if(peCount===0){bIcon='🌿';bTitle='No corporate investor ownership detected.';bSub=`All ${total} brand${total>1?'s':''} checked appear to be independent or corporate-owned — no outside investors found.`;}
+  else if(peCount===total){bIcon='⚠️';bTitle=`All ${total} brand${total>1?'s':''} are corporate investor owned.`;bSub='Your money is flowing to outside investors. Check each card below for indie alternatives.';}
+  else{bIcon='✂️';bTitle=`${peCount} of ${total} brand${total>1?'s':''} ${peCount>1?'are':'is'} corporate investor owned.`;bSub='Mixed ownership found. Check each card for details and indie alternatives.';}
 
   let html=`<div class="summary-banner"><div class="sb-icon">${bIcon}</div><div><div class="sb-title">${bTitle}</div><div class="sb-sub">${bSub}</div></div></div>`;
   filtered.forEach((r,i)=>html+=buildCard(r,i));
@@ -681,7 +888,7 @@ function buildCard(r,i){
         <div class="score-bar-bg"><div class="score-bar-fill" style="width:${tc.score}%;background:${tc.bar}"></div></div>
       </div>
       <div class="analysis-grid">
-        <div class="ag-cell"><div class="ag-label">PE Backed</div><div class="ag-val ${r.pe?'bad':'good'}">${r.pe?'✗ Yes — PE owned':'✓ No PE found'}</div></div>
+        <div class="ag-cell"><div class="ag-label">Investor Owned</div><div class="ag-val ${r.pe?'bad':'good'}">${r.pe?'✗ Corporate investors':'✓ No investors found'}</div></div>
         <div class="ag-cell"><div class="ag-label">Woman-Owned</div><div class="ag-val ${r.womenOwned?'good':r.womenFounded?'warn':'bad'}">${r.womenOwned?'✓ Yes':r.womenFounded?'~ Women-Founded':'✗ Not confirmed'}</div></div>
         <div class="ag-cell"><div class="ag-label">Independent</div><div class="ag-val ${r.indie?'good':'bad'}">${r.indie?'✓ Yes':'✗ No'}</div></div>
         <div class="ag-cell"><div class="ag-label">Confidence</div><div style="display:flex;gap:3px;margin-top:3px">${conf}</div></div>
@@ -718,6 +925,18 @@ function doVote(name,type,idx){
   vc.disabled=vf.disabled=true;
   if(type==='confirm'){vc.classList.add('on');vc.textContent='✓ Confirmed!';}
   else{vf.classList.add('on');vf.textContent='⚑ Flagged!';}
+}
+
+// ── ABOUT PANEL ────────────────────────────────────────────
+function openAbout(){
+  document.getElementById('about-overlay').style.display='block';
+  document.getElementById('about-panel').style.display='block';
+  document.body.style.overflow='hidden';
+}
+function closeAbout(){
+  document.getElementById('about-overlay').style.display='none';
+  document.getElementById('about-panel').style.display='none';
+  document.body.style.overflow='';
 }
 </script>
 </body>
