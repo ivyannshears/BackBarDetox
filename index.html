@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<title>BackBar Detox — Who Owns Your Shelf?</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --ink:#0f1a10;
+  --paper:#f7f3ec;
+  --gold:#c8a96e;
+  --gold-light:#e8d5a0;
+  --gold-dark:#7a4c18;
+  --green:#0f1f12;
+  --green-mid:#1e3a20;
+  --green-accent:#4e7e52;
+  --rose:#c0636d;
+  --border:#e0d8c8;
+  --mist:#f2ece0;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);min-height:100vh;color:var(--ink)}
+::-webkit-scrollbar{display:none}
+input:focus,button:focus{outline:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%,100%{opacity:.5}50%{opacity:1}}
+
+/* ── Dx MARK ─────────────────────────────────────────────────
+   D is full size. x is ~52% size, sits on the same baseline.
+   Gold x is the brand signature throughout.
+──────────────────────────────────────────────────────────── */
+.Dx{display:inline-flex;align-items:baseline;line-height:1;font-weight:900;font-family:'DM Sans',sans-serif;letter-spacing:-.5px}
+.Dx .x{font-size:.52em;letter-spacing:0;color:var(--gold)}
+.Dx .d{color:inherit}
+
+/* ── SETUP ───────────────────────────────────────────────── */
+#setup{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;padding:20px;
+  background:linear-gradient(155deg,#0a1209 0%,#0f1f12 45%,#1a3318 80%,#0f1a10 100%);
+}
+.sc{
+  background:var(--paper);border-radius:28px;padding:36px 24px 30px;
+  max-width:420px;width:100%;
+  box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(200,169,110,.12)
+}
+
+/* Logo lockup — Concept 5A */
+.slogo{text-align:left;margin-bottom:26px;display:flex;align-items:center;gap:16px}
+.slogo-mark{
+  width:58px;height:58px;border-radius:16px;
+  background:var(--green);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  box-shadow:0 6px 24px rgba(15,31,18,.3)
+}
+.slogo-mark::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:3.5px;background:linear-gradient(90deg,var(--gold),var(--gold-dark))
+}
+.slogo-mark .Dx{font-size:26px;color:#fff}
+.slogo-text{display:flex;flex-direction:column;gap:2px}
+.slogo-eyebrow{font-size:9px;font-weight:800;letter-spacing:4px;color:var(--green-accent);text-transform:uppercase}
+.slogo-name{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:900;color:var(--ink);letter-spacing:-1px;line-height:1}
+.slogo-name em{color:var(--gold);font-style:normal}
+.slogo-tag{font-size:10px;font-weight:700;color:#aaa;letter-spacing:.5px;margin-top:2px}
+
+.setup-rule{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:20px 0}
+
+.cat-label{font-size:9px;font-weight:800;letter-spacing:3px;color:#aaa;text-transform:uppercase;margin-bottom:10px}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
+.cat-btn{
+  padding:13px 10px;border-radius:13px;border:1.5px solid var(--border);
+  background:#fff;cursor:pointer;text-align:center;
+  transition:all .18s;font-family:'DM Sans',sans-serif
+}
+.cat-btn:hover{border-color:var(--gold);background:var(--mist)}
+.cat-btn.on{border-color:var(--gold);background:var(--gold);color:#fff}
+.cat-btn .ce{font-size:20px;display:block;margin-bottom:3px}
+.cat-btn .cl{font-size:10px;font-weight:700}
+
+.search-wrap{position:relative;margin-bottom:8px}
+.search-wrap input{
+  width:100%;padding:13px 16px 13px 44px;border-radius:13px;
+  border:1.5px solid var(--border);background:#fff;
+  font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink);
+  transition:border-color .2s
+}
+.search-wrap input:focus{border-color:var(--gold)}
+.search-wrap input::placeholder{color:#c0b8a8}
+.si{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:17px}
+.hint{font-size:11px;color:#9a8a70;margin-bottom:18px;line-height:1.6}
+.lookup-btn{
+  width:100%;padding:14px;border-radius:13px;border:none;cursor:pointer;
+  font-weight:900;font-size:13px;font-family:'DM Sans',sans-serif;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);
+  color:#fff;letter-spacing:.5px;
+  box-shadow:0 4px 20px rgba(200,169,110,.35);
+  transition:all .2s
+}
+.lookup-btn:hover{transform:translateY(-1px);box-shadow:0 6px 26px rgba(200,169,110,.45)}
+.lookup-btn:disabled{opacity:.5;cursor:default;transform:none}
+
+.ex-wrap{margin-top:18px}
+.ex-label{font-size:9px;font-weight:800;letter-spacing:3px;color:#ccc;text-transform:uppercase;margin-bottom:8px}
+.ex-tags{display:flex;flex-wrap:wrap;gap:6px}
+.ex-tag{
+  padding:5px 11px;border-radius:20px;border:1px solid var(--border);
+  font-size:11px;font-weight:600;color:#8a7a60;background:#fff;
+  cursor:pointer;transition:all .15s
+}
+.ex-tag:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── APP ─────────────────────────────────────────────────── */
+#app{display:none;max-width:480px;margin:0 auto;min-height:100vh}
+
+.hdr{
+  background:linear-gradient(155deg,#0a1209 0%,#0f1f12 50%,#1a3318 100%);
+  padding:52px 18px 18px;color:#fff;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 6px 30px rgba(0,0,0,.3)
+}
+.htop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+
+/* Header logo — compact horizontal */
+.hlogo{display:flex;align-items:center;gap:12px}
+.hlogo-mark{
+  width:42px;height:42px;border-radius:11px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(200,169,110,.25);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;position:relative;overflow:hidden
+}
+.hlogo-mark::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2.5px;background:linear-gradient(90deg,var(--gold),var(--gold-dark))
+}
+.hlogo-mark .Dx{font-size:19px;color:#fff}
+.hlogo-text{display:flex;flex-direction:column;gap:1px}
+.hlogo-name{font-family:'DM Sans',sans-serif;font-size:17px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1}
+.hlogo-name em{color:var(--gold);font-style:normal}
+.hlogo-sub{font-size:8px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.3);text-transform:uppercase}
+
+.hright{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.ibadge{background:rgba(255,255,255,.08);border-radius:11px;padding:8px 12px;text-align:right}
+.ibadge .inum{font-size:20px;font-weight:900;color:var(--gold)}
+.ibadge .ilbl{font-size:8px;color:rgba(255,255,255,.5);line-height:1.4}
+.new-search-btn{font-size:9px;color:rgba(255,255,255,.4);background:transparent;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:underline;padding:0;font-weight:600}
+
+.hdr-query{background:rgba(255,255,255,.06);border-radius:10px;padding:9px 13px;margin-bottom:12px;font-size:11px;color:rgba(255,255,255,.6)}
+.hdr-query strong{color:#fff}
+
+.filter-row{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.fpill{padding:6px 13px;border-radius:20px;border:none;cursor:pointer;white-space:nowrap;font-weight:700;font-size:10px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.fpill.on{background:var(--gold);color:#fff}
+.fpill.off{background:rgba(255,255,255,.09);color:rgba(255,255,255,.6)}
+
+/* ── CARDS ───────────────────────────────────────────────── */
+.content{padding:14px 12px 100px}
+.card{
+  background:#fff;border-radius:20px;margin-bottom:12px;overflow:hidden;
+  border:1.5px solid var(--border);
+  box-shadow:0 2px 14px rgba(0,0,0,.06);
+  animation:fadeUp .35s ease both
+}
+.card-head{display:flex;align-items:flex-start;gap:14px;padding:16px 16px 0}
+.brand-icon{
+  width:52px;height:52px;border-radius:13px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;flex-shrink:0;border:1.5px solid var(--border)
+}
+.brand-info{flex:1;min-width:0}
+.brand-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:3px}
+.brand-sub{font-size:11px;color:#8a7a60;line-height:1.4}
+
+.card-body{padding:12px 16px 14px}
+.score-bar-wrap{margin:12px 0 10px}
+.score-bar-label{display:flex;justify-content:space-between;font-size:10px;margin-bottom:5px}
+.score-bar-label .sleft{font-weight:800}
+.score-bar-label .sright{color:#bbb}
+.score-bar-bg{height:5px;background:#f0e8d8;border-radius:3px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:3px;transition:width .6s ease}
+
+.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.ag-cell{background:var(--mist);border-radius:10px;padding:8px 10px}
+.ag-label{font-size:9px;font-weight:700;color:#9a8a70;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.ag-val{font-size:11px;font-weight:700;color:var(--ink)}
+.ag-val.good{color:#2d6e45}
+.ag-val.warn{color:#a07030}
+.ag-val.bad{color:var(--rose)}
+
+.vote-row{display:flex;gap:8px}
+.vbtn{flex:1;padding:10px 8px;border-radius:11px;border:none;cursor:pointer;font-weight:700;font-size:11px;font-family:'DM Sans',sans-serif;transition:all .2s}
+.vbtn.vc{background:#f0fdf4;color:#2d6e45}
+.vbtn.vc.on{background:#2d6e45;color:#fff}
+.vbtn.vf{background:#fdf0f0;color:var(--rose)}
+.vbtn.vf.on{background:var(--rose);color:#fff}
+.vbtn:disabled{background:#f5f0e8!important;color:#ccc!important;cursor:default}
+
+.expand-btn{
+  width:100%;padding:9px;background:var(--mist);border:none;
+  border-top:1px solid var(--border);cursor:pointer;
+  font-size:11px;font-weight:700;color:#8a7a60;
+  font-family:'DM Sans',sans-serif;transition:background .15s
+}
+.expand-btn:hover{background:#e8e0d0}
+
+.card-detail{padding:14px 16px;border-top:1px solid var(--border);display:none}
+.detail-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.detail-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+.detail-text{font-size:11px;color:#5a4a30;line-height:1.6}
+.detail-text strong{color:var(--ink)}
+.alt-section{margin-top:10px}
+.alt-label{font-size:9px;font-weight:800;letter-spacing:2px;color:#8a7a60;text-transform:uppercase;margin-bottom:7px}
+.alt-tags{display:flex;flex-wrap:wrap;gap:5px}
+.alt-tag{padding:4px 11px;border-radius:20px;background:#edf9f1;color:#2d6e45;font-size:11px;font-weight:700}
+
+/* ── SUMMARY BANNER ──────────────────────────────────────── */
+.summary-banner{
+  background:linear-gradient(135deg,var(--green),var(--green-mid));
+  border-radius:18px;padding:18px;margin-bottom:14px;
+  border:1px solid rgba(200,169,110,.18);color:#fff;
+  display:flex;align-items:center;gap:14px
+}
+.sb-icon{font-size:30px;flex-shrink:0}
+.sb-title{font-family:'Playfair Display',serif;font-size:15px;font-style:italic;margin-bottom:4px;color:var(--gold-light)}
+.sb-sub{font-size:11px;color:rgba(255,255,255,.55);line-height:1.5}
+
+/* ── LOADING ─────────────────────────────────────────────── */
+.loading-state{text-align:center;padding:70px 20px}
+.loading-mark{
+  width:64px;height:64px;border-radius:18px;
+  background:var(--green);margin:0 auto 18px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  animation:spin 3s linear infinite;
+  box-shadow:0 6px 24px rgba(15,31,18,.2)
+}
+.loading-mark::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3.5px;background:linear-gradient(90deg,var(--gold),var(--gold-dark))}
+.loading-mark .Dx{font-size:28px;color:#fff}
+.loading-title{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--ink);margin-bottom:8px}
+.loading-sub{color:#9a8a70;font-size:11px;line-height:2;animation:shimmer 2s infinite}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+.footer{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+  width:100%;max-width:480px;background:#fff;
+  border-top:1px solid var(--border);padding:10px 20px 24px;
+  box-shadow:0 -4px 20px rgba(0,0,0,.07);z-index:200;text-align:center
+}
+.footer-logo{display:inline-flex;align-items:center;gap:8px;margin-bottom:3px}
+.footer-mark{
+  width:22px;height:22px;border-radius:6px;background:var(--green);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;flex-shrink:0
+}
+.footer-mark::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold)}
+.footer-mark .Dx{font-size:9px;color:#fff}
+.footer-name{font-size:11px;font-weight:900;color:var(--green);letter-spacing:-.3px}
+.footer-name em{color:var(--gold);font-style:normal}
+.footer p{font-size:10px;color:#bbb;line-height:1.6}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     SETUP SCREEN
+══════════════════════════════════════ -->
+<div id="setup">
+  <div class="sc">
+
+    <!-- Logo -->
+    <div class="slogo">
+      <div class="slogo-mark">
+        <span class="Dx" style="font-size:26px;color:#fff"><span class="d">D</span><span class="x">x</span></span>
+      </div>
+      <div class="slogo-text">
+        <div class="slogo-eyebrow">BackBar</div>
+        <div class="slogo-name">Back<em>Bar</em> Detox</div>
+        <div class="slogo-tag">WHO OWNS YOUR SHELF?</div>
+      </div>
+    </div>
+
+    <div class="setup-rule"></div>
+
+    <div class="cat-label">What are you checking?</div>
+    <div class="cat-grid" id="cat-grid">
+      <button class="cat-btn" onclick="toggleCat(this,'shampoo')">
+        <span class="ce">🧴</span><span class="cl">Shampoo & Conditioner</span>
+      </button>
+      <button class="cat-btn" onclick="toggleCat(this,'color')">
+        <span class="ce">🎨</span><span class="cl">Color & Developer</span>
+      </button>
+      <button class="cat-btn" onclick="toggleCat(this,'styling')">
+        <span class="ce">💨</span><span class="cl">Styling Products</span>
+      </button>
+      <button class="cat-btn" onclick="toggleCat(this,'tools')">
+        <span class="ce">✂️</span><span class="cl">Tools & Shears</span>
+      </button>
+      <button class="cat-btn" onclick="toggleCat(this,'treatment')">
+        <span class="ce">✨</span><span class="cl">Treatments & Masks</span>
+      </button>
+      <button class="cat-btn" onclick="toggleCat(this,'retail')">
+        <span class="ce">🛍️</span><span class="cl">Retail & Distributors</span>
+      </button>
+    </div>
+
+    <div class="search-wrap">
+      <span class="si">🔍</span>
+      <input type="text" id="brand-input"
+        placeholder="Enter brand(s), e.g. Wella, Olaplex, K18..."
+        onkeydown="if(event.key==='Enter')doLookup()"/>
+    </div>
+    <p class="hint">Enter one or more brands separated by commas. We'll expose PE ownership, parent companies, and flag indie or woman-owned alternatives.</p>
+    <button class="lookup-btn" id="lookup-btn" onclick="doLookup()">WHO OWNS IT? →</button>
+
+    <div class="ex-wrap">
+      <div class="ex-label">Try these</div>
+      <div class="ex-tags">
+        <span class="ex-tag" onclick="fillExample('Wella, Redken, Matrix')">Wella, Redken, Matrix</span>
+        <span class="ex-tag" onclick="fillExample('Olaplex, K18, Briogeo')">Olaplex, K18, Briogeo</span>
+        <span class="ex-tag" onclick="fillExample('Davines, Kenra, Kevin Murphy')">Davines, Kenra</span>
+        <span class="ex-tag" onclick="fillExample('Sally Beauty, CosmoProf, Ulta')">Sally Beauty, Ulta</span>
+        <span class="ex-tag" onclick="fillExample('Moroccanoil, Living Proof, IGK')">Moroccanoil, IGK</span>
+        <span class="ex-tag" onclick="fillExample('Ivy Ann Shears')">Ivy Ann Shears ✂️</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     APP SCREEN
+══════════════════════════════════════ -->
+<div id="app">
+  <div class="hdr">
+    <div class="htop">
+      <div class="hlogo">
+        <div class="hlogo-mark">
+          <span class="Dx" style="font-size:19px;color:#fff"><span class="d">D</span><span class="x">x</span></span>
+        </div>
+        <div class="hlogo-text">
+          <div class="hlogo-name">Back<em>Bar</em> Detox</div>
+          <div class="hlogo-sub">Who Owns Your Shelf?</div>
+        </div>
+      </div>
+      <div class="hright">
+        <div class="ibadge">
+          <div class="inum" id="indie-count">0</div>
+          <div class="ilbl">indie or<br>women-owned</div>
+        </div>
+        <button class="new-search-btn" onclick="goSetup()">← New Search</button>
+      </div>
+    </div>
+    <div class="hdr-query" id="hdr-query"></div>
+    <div class="filter-row">
+      <button class="fpill on"  onclick="setFilter('all',this)">All</button>
+      <button class="fpill off" onclick="setFilter('pe',this)">🚩 PE-Owned</button>
+      <button class="fpill off" onclick="setFilter('corp',this)">🏢 Corporate</button>
+      <button class="fpill off" onclick="setFilter('indie',this)">✅ Indie</button>
+      <button class="fpill off" onclick="setFilter('women',this)">👩 Women-Owned</button>
+    </div>
+  </div>
+
+  <div class="content" id="content">
+    <div class="loading-state" id="loading">
+      <div class="loading-mark">
+        <span class="Dx" style="font-size:28px;color:#fff"><span class="d">D</span><span class="x">x</span></span>
+      </div>
+      <div class="loading-title">Detoxing your shelf...</div>
+      <div class="loading-sub" id="loading-sub">
+        Tracing ownership structures<br>
+        Cross-referencing PE portfolios<br>
+        Finding indie alternatives
+      </div>
+    </div>
+    <div id="cards"></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">
+      <div class="footer-mark">
+        <span class="Dx" style="font-size:9px;color:#fff"><span class="d">D</span><span class="x">x</span></span>
+      </div>
+      <span class="footer-name">Back<em>Bar</em> Detox</span>
+    </div>
+    <p>WHO OWNS YOUR SHELF? · AI-powered · Community verified · Built for stylists</p>
+  </div>
+</div>
+
+<script>
+// ── STATE ──────────────────────────────────────────────────
+const S = {results:[],votes:{},filter:'all',categories:[]};
+
+// ── KNOWN BRAND DATABASE ───────────────────────────────────
+// Sources: WWD, Beauty Inc, Cosmetify, PE disclosures 2023–2025
+const KNOWN = {
+  // ── COTY / KKR ───────────────────────────────────────────
+  "wella professionals":{owner:"Coty / KKR (PE)",tier:0,pe:true},
+  "wella":              {owner:"Coty / KKR (PE)",tier:0,pe:true},
+  "clairol":            {owner:"Coty (NYSE: COTY)",tier:0,pe:true},
+  "sebastian professional":{owner:"Coty / KKR (PE)",tier:0,pe:true},
+  "nioxin":             {owner:"Coty / KKR (PE)",tier:0,pe:true},
+  "system professional":{owner:"Coty / KKR (PE)",tier:0,pe:true},
+  "kadus professional": {owner:"Coty / KKR (PE)",tier:0,pe:true},
+  "graham webb":        {owner:"Coty / KKR (PE)",tier:0,pe:true},
+  "koleston":           {owner:"Coty / KKR (PE) — Wella brand",tier:0,pe:true},
+  "illumina color":     {owner:"Coty / KKR (PE) — Wella brand",tier:0,pe:true},
+
+  // ── L'ORÉAL ──────────────────────────────────────────────
+  "loreal":             {owner:"L'Oréal (Euronext: OR)",tier:1,pe:false},
+  "redken":             {owner:"L'Oréal Professional Products",tier:1,pe:false},
+  "matrix":             {owner:"L'Oréal Professional Products",tier:1,pe:false},
+  "kerastase":          {owner:"L'Oréal Professional Products",tier:1,pe:false},
+  "kérastase":          {owner:"L'Oréal Professional Products",tier:1,pe:false},
+  "biolage":            {owner:"L'Oréal Professional Products",tier:1,pe:false},
+  "pureology":          {owner:"L'Oréal Professional Products",tier:1,pe:false},
+  "mizani":             {owner:"L'Oréal Professional Products",tier:1,pe:false},
+  "bumble and bumble":  {owner:"L'Oréal (acquired 2007)",tier:1,pe:false},
+  "bumble & bumble":    {owner:"L'Oréal (acquired 2007)",tier:1,pe:false},
+  "shu uemura art of hair":{owner:"L'Oréal Professional Products",tier:1,pe:false},
+
+  // ── HENKEL ───────────────────────────────────────────────
+  "schwarzkopf professional":{owner:"Henkel AG (XETRA: HENKY)",tier:1,pe:false},
+  "schwarzkopf":        {owner:"Henkel AG (XETRA: HENKY)",tier:1,pe:false},
+  "igora":              {owner:"Henkel AG — Schwarzkopf",tier:1,pe:false},
+  "blondme":            {owner:"Henkel AG — Schwarzkopf",tier:1,pe:false},
+  "bonacure":           {owner:"Henkel AG — Schwarzkopf",tier:1,pe:false},
+  "joico":              {owner:"Henkel AG (acquired 2018)",tier:1,pe:false},
+  "briogeo":            {owner:"Henkel AG (acquired 2023)",tier:1,pe:false,womenFounded:true,
+                          note:"Black woman-founded by Nancy Twine. Acquired by Henkel 2023. The founding story matters even if the ownership changed."},
+
+  // ── KAO ──────────────────────────────────────────────────
+  "goldwell":           {owner:"Kao Corporation (TYO: 4452)",tier:1,pe:false},
+  "kenra":              {owner:"Kao Corporation (TYO: 4452)",tier:1,pe:false},
+  "kenra professional": {owner:"Kao Corporation (TYO: 4452)",tier:1,pe:false},
+  "john frieda":        {owner:"Kao Corporation (TYO: 4452)",tier:1,pe:false},
+
+  // ── UNILEVER ─────────────────────────────────────────────
+  "tresemme":           {owner:"Unilever (NYSE: UL)",tier:1,pe:false},
+  "tresemmé":           {owner:"Unilever (NYSE: UL)",tier:1,pe:false},
+  "dove":               {owner:"Unilever (NYSE: UL)",tier:1,pe:false},
+  "nexxus":             {owner:"Unilever (NYSE: UL)",tier:1,pe:false},
+  "living proof":       {owner:"Unilever (NYSE: UL)",tier:1,pe:false},
+  "k18":                {owner:"Unilever (acquired Jan 2024)",tier:1,pe:false,
+                          note:"Indie-founded, acquired by Unilever in 2024. Quality may remain for now — worth watching."},
+
+  // ── PE-BACKED ─────────────────────────────────────────────
+  "amika":              {owner:"Bain Capital (PE)",tier:0,pe:true},
+  "moroccanoil":        {owner:"General Atlantic (PE)",tier:0,pe:true},
+  "igk":                {owner:"L Catterton (LVMH-affiliated PE)",tier:0,pe:true},
+  "kevin murphy":       {owner:"Permira (PE, acquired 2019)",tier:0,pe:true},
+  "r+co":               {owner:"L Catterton (LVMH-affiliated PE)",tier:0,pe:true},
+  "r and co":           {owner:"L Catterton (LVMH-affiliated PE)",tier:0,pe:true},
+  "unite":              {owner:"L Catterton (LVMH-affiliated PE)",tier:0,pe:true},
+  "dphi":               {owner:"Luxury Brand Partners (PE-backed)",tier:0,pe:true},
+
+  // ── OLAPLEX (formerly PE) ─────────────────────────────────
+  "olaplex":            {owner:"Olaplex Holdings (NASDAQ: OLPX) — formerly Advent Int'l PE",tier:2,pe:false,
+                          note:"Was PE-owned under Advent International. Went public 2021. Now publicly traded — no longer PE but still corporate."},
+
+  // ── RETAILERS ─────────────────────────────────────────────
+  "sally beauty":       {owner:"Sally Beauty Holdings (NYSE: SBH)",tier:1,pe:false},
+  "cosmoprof":          {owner:"Sally Beauty Holdings (NYSE: SBH)",tier:1,pe:false},
+  "beauty systems group":{owner:"Sally Beauty Holdings (NYSE: SBH)",tier:1,pe:false},
+  "bsg":                {owner:"Sally Beauty Holdings (NYSE: SBH)",tier:1,pe:false},
+  "ulta":               {owner:"Ulta Beauty (NASDAQ: ULTA)",tier:1,pe:false},
+  "ulta beauty":        {owner:"Ulta Beauty (NASDAQ: ULTA)",tier:1,pe:false},
+  "regis":              {owner:"Regis Corporation (NYSE: RGS)",tier:1,pe:false},
+  "supercuts":          {owner:"Regis Corporation (NYSE: RGS)",tier:1,pe:false},
+
+  // ── TRULY INDEPENDENT ─────────────────────────────────────
+  "davines":            {owner:"Davines Group — Italian family-owned Benefit Corp",tier:5,pe:false,indie:true,
+                          note:"Certified B-Corp. Family owned since 1983. The gold standard for indie in professional beauty."},
+  "paul mitchell":      {owner:"John Paul Mitchell Systems — privately held, founding family",tier:4,pe:false,indie:true,
+                          note:"Independently owned since 1980. One of the few truly indie legacy salon brands still standing."},
+  "verb products":      {owner:"Privately held / independent",tier:4,pe:false,indie:true},
+  "verb":               {owner:"Privately held / independent",tier:4,pe:false,indie:true},
+  "macadamia professional":{owner:"Macadamia Professional — privately held",tier:4,pe:false,indie:true},
+  "brazilian blowout":  {owner:"GIB LLC — privately held",tier:4,pe:false,indie:true},
+  "framesi":            {owner:"Framesi — Italian family-owned",tier:4,pe:false,indie:true},
+  "chi":                {owner:"Farouk Systems — privately held",tier:4,pe:false,indie:true},
+  "farouk":             {owner:"Farouk Systems — privately held (Farouk Shami, founder)",tier:4,pe:false,indie:true},
+  "wahl":               {owner:"Wahl Clipper Corporation — family-owned since 1919",tier:5,pe:false,indie:true},
+  "andis":              {owner:"Andis Company — privately held, family-owned",tier:4,pe:false,indie:true},
+  "olivia garden":      {owner:"Olivia Garden — privately held, Belgium",tier:4,pe:false,indie:true},
+  "surface hair":       {owner:"Surface Hair — independently owned, B-Corp certified",tier:5,pe:false,indie:true,
+                          note:"Certified B-Corp. Independently owned. One of the cleanest sustainability stories in pro beauty."},
+  "conair":             {owner:"Conair Corporation — privately held (Rizzuto family)",tier:3,pe:false},
+
+  // ── IVY ANN SHEARS ────────────────────────────────────────
+  "ivy ann shears":     {owner:"Ivy Ann Shears — woman-owned, independently operated (Wilmington, NC)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Cold-forged ATS-314 Japanese steel, handcrafted in Sanjo, Japan. Direct-to-consumer, no commissioned reps. Woman-owned, cosmetologist-operated."},
+  "ivy ann":            {owner:"Ivy Ann Shears — woman-owned, independently operated (Wilmington, NC)",tier:5,pe:false,indie:true,womenOwned:true},
+};
+
+// ── TIER CONFIG ────────────────────────────────────────────
+const TIERS = {
+  0:{label:"PE-Owned",        color:"#c0636d",bg:"#fdf1f2",bar:"#c0636d",  icon:"🚩",score:5},
+  1:{label:"Publicly Traded", color:"#b5622e",bg:"#fef6f0",bar:"#b5622e",  icon:"🏢",score:30},
+  2:{label:"Was PE / Public", color:"#b08030",bg:"#fdfbf0",bar:"#b08030",  icon:"⚠️",score:45},
+  3:{label:"Large Private",   color:"#6a6050",bg:"#faf8f4",bar:"#6a6050",  icon:"🔵",score:58},
+  4:{label:"Independent",     color:"#2d6e45",bg:"#f0fdf5",bar:"#2d6e45",  icon:"✅",score:82},
+  5:{label:"Indie / Women-Owned",color:"#1a5c38",bg:"#eaf7ef",bar:"#1a5c38",icon:"⭐",score:98},
+};
+
+const TIER_WHY = {
+  0:"This brand is PE-owned. Private equity firms prioritize investor returns over product quality and stylist relationships — expect reformulations, price hikes, and shrinking pro margins.",
+  1:"Owned by a publicly traded corporation. Decisions are driven by quarterly earnings. Some large corporate brands maintain quality pro lines, but your loyalty builds their shareholder value.",
+  2:"This brand has PE or corporate history. It may have been acquired or gone public recently. Worth knowing before assuming it's independent.",
+  3:"Privately held by a larger company or founding family. More insulated from Wall Street than PE-backed brands, but not truly independent.",
+  4:"Independently owned — no PE funding or corporate parent identified. These brands typically reinvest in quality and stylist relationships rather than investor returns.",
+  5:"Gold standard: independently owned, often woman- or founder-led, zero PE involvement. Every dollar you spend supports the people actually behind the brand.",
+};
+
+// ── HELPERS ────────────────────────────────────────────────
+function toggleCat(el,cat){
+  el.classList.toggle('on');
+  const i=S.categories.indexOf(cat);
+  if(i>-1)S.categories.splice(i,1); else S.categories.push(cat);
+}
+function fillExample(t){document.getElementById('brand-input').value=t}
+function setFilter(f,el){
+  S.filter=f;
+  document.querySelectorAll('.fpill').forEach(p=>{p.classList.remove('on');p.classList.add('off')});
+  el.classList.remove('off');el.classList.add('on');
+  renderResults();
+}
+function goSetup(){
+  document.getElementById('setup').style.display='flex';
+  document.getElementById('app').style.display='none';
+  document.getElementById('brand-input').value='';
+}
+
+// ── LOOKUP ─────────────────────────────────────────────────
+async function doLookup(){
+  const input=document.getElementById('brand-input').value.trim();
+  if(!input){
+    const el=document.getElementById('brand-input');
+    el.style.borderColor='#c0636d';
+    setTimeout(()=>el.style.borderColor='',1500);
+    return;
+  }
+  const brands=input.split(',').map(b=>b.trim()).filter(Boolean);
+  S.results=[];S.votes={};S.filter='all';
+
+  document.getElementById('setup').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('loading').style.display='block';
+  document.getElementById('cards').innerHTML='';
+  document.getElementById('hdr-query').innerHTML=`Checking: <strong>${brands.join(', ')}</strong>`;
+
+  const found=[], toAI=[];
+  for(const b of brands){
+    const lo=b.toLowerCase();
+    const match=Object.entries(KNOWN).find(([k])=>lo.includes(k)||k.includes(lo));
+    if(match) found.push({name:b,...match[1],fromDB:true});
+    else toAI.push(b);
+  }
+
+  let aiResults=[];
+  if(toAI.length>0){
+    document.getElementById('loading-sub').innerHTML=`Researching ${toAI.join(', ')}<br>via AI brand intelligence...`;
+    aiResults=await aiLookup(toAI);
+  }
+
+  S.results=[...found,...aiResults];
+  document.getElementById('loading').style.display='none';
+  renderResults();
+}
+
+// ── AI LOOKUP ──────────────────────────────────────────────
+async function aiLookup(brands){
+  const prompt=`You are a professional beauty industry analyst with deep knowledge of brand ownership, private equity, and corporate acquisitions in professional hair care.
+
+For each brand, provide ACCURATE current ownership. Return ONLY valid JSON — no explanation, no markdown.
+
+Brands: ${brands.join(', ')}
+
+Return a JSON array:
+[{
+  "name": "brand name as given",
+  "owner": "current owner — be specific: PE firm name, public company ticker, or 'Independently owned'",
+  "tier": 0-5,
+  "pe": true/false,
+  "indie": true/false,
+  "womenOwned": true/false,
+  "womenFounded": true/false,
+  "note": "1-2 sentences on ownership history or why it matters to stylists",
+  "alternatives": ["2-3 real indie or woman-owned alternatives in the same product category"],
+  "confidence": 1-5
+}]
+
+Tier guide: 0=PE-owned, 1=publicly traded corp, 2=formerly PE now public, 3=large private company, 4=independent/founder-owned, 5=indie AND woman-owned or B-Corp.
+Only mark womenOwned true if certain. Default to tier 3 with low confidence if unsure.`;
+
+  try{
+    const res=await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        model:"claude-sonnet-4-20250514",
+        max_tokens:1000,
+        messages:[{role:"user",content:prompt}]
+      })
+    });
+    const data=await res.json();
+    const text=data.content?.find(c=>c.type==='text')?.text||'[]';
+    const parsed=JSON.parse(text.replace(/```json|```/g,'').trim());
+    return Array.isArray(parsed)?parsed:[];
+  }catch(e){
+    return brands.map(name=>({
+      name,owner:"Could not verify — check independently",
+      tier:3,pe:false,indie:false,
+      note:"AI lookup failed. Treat as unverified.",confidence:1
+    }));
+  }
+}
+
+// ── RENDER ─────────────────────────────────────────────────
+function renderResults(){
+  const filtered=getFiltered();
+  const cards=document.getElementById('cards');
+  document.getElementById('indie-count').textContent=S.results.filter(r=>r.tier>=4).length;
+
+  if(!filtered.length){
+    cards.innerHTML=`<div style="text-align:center;padding:50px 20px;color:#9a8a70;font-size:13px">No brands match this filter.</div>`;
+    return;
+  }
+
+  const peCount=S.results.filter(r=>r.pe||r.tier===0).length;
+  const total=S.results.length;
+  let bIcon,bTitle,bSub;
+  if(peCount===0){bIcon='🌿';bTitle='No PE ownership detected.';bSub=`All ${total} brand${total>1?'s':''} checked appear to be independent or corporate — not PE-backed.`;}
+  else if(peCount===total){bIcon='⚠️';bTitle=`All ${total} brand${total>1?'s':''} are PE-backed.`;bSub='Your money is flowing to private equity investors. See indie alternatives in each card below.';}
+  else{bIcon='✂️';bTitle=`${peCount} of ${total} brand${total>1?'s':''} ${peCount>1?'are':'is'} PE-owned.`;bSub='Mixed ownership found. Check each card for details and alternatives.';}
+
+  let html=`<div class="summary-banner"><div class="sb-icon">${bIcon}</div><div><div class="sb-title">${bTitle}</div><div class="sb-sub">${bSub}</div></div></div>`;
+  filtered.forEach((r,i)=>html+=buildCard(r,i));
+  cards.innerHTML=html;
+}
+
+function getFiltered(){
+  return S.results.filter(r=>{
+    if(S.filter==='all') return true;
+    if(S.filter==='pe')  return r.pe||r.tier===0;
+    if(S.filter==='corp')return r.tier===1;
+    if(S.filter==='indie')return r.tier>=4;
+    if(S.filter==='women')return r.womenOwned||r.womenFounded;
+    return true;
+  });
+}
+
+// ── BUILD CARD ─────────────────────────────────────────────
+function buildCard(r,i){
+  const tc=TIERS[r.tier??3];
+  const vote=S.votes[r.name];
+  const wBadge=r.womenOwned?' · 👩 Woman-Owned':(r.womenFounded?' · 👩 Women-Founded':'');
+  const bCert=r.note&&r.note.toLowerCase().includes('b-corp')?' · 🌿 B-Corp':'';
+  const sub=(r.owner||'Unknown ownership').slice(0,60)+((r.owner||'').length>60?'…':'');
+  const alts=r.alternatives?.length
+    ?`<div class="alt-section"><div class="alt-label">Indie alternatives</div><div class="alt-tags">${r.alternatives.map(a=>`<span class="alt-tag">${a}</span>`).join('')}</div></div>`:'';
+  const conf=Array.from({length:5},(_,j)=>`<div style="width:7px;height:7px;border-radius:50%;background:${j<(r.confidence||3)?'#c8a96e':'#e8dece'}"></div>`).join('');
+
+  return `<div class="card" style="animation-delay:${i*.07}s">
+    <div class="card-head">
+      <div class="brand-icon" style="background:${tc.bg}">${tc.icon}</div>
+      <div class="brand-info">
+        <div class="brand-name">${r.name}</div>
+        <div class="brand-sub">${sub}${wBadge}${bCert}</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="score-bar-wrap">
+        <div class="score-bar-label">
+          <span class="sleft" style="color:${tc.color}">${tc.icon} ${tc.label}</span>
+          <span class="sright">Independence: ${tc.score}/100</span>
+        </div>
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:${tc.score}%;background:${tc.bar}"></div></div>
+      </div>
+      <div class="analysis-grid">
+        <div class="ag-cell"><div class="ag-label">PE Backed</div><div class="ag-val ${r.pe?'bad':'good'}">${r.pe?'✗ Yes — PE owned':'✓ No PE found'}</div></div>
+        <div class="ag-cell"><div class="ag-label">Woman-Owned</div><div class="ag-val ${r.womenOwned?'good':r.womenFounded?'warn':'bad'}">${r.womenOwned?'✓ Yes':r.womenFounded?'~ Women-Founded':'✗ Not confirmed'}</div></div>
+        <div class="ag-cell"><div class="ag-label">Independent</div><div class="ag-val ${r.indie?'good':'bad'}">${r.indie?'✓ Yes':'✗ No'}</div></div>
+        <div class="ag-cell"><div class="ag-label">Confidence</div><div style="display:flex;gap:3px;margin-top:3px">${conf}</div></div>
+      </div>
+      <div class="vote-row">
+        <button class="vbtn vc ${vote==='confirm'?'on':''}" onclick="doVote('${r.name}','confirm',${i})" ${vote?'disabled':''}>${vote==='confirm'?'✓ Confirmed!':'✅ Confirm Rating'}</button>
+        <button class="vbtn vf ${vote==='flag'?'on':''}" onclick="doVote('${r.name}','flag',${i})" ${vote?'disabled':''}>${vote==='flag'?'⚑ Flagged!':'🚩 Flag Inaccurate'}</button>
+      </div>
+    </div>
+    <button class="expand-btn" onclick="toggleDetail(${i})" id="exbtn-${i}">▼ Full analysis &amp; alternatives</button>
+    <div class="card-detail" id="det-${i}">
+      ${r.note?`<div class="detail-row"><div class="detail-icon">ℹ️</div><div class="detail-text">${r.note}</div></div>`:''}
+      <div class="detail-row"><div class="detail-icon">🏛️</div><div class="detail-text"><strong>Full owner:</strong> ${r.owner||'Not verified'}</div></div>
+      <div class="detail-row"><div class="detail-icon">🎯</div><div class="detail-text">${TIER_WHY[r.tier??3]}</div></div>
+      ${alts}
+    </div>
+  </div>`;
+}
+
+// ── INTERACTIONS ───────────────────────────────────────────
+function toggleDetail(i){
+  const el=document.getElementById('det-'+i);
+  const btn=document.getElementById('exbtn-'+i);
+  const open=el.style.display==='block';
+  el.style.display=open?'none':'block';
+  btn.textContent=open?'▼ Full analysis & alternatives':'▲ Close';
+}
+function doVote(name,type,idx){
+  if(S.votes[name])return;
+  S.votes[name]=type;
+  const card=document.querySelectorAll('.card')[idx];
+  if(!card)return;
+  const [vc,vf]=card.querySelectorAll('.vbtn');
+  vc.disabled=vf.disabled=true;
+  if(type==='confirm'){vc.classList.add('on');vc.textContent='✓ Confirmed!';}
+  else{vf.classList.add('on');vf.textContent='⚑ Flagged!';}
+}
+</script>
+</body>
+</html>
