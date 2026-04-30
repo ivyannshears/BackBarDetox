@@ -651,7 +651,7 @@ const KNOWN = {
 
   // ── PULP RIOT (L'Oréal acquired 2018) ────────────────────
   "pulp riot":          {owner:"L'Oréal Professional Products (acquired 2018)",tier:1,pe:false,
-                          note:"Founded by David and Alexis Howard, acquired by L'Oréal in 2018. Indie-founded but now fully corporate-owned.",
+                          note:"Indie-founded, acquired by L'Oréal in 2018. Now fully corporate-owned.",
                           alternatives:["Oway","Celeb Luxury","Lively Hair Color"]},
 
   // ── OWAY (indie, Italian family) ─────────────────────────
@@ -801,7 +801,7 @@ Return a JSON array:
 }]
 
 Tier guide: 0=owned by corporate investors (private equity), 1=publicly traded corporation, 2=formerly investor-backed now public, 3=large private company, 4=independent/founder-owned, 5=indie AND woman-owned or B-Corp.
-Only mark womenOwned true if certain. Default to tier 3 with low confidence if unsure.`;
+Only mark womenOwned true if certain. Default to tier 3 with low confidence if unsure. CRITICAL: Never invent or guess founder names, acquisition dates, or specific people — if you are not certain of a specific name or date, omit it entirely from the note.`;
 
   try{
     const res=await fetch("https://api.anthropic.com/v1/messages",{
@@ -837,12 +837,12 @@ function renderResults(){
     return;
   }
 
-  const peCount=S.results.filter(r=>r.pe||r.tier===0).length;
+  const peCount=S.results.filter(r=>r.tier<=1).length;
   const total=S.results.length;
   let bIcon,bTitle,bSub;
-  if(peCount===0){bIcon='🌿';bTitle='No corporate investor ownership detected.';bSub=`All ${total} brand${total>1?'s':''} checked appear to be independent or corporate-owned — no outside investors found.`;}
-  else if(peCount===total){bIcon='⚠️';bTitle=`All ${total} brand${total>1?'s':''} are corporate investor owned.`;bSub='Your money is flowing to outside investors. Check each card below for indie alternatives.';}
-  else{bIcon='✂️';bTitle=`${peCount} of ${total} brand${total>1?'s':''} ${peCount>1?'are':'is'} corporate investor owned.`;bSub='Mixed ownership found. Check each card for details and indie alternatives.';}
+  if(peCount===0){bIcon='🌿';bTitle='No corporate ownership detected.';bSub=`All ${total} brand${total>1?'s':''} checked appear to be independent — no corporate or investor ownership found.`;}
+  else if(peCount===total){bIcon='⚠️';bTitle=`All ${total} brand${total>1?'s':''} are corporately owned.`;bSub='Every brand checked is owned by a corporation or outside investors. See indie alternatives in each card below.';}
+  else{bIcon='✂️';bTitle=`${peCount} of ${total} brand${total>1?'s':''} ${peCount>1?'are':'is'} corporately owned.`;bSub='Mixed ownership found. Check each card for details and indie alternatives.';}
 
   let html=`<div class="summary-banner"><div class="sb-icon">${bIcon}</div><div><div class="sb-title">${bTitle}</div><div class="sb-sub">${bSub}</div></div></div>`;
   filtered.forEach((r,i)=>html+=buildCard(r,i));
@@ -852,7 +852,7 @@ function renderResults(){
 function getFiltered(){
   return S.results.filter(r=>{
     if(S.filter==='all') return true;
-    if(S.filter==='pe')  return r.pe||r.tier===0;
+    if(S.filter==='pe')  return r.tier<=1;
     if(S.filter==='corp')return r.tier===1;
     if(S.filter==='indie')return r.tier>=4;
     if(S.filter==='women')return r.womenOwned||r.womenFounded;
@@ -888,7 +888,7 @@ function buildCard(r,i){
         <div class="score-bar-bg"><div class="score-bar-fill" style="width:${tc.score}%;background:${tc.bar}"></div></div>
       </div>
       <div class="analysis-grid">
-        <div class="ag-cell"><div class="ag-label">Investor Owned</div><div class="ag-val ${r.pe?'bad':'good'}">${r.pe?'✗ Corporate investors':'✓ No investors found'}</div></div>
+        <div class="ag-cell"><div class="ag-label">Corporate Owned</div><div class="ag-val ${r.tier<=1?'bad':'good'}">${r.tier<=1?'✗ Yes':'✓ No'}</div></div>
         <div class="ag-cell"><div class="ag-label">Woman-Owned</div><div class="ag-val ${r.womenOwned?'good':r.womenFounded?'warn':'bad'}">${r.womenOwned?'✓ Yes':r.womenFounded?'~ Women-Founded':'✗ Not confirmed'}</div></div>
         <div class="ag-cell"><div class="ag-label">Independent</div><div class="ag-val ${r.indie?'good':'bad'}">${r.indie?'✓ Yes':'✗ No'}</div></div>
         <div class="ag-cell"><div class="ag-label">Confidence</div><div style="display:flex;gap:3px;margin-top:3px">${conf}</div></div>
