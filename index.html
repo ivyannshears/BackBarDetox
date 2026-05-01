@@ -1152,6 +1152,1598 @@ const KNOWN = {
                           note:"Independent professional Italian-inspired salon brand. No corporate parent or PE identified. Sold through professional channels.",
                           alternatives:["Davines","Alfaparf","Oway"]},
 
+
+  // ── MISSIO HAIR (sunsetted — Wilmington NC, woman-founded) ─
+  "missio":             {owner:"MISSIO Hair — sunsetted 2024. Founded by Lorin Van Zandt (Wilmington, NC). Now relaunched as Radi Beauty.",tier:4,pe:false,indie:true,womenOwned:true,
+                          note:"Woman-founded in Wilmington, NC by stylist Lorin Van Zandt. Used beauty to fight human trafficking — donating 30% of profits to survivor nonprofits. Brand has sunsetted and relaunched as Radi Beauty (radibeauty.com). A remarkable local indie story.",
+                          alternatives:["Radi Beauty","Surface Hair","Davines"]},
+  "missio hair":        {owner:"MISSIO Hair — sunsetted. Founder Lorin Van Zandt now at Radi Beauty (radibeauty.com)",tier:4,pe:false,indie:true,womenOwned:true},
+
+  // ── RADI BEAUTY (formerly MISSIO — Lorin Van Zandt, Wilmington NC) ─
+  "radi beauty":        {owner:"Radi Beauty — woman-owned, independently operated (Lorin Van Zandt, Wilmington NC)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Lorin Van Zandt, formerly of MISSIO Hair. Continues the mission of beauty with purpose, supporting human trafficking survivors. Independently owned, Wilmington NC.",
+                          alternatives:["Surface Hair","Davines","Malibu C"]},
+
+
+  // ── VIRTUE LABS (Combe Inc. majority owner) ───────────────
+  "virtue":             {owner:"Virtue Labs — majority owned by Combe Inc. (privately held, Just for Men/Clearasil parent)",tier:3,pe:false,indie:false,
+                          note:"Founded by Melisse Shaban in 2017 around breakthrough keratin technology. Combe Inc. — a large privately held family company that also owns Just for Men and Clearasil — took majority ownership in 2020 and replaced the founder as CEO in 2023. Not independently owned.",
+                          alternatives:["Davines","Surface Hair","Malibu C","Olaplex"]},
+  "virtue labs":        {owner:"Virtue Labs — majority owned by Combe Inc. (privately held)",tier:3,pe:false,indie:false},
+
+
+  // ═══════════════════════════════════════════════════════════
+  // BATCH 3 — VERIFIED FROM DEEP RESEARCH
+  // ═══════════════════════════════════════════════════════════
+
+  // ── GHD (KKR — investor-owned, Wella portfolio) ───────────
+  "ghd":                {owner:"ghd (Good Hair Day) — KKR investor-owned via Wella Company",tier:0,pe:true,
+                          note:"Founded 2001 by British hairdressers. Sold to private equity Lion Capital, then Coty, then KKR in 2020. Now fully investor-owned. KKR preparing Wella for potential IPO in 2026.",
+                          alternatives:["Beachwaver","Olivia Garden","Ivy Ann Shears"]},
+  "good hair day":      {owner:"ghd — KKR investor-owned via Wella Company",tier:0,pe:true},
+
+  // ── OPI (KKR — investor-owned, Wella portfolio) ───────────
+  "opi":                {owner:"OPI — KKR investor-owned via Wella Company",tier:0,pe:true,
+                          note:"Founded 1981, acquired by Coty in 2010, sold to KKR in 2020 as part of Wella Company. Investor-owned. KKR preparing Wella for potential IPO.",
+                          alternatives:["Zoya","Sally Hansen","Indie nail brands"]},
+
+  // ── SALONCENTRIC (L'Oréal subsidiary) ─────────────────────
+  "saloncentric":       {owner:"SalonCentric — L'Oréal USA subsidiary (Euronext: OR)",tier:1,pe:false,
+                          note:"Created by L'Oréal USA in 2008. The largest professional beauty distributor in the US is entirely owned by L'Oréal. When you buy through SalonCentric, L'Oréal profits."},
+
+  // ── DYSON (Sir James Dyson — privately held) ──────────────
+  "dyson":              {owner:"Dyson Ltd — privately held, owned by Sir James Dyson",tier:3,pe:false,
+                          note:"Owned entirely by Sir James Dyson and his family through Dyson Ltd. Not PE-backed or publicly traded. A large private company but not indie — over $8B revenue globally.",
+                          alternatives:["Beachwaver","Olivia Garden","Wahl"]},
+
+  // ── MARIA NILA (family-owned, B-Corp, Sweden) ─────────────
+  "maria nila":         {owner:"Maria Nila — family-majority owned, L Catterton minority investor (LVMH-affiliated PE), Sweden",tier:2,pe:false,indie:false,
+                          note:"Founded 1999 by the Wikström family. Still family-led with son Marcus as CEO. However L Catterton (LVMH-affiliated PE) acquired a significant minority stake in Sept 2023. Family retains majority control but it is no longer fully independent.",
+                          alternatives:["Davines","Surface Hair","Oway"]},
+
+  // ── BIO IONIC (independently owned) ─────────────────────
+  "bio ionic":          {owner:"Bio Ionic — independently owned professional tools",tier:4,pe:false,indie:true,
+                          note:"Independent professional styling tools brand. No corporate parent or PE investors identified. Sold through salon professional channels.",
+                          alternatives:["Olivia Garden","Beachwaver","Ivy Ann Shears"]},
+
+  // ── KERATIN COMPLEX (independently owned) ────────────────
+  "keratin complex":    {owner:"Keratin Complex — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent professional keratin treatment brand. No corporate parent identified. Pioneer of salon keratin smoothing treatments.",
+                          alternatives:["Brazilian Blowout","Davines","Malibu C"]},
+
+  // ── DESIGN.ME HAIR (independently owned, Canada) ─────────
+  "design me":          {owner:"Design.ME Hair — independently owned, Canada",tier:4,pe:false,indie:true,
+                          note:"Canadian independent professional hair care brand. No corporate parent or PE investors identified. Sold through professional channels.",
+                          alternatives:["Maria Nila","Davines","Surface Hair"]},
+  "design.me":          {owner:"Design.ME Hair — independently owned, Canada",tier:4,pe:false,indie:true},
+
+  // ── AIIR PROFESSIONAL (independently owned) ──────────────
+  "aiir":               {owner:"AIIR Professional — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent professional hair care brand. No corporate parent or PE investors identified.",
+                          alternatives:["Davines","Surface Hair","Maria Nila"]},
+  "aiir professional":  {owner:"AIIR Professional — independently owned",tier:4,pe:false,indie:true},
+
+  // ── HAIRSTORY (independently owned) ──────────────────────
+  "hairstory":          {owner:"Hairstory — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent direct-to-consumer hair care brand known for New Wash. No corporate parent or PE investors identified. Co-founded by Bumble and bumble alumni.",
+                          alternatives:["Davines","Malibu C","Surface Hair"]},
+
+  // ── HEMPZ (independently owned) ──────────────────────────
+  "hempz":              {owner:"Hempz — independently owned, Henkel USA distribution",tier:3,pe:false,
+                          note:"Hempz is independently owned but distributed through Henkel professional channels. The brand itself appears to be private and independent.",
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+
+  // ── DERMALOGICA (Unilever) ────────────────────────────────
+  "dermalogica":        {owner:"Dermalogica — Unilever (NYSE: UL, acquired 2015)",tier:1,pe:false,
+                          note:"Founded by Jane Wurwand in 1986. Acquired by Unilever in 2015. Now fully corporate-owned despite its strong indie professional heritage.",
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+
+  // ── BUMBLE AND BUMBLE already covered (L'Oréal) ───────────
+
+  // ── PRODUCT CLUB (independently owned) ───────────────────
+  "product club":       {owner:"Product Club — independently owned professional accessories",tier:4,pe:false,indie:true,
+                          note:"Independent professional salon accessories brand — foils, clips, tools. No corporate parent identified. Widely distributed through SalonCentric.",
+                          alternatives:["Framar","Pink Pewter","Colortrak"]},
+
+  // ── COLORTRAK (independently owned) ──────────────────────
+  "colortrak":          {owner:"Colortrak — independently owned professional accessories",tier:4,pe:false,indie:true,
+                          note:"Independent professional color accessories brand. No corporate parent or PE investors identified. Available through SalonCentric.",
+                          alternatives:["Framar","Product Club","Pink Pewter"]},
+
+  // ── VEGAMOUR (PE-backed — Prelude Growth Partners) ────────
+  "vegamour":           {owner:"Vegamour — Prelude Growth Partners (PE-backed)",tier:0,pe:true,
+                          note:"Hair wellness and growth brand backed by Prelude Growth Partners, a private equity firm. Not independently owned.",
+                          alternatives:["Malibu C","Surface Hair","Davines"]},
+
+  // ── NUTRAFOL (Procter & Gamble) ───────────────────────────
+  "nutrafol":           {owner:"Nutrafol — Procter & Gamble (NYSE: PG, acquired 2022)",tier:1,pe:false,
+                          note:"Hair supplement and wellness brand acquired by Procter & Gamble in 2022. Now fully corporate-owned.",
+                          alternatives:["Vegamour","Malibu C","Surface Hair"]},
+
+  // ── DRYBAR (Helen of Troy) ────────────────────────────────
+  "drybar":             {owner:"Drybar — Helen of Troy (NASDAQ: HELE)",tier:1,pe:false,
+                          note:"The blow-dry bar franchise and product line. Product line owned by Helen of Troy, a publicly traded consumer goods company.",
+                          alternatives:["Beachwaver","Olivia Garden","Ivy Ann Shears"]},
+
+  // ── MOROCCAN OIL (already in DB as General Atlantic) ──────
+
+  // ── AQUAGE (independently owned) ─────────────────────────
+  "aquage":             {owner:"Aquage — independently owned professional brand",tier:4,pe:false,indie:true,
+                          note:"Independent professional salon brand. No corporate parent or PE investors identified. Sea botanicals focus.",
+                          alternatives:["Davines","Malibu C","Surface Hair"]},
+
+  // ── PUREOLOGY already covered (L'Oréal) ───────────────────
+
+  // ── SEXY HAIR already covered (Henkel) ────────────────────
+
+  // ── MACADAMIA PROFESSIONAL already covered ────────────────
+
+  // ── WELLA COMPANY BRANDS — CLARIFICATION ─────────────────
+  // All of these are KKR investor-owned under Wella Company:
+  "opi gel":            {owner:"OPI — KKR investor-owned via Wella Company",tier:0,pe:true},
+  "clairol professional":{owner:"Clairol — KKR investor-owned via Wella Company",tier:0,pe:true,
+                          note:"Clairol Professional is part of the Wella Company portfolio, which is majority-owned by KKR. Different from Coty's consumer Clairol."},
+  "color charm":        {owner:"Wella Color Charm — KKR investor-owned via Wella Company",tier:0,pe:true},
+
+  // ── NIOXIN already covered (KKR/Wella) ────────────────────
+
+  // ── AMERICAN CREW (Revlon complex) ────────────────────────
+  "american crew":      {owner:"American Crew — owned by Revlon (complex post-bankruptcy ownership)",tier:2,pe:false,
+                          note:"Revlon emerged from Chapter 11 bankruptcy in 2023. American Crew ownership is complex — verify current status. Was previously under Revlon corporate umbrella.",
+                          alternatives:["Reuzel","Suavecito","Layrite"]},
+
+  // ── FREDERIC FEKKAI (L Catterton PE) ─────────────────────
+  "frederic fekkai":    {owner:"Frédéric Fekkai — L Catterton (LVMH-affiliated PE)",tier:0,pe:true,
+                          note:"The luxury salon brand was taken private by L Catterton in 2018. Now investor-owned.",
+                          alternatives:["Davines","Maria Nila","Surface Hair"]},
+  "fekkai":             {owner:"Frédéric Fekkai — L Catterton (LVMH-affiliated PE)",tier:0,pe:true},
+
+  // ── OUAI already covered (P&G) ────────────────────────────
+
+  // ── TANGLE TEEZER (PE-backed) ─────────────────────────────
+  "tangle teezer":      {owner:"Tangle Teezer — Mayfair Equity Partners (PE-backed)",tier:0,pe:true,
+                          note:"British brush brand sold to Mayfair Equity Partners in 2019. Now PE-owned.",
+                          alternatives:["Olivia Garden","Wet Brush","Framar"]},
+
+  // ── WET BRUSH (Church & Dwight) ───────────────────────────
+  "wet brush":          {owner:"Wet Brush — Church & Dwight (NYSE: CHD, acquired 2016)",tier:1,pe:false,
+                          note:"Acquired by Church & Dwight in 2016. Now owned by the same publicly traded company that owns Arm & Hammer and OxiClean.",
+                          alternatives:["Olivia Garden","Framar","Tangle Teezer"]},
+
+  // ── AVEDA (Estée Lauder) ──────────────────────────────────
+  "aveda":              {owner:"Aveda — Estée Lauder Companies (NYSE: EL, acquired 1997)",tier:1,pe:false,
+                          note:"Founded by visionary Horst Rechelbacher in 1978. Acquired by Estée Lauder in 1997. Despite its holistic origins, now fully corporate-owned.",
+                          alternatives:["Davines","Oway","Maria Nila","Surface Hair"]},
+
+  // ── MONAT (privately held MLM) ───────────────────────────
+  "monat":              {owner:"MONAT Global — privately held (Luyando Nunez family)",tier:3,pe:false,
+                          note:"Multi-level marketing model. Family-owned by the Luyando Nunez family. Not PE-backed but operates through MLM distribution — not a traditional salon brand.",
+                          alternatives:["Davines","Maria Nila","Surface Hair"]},
+
+  // ── HASK already covered (independently owned) ────────────
+
+  // ── FENTY HAIR (LVMH-backed via Rihanna) ─────────────────
+  "fenty hair":         {owner:"Fenty Hair — LVMH/Rihanna partnership (investor-backed)",tier:0,pe:true,
+                          note:"Launched 2024. Part of Rihanna's Fenty partnership with LVMH. Despite celebrity founding, backed by the world's largest luxury conglomerate.",
+                          alternatives:["Camille Rose","Rizos Curls","Eden Bodyworks"]},
+
+  // ── BREAD BEAUTY (L'Oréal — acquired 2024) ───────────────
+  "bread beauty":       {owner:"Bread Beauty Supply — L'Oréal (acquired 2024)",tier:1,pe:false,womenFounded:true,
+                          note:"Founded by Maeva Heim, a Black Australian woman. Acquired by L'Oréal in 2024. A powerful indie story now corporate-owned.",
+                          alternatives:["Camille Rose","Rizos Curls","Eden Bodyworks"]},
+
+  // ── ORIGINAL SPROUT (independently owned) ────────────────
+  "original sprout":    {owner:"Original Sprout — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent natural hair and body care brand. No corporate parent or PE investors identified. Clean, natural formulas.",
+                          alternatives:["Davines","Malibu C","Surface Hair"]},
+
+  // ── BUMBLE AND BUMBLE — already covered ───────────────────
+
+  // ── CHI (Farouk Systems — indie) already covered ──────────
+
+
+  // ── BELLAMI HAIR (L Catterton PE via Beauty Industry Group) ─
+  "bellami":            {owner:"BELLAMI Hair — L Catterton PE-backed (via Beauty Industry Group, acquired 2022)",tier:0,pe:true,
+                          note:"Founded in 2012 by Nikki Eslami and Julius Salerno. Sold to Beauty Industry Group in 2022, which is majority-owned by L Catterton (LVMH-affiliated PE). No longer independent.",
+                          alternatives:["Drop Dead Extensions","Great Lengths","Hairtalk"]},
+  "bellami hair":       {owner:"BELLAMI Hair — L Catterton PE-backed (via Beauty Industry Group)",tier:0,pe:true},
+
+  // ── DROP DEAD EXTENSIONS (woman-founded, independently owned) ─
+  "drop dead":          {owner:"Drop Dead Professional Extensions — independently owned, founded by Kristi Day (Tempe, AZ)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by licensed extension artist Kristi Day. 4 years of development to ethically source and manufacture premium hair extensions. Independently owned, professional-only, no corporate parent or investors identified.",
+                          alternatives:["Great Lengths","Hairtalk","Bellami"]},
+  "drop dead extensions":{owner:"Drop Dead Professional Extensions — independently owned, founded by Kristi Day",tier:5,pe:false,indie:true,womenOwned:true},
+
+  // ── BEAUTY INDUSTRY GROUP (L Catterton PE) ───────────────────
+  "beauty industry group":{owner:"Beauty Industry Group — L Catterton PE-backed (LVMH-affiliated)",tier:0,pe:true,
+                          note:"BIG is majority-owned by L Catterton since 2021. Owns Bellami Hair, Hidden Crown, HaloCouture, and other hair extension brands. All BIG brands are PE-backed.",
+                          alternatives:["Drop Dead Extensions","Great Lengths","Hairtalk"]},
+  "big":                {owner:"Beauty Industry Group — L Catterton PE-backed",tier:0,pe:true},
+
+  // ── HIDDEN CROWN HAIR (L Catterton via BIG) ──────────────────
+  "hidden crown":       {owner:"Hidden Crown Hair — L Catterton PE-backed (via Beauty Industry Group)",tier:0,pe:true,
+                          note:"Acquired by Beauty Industry Group in 2018. BIG is majority-owned by L Catterton PE. Not independently owned.",
+                          alternatives:["Drop Dead Extensions","Great Lengths","Hairtalk"]},
+
+  // ── HALOCOUTURE (L Catterton via BIG) ────────────────────────
+  "halocouture":        {owner:"HaloCouture — L Catterton PE-backed (via Beauty Industry Group)",tier:0,pe:true,
+                          note:"Acquired by Beauty Industry Group in 2018. BIG is majority-owned by L Catterton PE.",
+                          alternatives:["Drop Dead Extensions","Great Lengths","Hairtalk"]},
+
+  // ── DONNA BELLA HAIR (independently owned) ───────────────────
+  "donna bella":        {owner:"Donna Bella Hair — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent professional hair extension brand. No corporate parent or PE investors identified.",
+                          alternatives:["Drop Dead Extensions","Great Lengths","Hairtalk"]},
+  "donna bella hair":   {owner:"Donna Bella Hair — independently owned",tier:4,pe:false,indie:true},
+
+  // ── LUXURY FOR PRINCESS (LFP — independently owned) ──────────
+  "luxury for princess":{owner:"Luxury For Princess — independently owned professional extensions",tier:4,pe:false,indie:true,
+                          note:"Independent professional hair extension brand. No corporate parent identified.",
+                          alternatives:["Drop Dead Extensions","Donna Bella","Great Lengths"]},
+  "lfp hair":           {owner:"Luxury For Princess — independently owned",tier:4,pe:false,indie:true},
+
+  // ── R+CO BLEU (Luxury Brand Partners — L Catterton PE) ───────
+  "r+co bleu":          {owner:"R+Co Bleu — L Catterton PE-backed (via Luxury Brand Partners)",tier:0,pe:true,
+                          note:"R+Co Bleu is the elevated sister line to R+Co. Both sit under Luxury Brand Partners, which is PE-backed by L Catterton.",
+                          alternatives:["Davines","Maria Nila","Paul Mitchell"]},
+
+  // ── SACHAJUAN (independently owned, Sweden) ──────────────────
+  "sachajuan":          {owner:"Sachajuan — independently owned, Sweden",tier:4,pe:false,indie:true,
+                          note:"Swedish independent professional hair care brand founded by hairdressers Sacha and Juan. No corporate parent or PE investors identified. Clean Scandinavian formulas.",
+                          alternatives:["Maria Nila","Davines","Surface Hair"]},
+
+  // ── GISOU (independently owned, honey-based) ─────────────────
+  "gisou":              {owner:"Gisou — independently owned, founded by Negin Mirsalehi",tier:4,pe:false,indie:true,
+                          note:"Founded by Negin Mirsalehi and family, based on multi-generational Iranian beekeeping heritage. Independently owned with no PE parent identified. Premium honey-infused hair care.",
+                          alternatives:["Davines","Maria Nila","Surface Hair"]},
+
+  // ── CEREMONIA (already in DB as Latina-owned indie) ───────────
+
+  // ── JVN HAIR (L Catterton via Amyris/Revlon) ─────────────────
+  "jvn":                {owner:"JVN Hair — complex ownership (originally Amyris, now unclear post-bankruptcy)",tier:2,pe:false,
+                          note:"Created by Jonathan Van Ness and launched through biotech company Amyris, which filed for Chapter 11 bankruptcy in 2023. Ownership status is complex — verify independently.",
+                          alternatives:["Davines","Surface Hair","Maria Nila"]},
+  "jvn hair":           {owner:"JVN Hair — complex ownership post-Amyris bankruptcy",tier:2,pe:false},
+
+  // ── FUNCTION OF BEAUTY (L Catterton) ─────────────────────────
+  "function of beauty": {owner:"Function of Beauty — L Catterton (PE-backed, invested 2020)",tier:0,pe:true,
+                          note:"Customizable hair care brand that received $150M investment from L Catterton in 2020. PE-backed, not independently owned.",
+                          alternatives:["Davines","Surface Hair","Maria Nila"]},
+
+  // ── INFUSIUM 23 (Helen of Troy) ──────────────────────────────
+  "infusium":           {owner:"Infusium 23 — Helen of Troy (NASDAQ: HELE)",tier:1,pe:false,
+                          note:"Publicly traded Helen of Troy owns Infusium 23 along with Drybar, Vidal Sassoon tools, and other brands.",
+                          alternatives:["Malibu C","Davines","Surface Hair"]},
+  "infusium 23":        {owner:"Infusium 23 — Helen of Troy (NASDAQ: HELE)",tier:1,pe:false},
+
+  // ── VIDAL SASSOON (Procter & Gamble tools / Wella color) ──────
+  "vidal sassoon":      {owner:"Vidal Sassoon — tools: Helen of Troy (NASDAQ: HELE) / color: complex corporate history",tier:1,pe:false,
+                          note:"The Vidal Sassoon brand has been split — tools are licensed to Helen of Troy, while the professional name has complex corporate ownership. The man himself passed in 2012.",
+                          alternatives:["Olivia Garden","Beachwaver","Ivy Ann Shears"]},
+
+  // ── WELLA SHINEFINITY / WELLAPLEX (KKR) ─────────────────────
+  "wellaplex":          {owner:"WellaPlex — KKR investor-owned (Wella Company brand)",tier:0,pe:true},
+  "wella bond":         {owner:"Wella Bond — KKR investor-owned (Wella Company brand)",tier:0,pe:true},
+
+  // ── ALFAPARF YELLOW ALREADY COVERED ──────────────────────────
+
+  // ── OLIGO PROFESSIONNEL (independently owned) ────────────────
+  "oligo":              {owner:"Oligo Professionnel — independently owned, Canada",tier:4,pe:false,indie:true,
+                          note:"Canadian independent professional color brand. No corporate parent or PE investors identified. Salon-only professional color.",
+                          alternatives:["Oway","Framesi","Davines"]},
+  "oligo professionnel":{owner:"Oligo Professionnel — independently owned, Canada",tier:4,pe:false,indie:true},
+
+  // ── VIVIDS BY PRAVANA (Henkel) ────────────────────────────────
+  "vivids":             {owner:"Pravana Vivids — Henkel AG (publicly traded)",tier:1,pe:false,
+                          note:"Pravana's famous vivid color line is part of Henkel's professional portfolio since 2018.",
+                          alternatives:["Arctic Fox","Manic Panic","Celeb Luxury"]},
+
+  // ── KEUNE HAIR COSMETICS (family-owned, Netherlands) ─────────
+  "keune":              {owner:"Keune Hair Cosmetics — family-owned, Netherlands (Keune family since 1922)",tier:4,pe:false,indie:true,
+                          note:"Fourth-generation family-owned Dutch professional hair care brand since 1922. No PE or corporate parent. One of the longest-standing indie professional brands.",
+                          alternatives:["Davines","Framesi","Alfaparf"]},
+  "keune hair":         {owner:"Keune Hair Cosmetics — family-owned Netherlands since 1922",tier:4,pe:false,indie:true},
+
+  // ── WELLA PROFESSIONALS vs WELLA CONSUMER ─────────────────────
+  // All Wella Company brands (Wella Pro, OPI, ghd, Clairol Pro, Sebastian, Nioxin) = KKR PE tier 0
+  // Already covered in DB above
+
+  // ── COLOR GELS / REDKEN COVER FUSION (L'Oréal) ───────────────
+  "cover fusion":       {owner:"Redken Cover Fusion — L'Oréal Professional Products",tier:1,pe:false},
+
+  // ── SCRUPLES HAIR CARE (independently owned) ─────────────────
+  "scruples":           {owner:"Scruples Hair Care — independently owned, Minneapolis MN",tier:4,pe:false,indie:true,
+                          note:"Independent professional salon brand based in Minneapolis. No corporate parent or PE investors identified. Salon-only distribution.",
+                          alternatives:["Davines","Paul Mitchell","Surface Hair"]},
+
+  // ── UNITE HAIR already covered (L Catterton PE) ───────────────
+
+
+  // ═══════════════════════════════════════════════════════════
+  // BATCH 4 — EXTENSIONS, TOOLS, COLOR, BARBERING, CURLY VERIFIED
+  // ═══════════════════════════════════════════════════════════
+
+  // ── MOURNING HAIR (woman-founded indie) ──────────────────────
+  "mourning hair":      {owner:"Mourning Hair — independently owned, founded by Anianne Owens",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Created by extension artist Anianne Owens to empower stylists. Hand-tied dimensional wefts, professional-only. Independently owned, no corporate parent.",
+                          alternatives:["Drop Dead Extensions","Great Lengths","Aqua Hair Extensions"]},
+  "mourning":           {owner:"Mourning Hair — independently owned, founded by Anianne Owens",tier:5,pe:false,indie:true,womenOwned:true},
+
+  // ── DREAMCATCHERS (independently owned, father-son) ──────────
+  "dreamcatchers":      {owner:"DreamCatchers Hair Extensions — independently owned (Chris & Max Volek, Irvine CA)",tier:4,pe:false,indie:true,
+                          note:"Founded by Chris Volek in 2009, now run alongside his son Max as COO. No corporate shareholders — every decision made with stylists in mind. 30,000+ certified stylists.",
+                          alternatives:["Mourning Hair","Drop Dead Extensions","Great Lengths"]},
+  "dream catchers":     {owner:"DreamCatchers — independently owned, father-son founders",tier:4,pe:false,indie:true},
+  "dreamcatchers hair": {owner:"DreamCatchers Hair Extensions — independently owned",tier:4,pe:false,indie:true},
+
+  // ── AQUA HAIR EXTENSIONS (independently owned) ───────────────
+  "aqua hair extensions":{owner:"Aqua Hair Extensions — independently owned professional brand",tier:4,pe:false,indie:true,
+                          note:"Independent professional hair extension brand. No corporate parent or PE investors identified. Professional-only.",
+                          alternatives:["Drop Dead Extensions","Mourning Hair","Great Lengths"]},
+  "aqua extensions":    {owner:"Aqua Hair Extensions — independently owned",tier:4,pe:false,indie:true},
+
+  // ── MOROCCANOIL CORRECTION — privately held, NOT General Atlantic
+  // Previous DB entry had wrong ownership. Correcting:
+  // (The moroccanoil entry already in DB is being superseded by this)
+  "moroccanoil":        {owner:"Moroccanoil — privately held (Carmen Tal & family, Moroccanoil Israel Ltd.)",tier:3,pe:false,indie:false,
+                          note:"Founded by Carmen Tal and Ofer Tal. Privately held company headquartered in NYC with production in Israel, Italy and Canada. Not PE-backed — family controlled. Large private company.",
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+
+  // ── KMS HAIR (Kao Corporation — publicly traded) ─────────────
+  "kms":                {owner:"KMS Hair — Kao Corporation (TYO: 4452), publicly traded",tier:1,pe:false,
+                          note:"Founded 1976 in Redding CA. Acquired by Kao Corporation in 2002. Now part of Kao Salon Division alongside Goldwell, Kerasilk, and Oribe.",
+                          alternatives:["Davines","Surface Hair","Paul Mitchell"]},
+  "kms hair":           {owner:"KMS Hair — Kao Corporation (TYO: 4452)",tier:1,pe:false},
+  "kms california":     {owner:"KMS Hair (KMS California) — Kao Corporation (TYO: 4452)",tier:1,pe:false},
+
+  // ── KERASILK (Kao Corporation) ───────────────────────────────
+  "kerasilk":           {owner:"Kerasilk — Kao Corporation (TYO: 4452), publicly traded",tier:1,pe:false,
+                          note:"Premium keratin treatment and care brand under Kao Salon Division. Same corporate family as Goldwell, KMS, and Oribe.",
+                          alternatives:["Davines","Malibu C","Surface Hair"]},
+
+  // ── ORIBE CORRECTION — was LBP, now Kao ──────────────────────
+  "oribe":              {owner:"Oribe Hair Care — Kao Corporation (TYO: 4452), acquired 2018",tier:1,pe:false,
+                          note:"Founded by legendary stylist Oribe Canales (1955-2022). Sold from Luxury Brand Partners to Kao Corporation in 2018. Now fully corporate-owned.",
+                          alternatives:["Davines","Maria Nila","Surface Hair"]},
+
+  // ── FROMM INTERNATIONAL (PE-backed since ~2015) ──────────────
+  "fromm":              {owner:"Fromm International — PE-backed (Firelight Capital, Gemini Investors, True West Capital)",tier:0,pe:true,
+                          note:"Despite 115+ years of family history, Fromm has received investment from multiple private equity firms. No longer independently owned.",
+                          alternatives:["Olivia Garden","Framar","Pink Pewter"]},
+  "fromm international":{owner:"Fromm International — PE-backed",tier:0,pe:true},
+  "diane":              {owner:"Diane (Fromm International brand) — PE-backed",tier:0,pe:true},
+  "the hair edit":      {owner:"The Hair Edit (Fromm International brand) — PE-backed",tier:0,pe:true},
+
+  // ── OUIDAD (independently held — Ouidad Wise) ────────────────
+  "ouidad":             {owner:"Ouidad — independently held, founded by Ouidad Wise",tier:4,pe:false,indie:true,
+                          note:"Founded in 1984 by Ouidad Wise, known as the Queen of Curls. First salon dedicated exclusively to curly hair. Independently operated.",
+                          alternatives:["Rizos Curls","Camille Rose","DevaCurl"]},
+
+  // ── MONDAY HAIRCARE (founder-owned, Jaimee Lupton) ───────────
+  "monday haircare":    {owner:"Monday Haircare — Monday International Ltd., founder-owned (Jaimee Lupton, NZ)",tier:4,pe:false,indie:true,
+                          note:"Founded by Jaimee Lupton in 2020. Independently owned through Monday International Ltd. #1 haircare brand on TikTok. No PE backing identified.",
+                          alternatives:["Maria Nila","Davines","Surface Hair"]},
+  "monday":             {owner:"Monday Haircare — founder-owned, independently operated",tier:4,pe:false,indie:true},
+
+  // ── TGIN (Black woman-owned indie) ───────────────────────────
+  "tgin":               {owner:"TGIN (Thank God It's Natural) — Black woman-founded, 100% independently owned",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by a Black woman entrepreneur. Bootstrapped — never took investors. Still 100% owner-operated. In 10,000+ stores while remaining fully independent.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Kinky Curly"]},
+  "thank god its natural":{owner:"TGIN — Black woman-founded, 100% independently owned",tier:5,pe:false,indie:true,womenOwned:true},
+
+  // ── ADWOA BEAUTY (Black woman-owned) ─────────────────────────
+  "adwoa beauty":       {owner:"Adwoa Beauty — Black woman-founded, independently owned (Julian R. Addo)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Julian R. Addo. Clean, indie professional hair care brand. No corporate parent identified.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Rizos Curls"]},
+
+  // ── TALIAH WAAJID (Black woman-owned) ────────────────────────
+  "taliah waajid":      {owner:"Taliah Waajid Brand — Black woman-founded, independently owned",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by natural hair expert and stylist Taliah Waajid. Chemical-free products for natural textures. Black woman-owned and independently operated.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Kinky Curly"]},
+
+  // ── OBIA NATURALS (Black woman-owned) ────────────────────────
+  "obia naturals":      {owner:"OBIA Naturals — Black woman-founded, independently owned (Obia Ewah)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded and led by Obia Ewah. Independently operated natural hair care brand.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Taliah Waajid"]},
+
+  // ── KOILS BY NATURE (Black woman-owned) ──────────────────────
+  "koils by nature":    {owner:"Koils By Nature — Black woman-founded, independently owned (Pamela Booker)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Pamela J. Booker. Black woman-owned, independently operated natural hair brand.",
+                          alternatives:["Camille Rose","OBIA Naturals","Taliah Waajid"]},
+
+  // ── DESIGN ESSENTIALS (McBride family, large private) ────────
+  "design essentials":  {owner:"Design Essentials — McBride family, privately held",tier:3,pe:false,
+                          note:"Founded by Cornell McBride Sr., now run by the McBride family. Large privately held company. Not PE-backed.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Rizos Curls"]},
+
+  // ── DONNA BELLA HAIR (independently owned) ───────────────────
+  "donna bella":        {owner:"Donna Bella Hair — independently owned professional extensions",tier:4,pe:false,indie:true,
+                          alternatives:["Drop Dead Extensions","Mourning Hair","Great Lengths"]},
+  "donna bella hair":   {owner:"Donna Bella Hair — independently owned",tier:4,pe:false,indie:true},
+
+  // ── HIDDEN CROWN (L Catterton via BIG) ───────────────────────
+  "hidden crown":       {owner:"Hidden Crown Hair — L Catterton PE-backed (via Beauty Industry Group)",tier:0,pe:true,
+                          note:"Acquired by Beauty Industry Group in 2018. BIG is majority-owned by L Catterton (LVMH-affiliated PE).",
+                          alternatives:["Drop Dead Extensions","Mourning Hair","Great Lengths"]},
+  "halocouture":        {owner:"HaloCouture — L Catterton PE-backed (via Beauty Industry Group)",tier:0,pe:true},
+
+  // ── SACHAJUAN (indie Sweden) ──────────────────────────────────
+  "sachajuan":          {owner:"Sachajuan — independently owned, Sweden (founded by Sacha and Juan)",tier:4,pe:false,indie:true,
+                          note:"Swedish independent professional hair care brand founded by hairdressers Sacha and Juan. Clean Scandinavian formulas. No corporate parent identified.",
+                          alternatives:["Maria Nila","Davines","Surface Hair"]},
+
+  // ── GISOU (independently owned) ──────────────────────────────
+  "gisou":              {owner:"Gisou — independently owned, founded by Negin Mirsalehi",tier:4,pe:false,indie:true,
+                          note:"Founded by Negin Mirsalehi and family, based on multi-generational Iranian beekeeping heritage. Honey-infused hair care. No PE parent identified.",
+                          alternatives:["Davines","Maria Nila","Surface Hair"]},
+
+  // ── KEUNE (family-owned Netherlands since 1922) ───────────────
+  "keune":              {owner:"Keune Hair Cosmetics — family-owned, Netherlands (Keune family since 1922)",tier:4,pe:false,indie:true,
+                          note:"Fourth-generation family-owned Dutch professional hair care brand since 1922. No PE or corporate parent. One of the longest-standing indie professional brands globally.",
+                          alternatives:["Davines","Framesi","Alfaparf"]},
+  "keune hair":         {owner:"Keune Hair Cosmetics — family-owned Netherlands since 1922",tier:4,pe:false,indie:true},
+
+  // ── FUNCTION OF BEAUTY (L Catterton) ─────────────────────────
+  "function of beauty": {owner:"Function of Beauty — L Catterton (PE-backed, invested 2020)",tier:0,pe:true,
+                          note:"Customizable hair care brand backed by L Catterton since 2020. PE-owned.",
+                          alternatives:["Davines","Surface Hair","Maria Nila"]},
+
+  // ── MONDAY HAIRCARE already above ────────────────────────────
+
+  // ── OLIGO PROFESSIONNEL (independently owned, Canada) ────────
+  "oligo":              {owner:"Oligo Professionnel — independently owned, Canada",tier:4,pe:false,indie:true,
+                          note:"Canadian independent professional color brand. No corporate parent or PE investors identified.",
+                          alternatives:["Oway","Framesi","Davines"]},
+  "oligo professionnel":{owner:"Oligo Professionnel — independently owned, Canada",tier:4,pe:false,indie:true},
+
+  // ── SCRUPLES (independently owned, Minneapolis) ───────────────
+  "scruples":           {owner:"Scruples Hair Care — independently owned, Minneapolis MN",tier:4,pe:false,indie:true,
+                          note:"Independent professional salon brand based in Minneapolis. No corporate parent or PE investors identified.",
+                          alternatives:["Davines","Paul Mitchell","Surface Hair"]},
+
+  // ── ALOXXI (independently owned) ─────────────────────────────
+  "aloxxi":             {owner:"Aloxxi International — independently owned professional color brand",tier:4,pe:false,indie:true,
+                          note:"Independent professional color brand. No corporate parent or PE investors identified. Salon-only distribution.",
+                          alternatives:["Oway","Framesi","Oligo Professionnel"]},
+
+  // ── AG HAIR (AG Care — independently owned, Canada) ──────────
+  "ag hair":            {owner:"AG Hair (AG Care) — independently owned, Canada",tier:4,pe:false,indie:true,
+                          note:"Canadian independent professional hair care brand, founded in 1989. No corporate parent or PE investors identified.",
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+  "ag care":            {owner:"AG Hair (AG Care) — independently owned, Canada",tier:4,pe:false,indie:true},
+
+  // ── ENJOY PROFESSIONAL HAIR CARE (independently owned) ───────
+  "enjoy":              {owner:"Enjoy Professional Hair Care — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent professional hair care brand. No corporate parent identified.",
+                          alternatives:["Davines","Paul Mitchell","Surface Hair"]},
+  "enjoy professional": {owner:"Enjoy Professional Hair Care — independently owned",tier:4,pe:false,indie:true},
+
+  // ── KENRA COLOR (Henkel) ──────────────────────────────────────
+  "kenra color":        {owner:"Kenra Color — Henkel AG (publicly traded)",tier:1,pe:false},
+
+  // ── ABBA PURE & NATURAL HAIR CARE (independently owned) ──────
+  "abba":               {owner:"ABBA Pure & Natural Hair Care — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent professional natural hair care brand. No corporate parent or PE investors identified.",
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+
+  // ── REDAVID SALON PRODUCTS (independently owned) ─────────────
+  "redavid":            {owner:"Redavid Salon Products — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent professional salon brand. No corporate parent identified.",
+                          alternatives:["Davines","Surface Hair","Paul Mitchell"]},
+
+  // ── KENRA PLATINUM (Henkel) ───────────────────────────────────
+  "kenra platinum":     {owner:"Kenra Platinum — Henkel AG (publicly traded)",tier:1,pe:false},
+
+  // ── SCHWARZKOPF IGORA ROYAL (Henkel) ─────────────────────────
+  "igora royal":        {owner:"IGORA Royal — Henkel AG Schwarzkopf Professional",tier:1,pe:false},
+  "igora vibrance":     {owner:"IGORA Vibrance — Henkel AG Schwarzkopf Professional",tier:1,pe:false},
+
+  // ── WELLA KOLESTON PERFECT (KKR) ─────────────────────────────
+  "koleston perfect":   {owner:"Koleston Perfect — KKR investor-owned (Wella Company)",tier:0,pe:true},
+  "welloxon":           {owner:"Welloxon — KKR investor-owned (Wella Company)",tier:0,pe:true},
+
+  // ── MATRIX TOTAL RESULTS (L'Oréal) ───────────────────────────
+  "total results":      {owner:"Matrix Total Results — L'Oréal Professional Products",tier:1,pe:false},
+  "matrix wonder worker":{owner:"Matrix — L'Oréal Professional Products",tier:1,pe:false},
+
+  // ── PAUL MITCHELL TEA TREE (Paul Mitchell — indie) ───────────
+  "tea tree":           {owner:"Tea Tree (Paul Mitchell brand) — independently owned, John Paul Mitchell Systems",tier:4,pe:false,indie:true},
+  "paul mitchell tea tree":{owner:"Paul Mitchell Tea Tree — independently owned",tier:4,pe:false,indie:true},
+
+  // ── PRAVANA VIVIDS (Henkel) ───────────────────────────────────
+  "vivids":             {owner:"Pravana Vivids — Henkel AG (publicly traded)",tier:1,pe:false},
+  "pravana vivids":     {owner:"Pravana Vivids — Henkel AG (publicly traded)",tier:1,pe:false},
+
+  // ── MYDENTITY (Guy Tang — Henkel distribution) ───────────────
+  "mydentity":          {owner:"#mydentity — distributed by Henkel AG, founded by Guy Tang",tier:2,pe:false,
+                          note:"Founded by celebrity colorist Guy Tang. Distributed through Henkel's professional network. Ownership partially independent but Henkel has significant distribution control.",
+                          alternatives:["Arctic Fox","Manic Panic","Celeb Luxury"]},
+  "#mydentity":         {owner:"#mydentity — Henkel distributed, Guy Tang founded",tier:2,pe:false},
+
+  // ── ORGANIC WAY (Oway — already in DB, add alias) ─────────────
+  "organic way":        {owner:"Oway (Organic Way) — family-owned Italian brand, certified organic",tier:4,pe:false,indie:true},
+
+  // ── AUTHENTIC BEAUTY CONCEPT (Henkel / P&G joint) ────────────
+  "authentic beauty concept":{owner:"Authentic Beauty Concept — Henkel AG professional brand",tier:1,pe:false,
+                          note:"Launched by Henkel's Schwarzkopf Professional division. Now fully Henkel-owned.",
+                          alternatives:["Davines","Surface Hair","Oway"]},
+
+  // ── NOUGHTY (independently owned, UK) ────────────────────────
+  "noughty":            {owner:"Noughty — independently owned, UK",tier:4,pe:false,indie:true,
+                          note:"UK independent hair care brand focused on natural, clean formulas. No corporate parent identified.",
+                          alternatives:["Davines","Maria Nila","Surface Hair"]},
+
+  // ── ACT+ACRE (independently owned) ───────────────────────────
+  "act+acre":           {owner:"Act+Acre — independently owned scalp care brand",tier:4,pe:false,indie:true,
+                          note:"Independent cold-processed scalp care brand. No PE or corporate parent identified.",
+                          alternatives:["Malibu C","Davines","Surface Hair"]},
+  "act and acre":       {owner:"Act+Acre — independently owned",tier:4,pe:false,indie:true},
+
+  // ── SEEN HAIRCARE (independently owned) ──────────────────────
+  "seen":               {owner:"Seen Haircare — independently owned",tier:4,pe:false,indie:true,
+                          note:"Derm-approved hair care for acne-prone and sensitive skin. Independently owned, no corporate parent identified.",
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+  "seen haircare":      {owner:"Seen Haircare — independently owned",tier:4,pe:false,indie:true},
+
+  // ── CEREMONIA already in DB (Latina-owned, indie) ─────────────
+
+  // ── BOTANIC HEARTH (Sally Beauty house brand) ────────────────
+  "botanic hearth":     {owner:"Botanic Hearth — Sally Beauty Holdings house brand (NYSE: SBH)",tier:1,pe:false,
+                          note:"Sally Beauty's own house brand. Buying it means buying a publicly traded retailer's private label.",
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+
+  // ── SILK ELEMENTS (Sally Beauty house brand) ─────────────────
+  "silk elements":      {owner:"Silk Elements — Sally Beauty Holdings house brand (NYSE: SBH)",tier:1,pe:false},
+
+  // ── ION already covered (Sally Beauty) ────────────────────────
+
+  // ── REUZEL already in DB (indie Dutch barbers) ────────────────
+
+  // ── UPPERCUT DELUXE (independently owned, Australia) ─────────
+  "uppercut deluxe":    {owner:"Uppercut Deluxe — independently owned, Australia",tier:4,pe:false,indie:true,
+                          note:"Australian independent men's grooming and hair brand. No corporate parent or PE investors identified. Strong barber following.",
+                          alternatives:["Reuzel","Suavecito","Layrite"]},
+
+  // ── SLICK GORILLA (independently owned, UK) ──────────────────
+  "slick gorilla":      {owner:"Slick Gorilla — independently owned, UK",tier:4,pe:false,indie:true,
+                          note:"UK independent men's hair styling brand. Clean, simple formulas. No corporate parent identified. Strong barbering following.",
+                          alternatives:["Reuzel","Uppercut Deluxe","Suavecito"]},
+
+  // ── CAPTAIN FAWCETT (independently owned, UK) ────────────────
+  "captain fawcett":    {owner:"Captain Fawcett — independently owned, UK",tier:4,pe:false,indie:true,
+                          note:"British artisan grooming brand. Independent, hand-crafted, no corporate parent.",
+                          alternatives:["Reuzel","Uppercut Deluxe","Suavecito"]},
+
+  // ── WAHL ALREADY IN DB (family-owned, correct at tier 4) ──────
+
+  // ── ANDIS ALREADY IN DB (family-owned, tier 4) ────────────────
+
+  // ── OSTER (Sunbeam Products / Newell Brands) ──────────────────
+  "oster":              {owner:"Oster Professional — Sunbeam Products (Newell Brands, NASDAQ: NWL)",tier:1,pe:false,
+                          note:"Oster Professional is owned by Sunbeam Products, a subsidiary of publicly traded Newell Brands.",
+                          alternatives:["Wahl","Andis","Olivia Garden"]},
+  "oster professional": {owner:"Oster Professional — Newell Brands (NASDAQ: NWL)",tier:1,pe:false},
+
+  // ── BABYLISS PRO (Conair — large private) ────────────────────
+  "babyliss pro":       {owner:"BaByliss Pro — Conair Corporation (privately held, Rizzuto family)",tier:3,pe:false,
+                          alternatives:["Beachwaver","Olivia Garden","Ivy Ann Shears"]},
+
+  // ── PARLUX (independently owned, Italy) ──────────────────────
+  "parlux":             {owner:"Parlux — independently owned, Italy",tier:4,pe:false,indie:true,
+                          note:"Italian professional hair dryer brand, independently owned. No corporate parent identified. Trusted by salon professionals globally.",
+                          alternatives:["Olivia Garden","Bio Ionic","Beachwaver"]},
+
+  // ── ELCHIM (independently owned, Italy) ──────────────────────
+  "elchim":             {owner:"Elchim — independently owned, Italy",tier:4,pe:false,indie:true,
+                          note:"Italian professional hair tools brand since 1945. Independently owned and family-run. No corporate parent identified.",
+                          alternatives:["Parlux","Olivia Garden","Bio Ionic"]},
+
+  // ── IKONIC (independently owned) ─────────────────────────────
+  "ikonic":             {owner:"IKONIC Professional — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent professional styling tools brand. No corporate parent or PE investors identified.",
+                          alternatives:["Olivia Garden","Bio Ionic","Parlux"]},
+
+  // ── REVLON PROFESSIONAL (complex — Revlon bankruptcy) ────────
+  "revlon professional":{owner:"Revlon Professional — complex post-bankruptcy, now under Revlon brand structure",tier:2,pe:false,
+                          note:"Revlon emerged from Chapter 11 in 2023. Ownership complex. Professional line continues but corporate structure unclear.",
+                          alternatives:["Davines","Paul Mitchell","Surface Hair"]},
+
+  // ── AMERICAN CREW (Revlon) ────────────────────────────────────
+  "american crew":      {owner:"American Crew — Revlon (complex post-bankruptcy ownership)",tier:2,pe:false,
+                          note:"Part of the Revlon brand family. Revlon emerged from Chapter 11 in 2023. Ownership complex — verify independently.",
+                          alternatives:["Reuzel","Suavecito","Layrite"]},
+
+  // ── FUDGE PROFESSIONAL (Henkel) ──────────────────────────────
+  "fudge":              {owner:"Fudge Professional — Henkel AG (publicly traded)",tier:1,pe:false,
+                          note:"UK professional hair care brand acquired by Henkel. Part of the Henkel professional portfolio.",
+                          alternatives:["Davines","Surface Hair","Paul Mitchell"]},
+  "fudge professional": {owner:"Fudge Professional — Henkel AG",tier:1,pe:false},
+
+  // ── REDKEN EXTREME (L'Oréal) ──────────────────────────────────
+  "redken extreme":     {owner:"Redken Extreme — L'Oréal Professional Products",tier:1,pe:false},
+  "redken all soft":    {owner:"Redken — L'Oréal Professional Products",tier:1,pe:false},
+  "redken color extend":{owner:"Redken — L'Oréal Professional Products",tier:1,pe:false},
+
+  // ── BIOLAGE RAWREFINESSE (L'Oréal) ───────────────────────────
+  "rawrefinesse":       {owner:"Biolage R.A.W. — L'Oréal Professional Products",tier:1,pe:false},
+
+  // ── NIOXIN SCALP (KKR/Wella) ─────────────────────────────────
+  "nioxin scalp":       {owner:"Nioxin — KKR investor-owned (Wella Company brand)",tier:0,pe:true},
+
+  // ── BROCATO (independently owned) ────────────────────────────
+  "brocato":            {owner:"Brocato Professional — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent professional hair care brand. No corporate parent or PE investors identified.",
+                          alternatives:["Davines","Surface Hair","Paul Mitchell"]},
+
+  // ── MALIBU C already in DB (independently owned) ──────────────
+
+  // ── KENRA NOURISHING (Henkel) ─────────────────────────────────
+  "kenra nourishing":   {owner:"Kenra Professional — Henkel AG (publicly traded)",tier:1,pe:false},
+
+  // ── JOICO K-PAK (Henkel) ─────────────────────────────────────
+  "k-pak":              {owner:"Joico K-PAK — Henkel AG (publicly traded)",tier:1,pe:false},
+
+  // ── SCHWARZKOPF OSIS (Henkel) ────────────────────────────────
+  "osis+":              {owner:"OSiS+ — Henkel AG Schwarzkopf Professional",tier:1,pe:false},
+  "osis":               {owner:"OSiS+ — Henkel AG Schwarzkopf Professional",tier:1,pe:false},
+
+  // ── WELLA SYSTEM PROFESSIONAL (KKR) ─────────────────────────
+  "sp":                 {owner:"System Professional (SP) — KKR investor-owned (Wella Company)",tier:0,pe:true},
+
+  // ── REDKEN ACIDIC BONDING (L'Oréal) ─────────────────────────
+  "acidic bonding concentrate":{owner:"Redken Acidic Bonding — L'Oréal Professional Products",tier:1,pe:false},
+
+  // ── AVLON INDUSTRIES (Black-owned, independently held) ───────
+  "avlon":              {owner:"Avlon Industries — Black-owned, privately held",tier:4,pe:false,indie:true,
+                          note:"Black-owned professional hair care company, independently held. No PE or corporate parent identified. Focused on textured hair care.",
+                          alternatives:["Design Essentials","Camille Rose","Eden Bodyworks"]},
+  "avlon industries":   {owner:"Avlon Industries — Black-owned, privately held",tier:4,pe:false,indie:true},
+
+  // ── CREME OF NATURE (Sundial Brands/Unilever) ────────────────
+  "creme of nature":    {owner:"Crème of Nature — Unilever (via Sundial Brands acquisition 2017)",tier:1,pe:false,
+                          note:"Sundial Brands (which owns Crème of Nature) was acquired by Unilever in 2017. Now fully corporate-owned.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Taliah Waajid"]},
+
+  // ── AFRICA'S BEST (Helen of Troy) ────────────────────────────
+  "africas best":       {owner:"Africa's Best — Helen of Troy (NASDAQ: HELE)",tier:1,pe:false,
+                          alternatives:["Camille Rose","Design Essentials","Eden Bodyworks"]},
+  "africa's best":      {owner:"Africa's Best — Helen of Troy (NASDAQ: HELE)",tier:1,pe:false},
+
+  // ── SOFTSHEEN-CARSON (L'Oréal) ───────────────────────────────
+  "softsheen carson":   {owner:"SoftSheen-Carson — L'Oréal (Euronext: OR)",tier:1,pe:false,
+                          note:"Professional Black hair care brand acquired by L'Oréal in 1998. Includes Dark & Lovely and other professional lines.",
+                          alternatives:["Design Essentials","Avlon","Camille Rose"]},
+  "dark and lovely":    {owner:"Dark & Lovely (SoftSheen-Carson) — L'Oréal (Euronext: OR)",tier:1,pe:false},
+  "dark & lovely":      {owner:"Dark & Lovely (SoftSheen-Carson) — L'Oréal",tier:1,pe:false},
+
+  // ── CANTU BEAUTY (PDC Brands) ────────────────────────────────
+  "cantu":              {owner:"Cantu Beauty — PDC Brands (privately held)",tier:3,pe:false,
+                          note:"Cantu is owned by PDC Brands, a large private company. Not PE-backed but not indie. PDC also owns Bodycology and other beauty brands.",
+                          alternatives:["Camille Rose","Rizos Curls","Eden Bodyworks"]},
+  "cantu beauty":       {owner:"Cantu Beauty — PDC Brands (privately held)",tier:3,pe:false},
+
+  // ── AS I AM (PDC Brands) ─────────────────────────────────────
+  "as i am":            {owner:"As I Am — PDC Brands (privately held)",tier:3,pe:false,
+                          note:"Natural hair care brand owned by PDC Brands, the same large private company that owns Cantu.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Taliah Waajid"]},
+
+  // ── UNCLE FUNKY'S DAUGHTER (Black-owned) ─────────────────────
+  "uncle funkys daughter":{owner:"Uncle Funky's Daughter — independently owned, Black-owned (Renee Morris)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Independently owned by Black businesswoman Renee Morris, who acquired the brand in 2014. Natural curly hair care. No corporate parent.",
+                          alternatives:["Camille Rose","Kinky Curly","Eden Bodyworks"]},
+
+  // ── OYIN HANDMADE (Black-owned indie) ────────────────────────
+  "oyin handmade":      {owner:"Oyin Handmade — Black-owned, independently operated",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Jamyla and Pierre Bennu. Named from the Yoruba word for honey. Self-manufacturing, Black-owned and operated. No corporate parent.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Uncle Funky's Daughter"]},
+
+  // ── QHEMET BIOLOGICS (Black woman-owned) ─────────────────────
+  "qhemet biologics":   {owner:"Qhemet Biologics — Black woman-founded, independently owned (Fabian Butler)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by historian Fabian Butler in 2004, combining history, culture, and beauty. Black woman-owned, independently operated.",
+                          alternatives:["Camille Rose","Oyin Handmade","Eden Bodyworks"]},
+
+  // ── NATURALLY CURLY / CURLSBOT (independently owned) ─────────
+  "curlsmith":          {owner:"Curlsmith — acquired by Henkel AG (2022)",tier:1,pe:false,womenFounded:true,
+                          note:"Founded by Helen Reavey. Popular curly hair brand acquired by Henkel in 2022. Now fully corporate-owned despite indie origins.",
+                          alternatives:["Rizos Curls","Ouidad","Camille Rose"]},
+
+  // ── PATTERN BEAUTY (VC-backed) already in DB ──────────────────
+
+  // ── MIXED CHICKS (independently owned) ───────────────────────
+  "mixed chicks":       {owner:"Mixed Chicks — independently owned (Wendi Levy & Kim Etheredge)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Wendi Levy and Kim Etheredge for biracial and multicultural hair. Woman-owned and independently operated. No corporate parent.",
+                          alternatives:["Rizos Curls","Camille Rose","Ouidad"]},
+
+  // ── AUNT JACKIES (Namaste Laboratories) ──────────────────────
+  "aunt jackies":       {owner:"Aunt Jackie's — Namaste Laboratories (privately held)",tier:3,pe:false,
+                          note:"Namaste Laboratories is a large privately held ethnic hair care company. Not PE-backed but not indie.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Cantu"]},
+  "aunt jackie's":      {owner:"Aunt Jackie's — Namaste Laboratories (privately held)",tier:3,pe:false},
+
+  // ── ORS (OLIVE OIL) (Namaste Labs) ───────────────────────────
+  "ors":                {owner:"ORS (Olive Oil for Naturals) — Namaste Laboratories",tier:3,pe:false},
+
+  // ── CAROL'S DAUGHTER (L'Oréal) ───────────────────────────────
+  "carols daughter":    {owner:"Carol's Daughter — L'Oréal (acquired 2014)",tier:1,pe:false,womenFounded:true,
+                          note:"Founded by Lisa Price in her Brooklyn kitchen in 1993. Acquired by L'Oréal in 2014. A beloved Black woman-founded brand now corporate-owned.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Taliah Waajid"]},
+  "carol's daughter":   {owner:"Carol's Daughter — L'Oréal (acquired 2014)",tier:1,pe:false,womenFounded:true},
+
+  // ── CURL JUNKIE (Black woman-owned indie) ────────────────────
+  "curl junkie":        {owner:"Curl Junkie — Black woman-owned, independently owned (Marsha Coulton)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by licensed cosmetologist Marsha Coulton. Black woman-owned, independently operated. Products for every curl texture.",
+                          alternatives:["Camille Rose","Kinky Curly","Oyin Handmade"]},
+
+  // ── HYDRATHERMA NATURALS (Black woman-owned) ─────────────────
+  "hydratherma naturals":{owner:"HydraTherma Naturals — Black woman-owned, independently operated",tier:5,pe:false,indie:true,womenOwned:true,
+                          alternatives:["Camille Rose","Eden Bodyworks","Curl Junkie"]},
+
+  // ── JESSICURL (independently owned) ─────────────────────────
+  "jessicurl":          {owner:"Jessicurl — independently owned, founder-operated",tier:4,pe:false,indie:true,
+                          note:"Small independent curly hair care brand. Founder-operated. No corporate parent identified.",
+                          alternatives:["Ouidad","Rizos Curls","Curl Junkie"]},
+
+  // ── BOUNCE CURL (independently owned) ────────────────────────
+  "bounce curl":        {owner:"Bounce Curl — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent curly hair care brand. No corporate parent or PE investors identified.",
+                          alternatives:["Curlsmith","Rizos Curls","Jessicurl"]},
+
+  // ── NATURALL CLUB (Black woman-owned) ────────────────────────
+  "naturall club":      {owner:"NaturAll Club — Black woman-founded, independently owned (Muhga Eltigani)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Muhga Eltigani. Refrigerated, kitchen-made natural hair products. Black woman-owned and independently operated.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Oyin Handmade"]},
+
+  // ── EDEN BODYWORKS already in DB ─────────────────────────────
+
+  // ── PURE WONDER / TRUE BY HAIR SCIENCE (independently owned) ──
+  "halo couture extensions":{owner:"HaloCouture Extensions — L Catterton PE (via Beauty Industry Group)",tier:0,pe:true},
+
+  // ── GREAT LENGTHS already in DB ──────────────────────────────
+
+  // ── BABE HAIR EXTENSIONS (independently owned) ────────────────
+  "babe hair":          {owner:"Babe Hair Extensions — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent professional hair extension brand. No corporate parent or PE investors identified.",
+                          alternatives:["Drop Dead Extensions","Mourning Hair","DreamCatchers"]},
+  "babe extensions":    {owner:"Babe Hair Extensions — independently owned",tier:4,pe:false,indie:true},
+
+  // ── HOTHEADS EXTENSIONS (independently owned) ────────────────
+  "hotheads":           {owner:"Hotheads Hair Extensions — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent professional tape-in extension brand. No corporate parent identified.",
+                          alternatives:["Drop Dead Extensions","Babe Hair","DreamCatchers"]},
+
+  // ── EASIHAIR PRO (independently owned) ───────────────────────
+  "easihair pro":       {owner:"easihair pro — independently owned professional extensions",tier:4,pe:false,indie:true,
+                          alternatives:["Drop Dead Extensions","Babe Hair","Hotheads"]},
+
+  // ── HAIRTALK already in DB ────────────────────────────────────
+
+  // ── KENRA PLATINUM SILKENING MIST (Henkel) ────────────────────
+  "silkening mist":     {owner:"Kenra Professional — Henkel AG (publicly traded)",tier:1,pe:false},
+
+  // ── WELLA PROFESSIONALS INVIGO (KKR) ─────────────────────────
+  "invigo":             {owner:"Wella Professionals INVIGO — KKR investor-owned",tier:0,pe:true},
+  "enrich":             {owner:"Wella Professionals — KKR investor-owned",tier:0,pe:true},
+
+  // ── MANIC PANIC already in DB ────────────────────────────────
+
+  // ── LIVEDIN COLOR (independently owned) ──────────────────────
+  "livedin color":      {owner:"Lively Hair Color — independently owned",tier:4,pe:false,indie:true,
+                          alternatives:["Arctic Fox","Manic Panic","Celeb Luxury"]},
+
+  // ── OVERTONE already corrected (Henkel 2022) ─────────────────
+
+  // ── KRISTIN ESS HAIR (Sally Beauty) ─────────────────────────
+  "kristin ess":        {owner:"Kristin Ess Hair — Sally Beauty Holdings (NYSE: SBH)",tier:1,pe:false,
+                          note:"Celebrity hairstylist Kristin Ess brand sold exclusively through Target and developed in partnership with Sally Beauty Holdings.",
+                          alternatives:["Davines","Surface Hair","Maria Nila"]},
+  "kristin ess hair":   {owner:"Kristin Ess Hair — Sally Beauty Holdings",tier:1,pe:false},
+
+  // ── PATTERN BEAUTY already in DB (VC-backed) ─────────────────
+
+  // ── CECRED already in DB (Beyoncé, unclear) ───────────────────
+
+  // ── ANOMALY HAIRCARE (Priyanka Chopra — no funding) ──────────
+  "anomaly":            {owner:"Anomaly Haircare — founded by Priyanka Chopra Jonas, no funding disclosed",tier:4,pe:false,indie:true,
+                          note:"Founded by Priyanka Chopra Jonas. No PE funding disclosed. Independently operated, affordable sustainable formulas.",
+                          alternatives:["Davines","Maria Nila","Surface Hair"]},
+
+  // ── BREAD BEAUTY already in DB (L'Oréal acquired 2024) ────────
+
+  // ── SLMD SKINCARE / NOT HAIR (skip) ──────────────────────────
+
+  // ── COLOR DEPOSITING / SEMI-PERMANENT BRANDS ──────────────────
+  "overtone":           {owner:"oVertone — Henkel AG (acquired 2022)",tier:1,pe:false,indie:false,
+                          note:"Was indie and popular. Acquired by Henkel in 2022.",
+                          alternatives:["Arctic Fox","Manic Panic","Celeb Luxury"]},
+
+  // ── SCHWARZKOPF COLOR ULTIME (Henkel consumer) ───────────────
+  "color ultime":       {owner:"Color Ultime — Henkel AG consumer brand",tier:1,pe:false},
+
+  // ── GARNIER FRUCTIS already covered ──────────────────────────
+
+  // ── TRESEMME already covered ─────────────────────────────────
+
+  // ── LOREAL ELVIVE / TOTAL REPAIR (L'Oréal consumer) ──────────
+  "elvive":             {owner:"L'Oréal Elvive / EverPure — L'Oréal consumer division",tier:1,pe:false},
+  "everpure":           {owner:"L'Oréal EverPure — L'Oréal consumer division",tier:1,pe:false},
+
+  // ── DOVE INTENSE REPAIR (Unilever) ───────────────────────────
+  "dove intense repair":{owner:"Dove — Unilever (NYSE: UL)",tier:1,pe:false},
+  "dove hair":          {owner:"Dove — Unilever (NYSE: UL)",tier:1,pe:false},
+
+  // ── SUAVE PROFESSIONALS (Unilever — sold to Yellow Wood) ──────
+  "suave professionals":{owner:"Suave Professionals — Yellow Wood Partners (PE, acquired from Unilever 2023)",tier:0,pe:true,
+                          note:"Unilever sold Suave to Yellow Wood Partners (PE) in 2023 as part of the Elida Beauty divestiture.",
+                          alternatives:["Davines","Surface Hair","Paul Mitchell"]},
+  "suave":              {owner:"Suave — Yellow Wood Partners (PE, acquired from Unilever 2023)",tier:0,pe:true},
+
+  // ── ALBERTO VO5 (HRB Brands / Sodalis — PE) ──────────────────
+  "alberto vo5":        {owner:"Alberto VO5 — HRB Brands / Sodalis Group (PE-owned)",tier:0,pe:true,
+                          note:"Multiple PE ownership changes. Currently under Sodalis Group (acquired HRB Brands 2024). Investor-owned.",
+                          alternatives:["Davines","Paul Mitchell","Surface Hair"]},
+  "vo5":                {owner:"Alberto VO5 — HRB Brands / Sodalis Group (PE-owned)",tier:0,pe:true},
+
+  // ── RAVE HAIR SPRAY (HRB Brands — PE) ────────────────────────
+  "rave":               {owner:"Rave Hair Spray — HRB Brands / Sodalis Group (PE-owned)",tier:0,pe:true},
+
+  // ── WHITE RAIN (HRB Brands — PE) ─────────────────────────────
+  "white rain":         {owner:"White Rain — HRB Brands / Sodalis Group (PE-owned)",tier:0,pe:true},
+
+  // ── INFUSIUM already covered (Helen of Troy) ──────────────────
+
+  // ── VIDAL SASSOON already covered ────────────────────────────
+
+  // ── BRUT (HRB Brands) ─────────────────────────────────────────
+  "brut":               {owner:"Brut — HRB Brands / Sodalis Group (PE-owned)",tier:0,pe:true},
+
+  // ── PERT PLUS (HRB Brands) ───────────────────────────────────
+  "pert":               {owner:"Pert Plus — HRB Brands / Sodalis Group (PE-owned)",tier:0,pe:true},
+  "pert plus":          {owner:"Pert Plus — HRB Brands / Sodalis Group (PE-owned)",tier:0,pe:true},
+
+  // ── SEXY HAIR already covered (Henkel) ────────────────────────
+
+  // ── AG HAIR already added above ──────────────────────────────
+
+  // ── BIOSILK (Farouk Systems — indie) ─────────────────────────
+  "biosilk":            {owner:"BioSilk — Farouk Systems (independently owned)",tier:4,pe:false,indie:true,
+                          note:"Silk Therapy brand under Farouk Systems. Independently owned by Farouk Shami since 1986. No corporate parent.",
+                          alternatives:["Davines","Paul Mitchell","Surface Hair"]},
+
+  // ── FAROUK CHI already in DB ─────────────────────────────────
+
+  // ── ISOPLUS (Luster Products — Black-owned) ───────────────────
+  "isoplus":            {owner:"Isoplus — Luster Products Inc. (Black-owned, privately held)",tier:4,pe:false,indie:true,
+                          note:"Luster Products is a Black-owned privately held company. No PE or corporate parent identified.",
+                          alternatives:["Design Essentials","Avlon","Camille Rose"]},
+  "luster products":    {owner:"Luster Products Inc. — Black-owned, privately held",tier:4,pe:false,indie:true},
+  "luster pink":        {owner:"Luster's Pink — Luster Products Inc. (Black-owned, privately held)",tier:4,pe:false,indie:true},
+
+  // ── AFRICAN PRIDE (Strength of Nature — Revlon) ──────────────
+  "african pride":      {owner:"African Pride — Strength of Nature (complex post-Revlon ownership)",tier:2,pe:false,
+                          note:"Part of the Strength of Nature portfolio, which has complex ownership following Revlon corporate changes.",
+                          alternatives:["Design Essentials","Avlon","Luster Products"]},
+
+  // ── CREME OF NATURE already covered (Unilever via Sundial) ────
+
+  // ── ORGANIX / OGX (Johnson & Johnson / Vogue International) ──
+  "ogx":                {owner:"OGX — Vogue International / Johnson & Johnson acquired 2016 (NYSE: JNJ)",tier:1,pe:false,
+                          note:"OGX (Organix) was acquired by Johnson & Johnson subsidiary in 2016. Now under Johnson & Johnson corporate umbrella.",
+                          alternatives:["Camille Rose","Davines","Surface Hair"]},
+  "organix":            {owner:"OGX (Organix) — Johnson & Johnson (NYSE: JNJ)",tier:1,pe:false},
+
+  // ── PANTENE PRO-V (P&G) already covered ───────────────────────
+
+  // ── HEAD AND SHOULDERS (P&G) already covered ──────────────────
+
+  // ── HERBAL ESSENCES (P&G) already covered ─────────────────────
+
+  // ── REJOICE / VIDAL SASSOON SHAMPOO (P&G) ────────────────────
+  "rejoice":            {owner:"Rejoice — Procter & Gamble (NYSE: PG)",tier:1,pe:false},
+
+  // ── AUSSIE (P&G) ──────────────────────────────────────────────
+  "aussie":             {owner:"Aussie — Procter & Gamble (NYSE: PG)",tier:1,pe:false,
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+
+  // ── FEKKAI ALREADY IN DB (L Catterton PE) ─────────────────────
+
+  // ── MACADAMIA PROFESSIONAL already in DB ──────────────────────
+
+  // ── SUNSILK (Unilever) ────────────────────────────────────────
+  "sunsilk":            {owner:"Sunsilk — Unilever (NYSE: UL)",tier:1,pe:false},
+  "sedal":              {owner:"Sedal — Unilever (NYSE: UL)",tier:1,pe:false},
+
+  // ── CLEAR SCALP & HAIR (Unilever) ────────────────────────────
+  "clear scalp":        {owner:"Clear Scalp & Hair — Unilever (NYSE: UL)",tier:1,pe:false},
+
+  // ── ST. TROPICA (independently owned, woman-founded) ─────────
+  "st tropica":         {owner:"St. Tropica — independently owned, woman-founded",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Woman-founded hair care brand focused on natural ingredients. Independently owned, no corporate parent.",
+                          alternatives:["Davines","Gisou","Surface Hair"]},
+
+  // ── GROW GORGEOUS (Findus / Revive) ──────────────────────────
+  "grow gorgeous":      {owner:"Grow Gorgeous — THG Beauty (UK publicly traded)",tier:1,pe:false,
+                          note:"Part of THG Beauty (The Hut Group), a publicly traded UK ecommerce company.",
+                          alternatives:["Vegamour","Davines","Surface Hair"]},
+
+  // ── PHILIP KINGSLEY (independently owned, UK) ─────────────────
+  "philip kingsley":    {owner:"Philip Kingsley — independently owned (Kingsley family, UK)",tier:4,pe:false,indie:true,
+                          note:"Founded by trichologist Philip Kingsley in 1954. Still family-owned and operated. No PE or corporate parent identified. London-based.",
+                          alternatives:["Davines","Maria Nila","Surface Hair"]},
+
+  // ── CHRISTOPHE ROBIN (L'Oréal) ───────────────────────────────
+  "christophe robin":   {owner:"Christophe Robin — L'Oréal (acquired 2019)",tier:1,pe:false,
+                          note:"Luxury scalp and hair care brand acquired by L'Oréal in 2019. Now fully corporate-owned.",
+                          alternatives:["Philip Kingsley","Davines","Maria Nila"]},
+
+  // ── KÉRASTASE ALREADY IN DB ───────────────────────────────────
+
+  // ── OLAPLEX ALREADY IN DB (public, NASDAQ) ────────────────────
+
+  // ── BONDI BOOST (independently owned, Australia) ──────────────
+  "bondi boost":        {owner:"Bondi Boost — independently owned, Australia",tier:4,pe:false,indie:true,
+                          note:"Australian independent hair care brand focused on hair growth. No corporate parent or PE investors identified.",
+                          alternatives:["Vegamour","Davines","Surface Hair"]},
+
+  // ── HAIRBURST (independently owned, UK) ──────────────────────
+  "hairburst":          {owner:"Hairburst — independently owned, UK",tier:4,pe:false,indie:true,
+                          note:"UK independent hair growth and wellness brand. No corporate parent identified.",
+                          alternatives:["Vegamour","Bondi Boost","Davines"]},
+
+  // ── MARC ANTHONY (independently owned) ───────────────────────
+  "marc anthony":       {owner:"Marc Anthony True Professional — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent professional hair care brand. No corporate parent or PE investors identified. Widely distributed.",
+                          alternatives:["Davines","Paul Mitchell","Surface Hair"]},
+  "marc anthony professional":{owner:"Marc Anthony True Professional — independently owned",tier:4,pe:false,indie:true},
+
+  // ── SUNFLOWER HAIR (independently owned) ─────────────────────
+  "sunflower hair":     {owner:"Sunflower Hair — independently owned professional brand",tier:4,pe:false,indie:true,
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+
+  // ── NEUMA HAIR (independently owned) ─────────────────────────
+  "neuma":              {owner:"Neuma Hair — independently owned sustainable professional brand",tier:4,pe:false,indie:true,
+                          note:"Independent sustainable professional hair care brand. B-Corp certified. No corporate parent identified.",
+                          alternatives:["Davines","Surface Hair","Oway"]},
+
+  // ── INNERSENSE ORGANIC BEAUTY (independently owned) ──────────
+  "innersense":         {owner:"Innersense Organic Beauty — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent organic professional hair care brand. No PE or corporate parent identified. Clean formulas.",
+                          alternatives:["Davines","Oway","Surface Hair"]},
+  "innersense organic": {owner:"Innersense Organic Beauty — independently owned",tier:4,pe:false,indie:true},
+
+  // ── RAHUA (independently owned) ──────────────────────────────
+  "rahua":              {owner:"Rahua — independently owned (Anna Ayers & Fabian Lliguin)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Anna Ayers and Fabian Lliguin. Woman-founded, Amazonian ingredients, independently owned. No corporate parent.",
+                          alternatives:["Davines","Oway","Surface Hair"]},
+
+  // ── VERB GHOST already covered (Helen of Troy via Verb) ───────
+
+  // ── GIOVANNI COSMETICS (independently owned, Italy) ───────────
+  "giovanni":           {owner:"Giovanni Cosmetics — independently owned, Italian-American",tier:4,pe:false,indie:true,
+                          note:"Independent professional and consumer hair care brand. No corporate parent or PE investors identified. Clean, natural formulas.",
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+  "giovanni cosmetics": {owner:"Giovanni Cosmetics — independently owned",tier:4,pe:false,indie:true},
+
+  // ── YES TO (PE — Tengram Capital) ────────────────────────────
+  "yes to":             {owner:"Yes To — Tengram Capital Partners (PE-backed)",tier:0,pe:true,
+                          alternatives:["Giovanni","Davines","Surface Hair"]},
+
+  // ── OGX already covered (J&J) ────────────────────────────────
+
+  // ── SHEA RADIANCE (independently owned, Black-owned) ──────────
+  "shea radiance":      {owner:"Shea Radiance — Black woman-owned, independently operated",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Black woman-owned natural hair and body care brand. Independently operated, no corporate parent.",
+                          alternatives:["SheaMoisture","Camille Rose","Eden Bodyworks"]},
+
+  // ── KINKY-CURLY already covered ──────────────────────────────
+
+  // ── AS I AM already covered (PDC Brands) ─────────────────────
+
+  // ── THE MANE CHOICE (Black woman-owned) ──────────────────────
+  "the mane choice":    {owner:"The Mane Choice — Black woman-founded (Dr. Courtney D. Reid-Grimes)",tier:4,pe:false,indie:true,womenFounded:true,
+                          note:"Founded by Dr. Courtney D. Reid-Grimes. Hair growth-focused brand. Black woman-founded and still independently operated.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Design Essentials"]},
+  "mane choice":        {owner:"The Mane Choice — Black woman-founded, independently owned",tier:4,pe:false,indie:true,womenFounded:true},
+
+  // ── SHEA BUTTER / AFRICAN BLACK SOAP (Nubian Heritage / Sundial) ─
+  "nubian heritage":    {owner:"Nubian Heritage — Unilever (via Sundial Brands acquisition 2017)",tier:1,pe:false,
+                          note:"Founded by Richelieu Dennis. Part of Sundial Brands, which was acquired by Unilever in 2017.",
+                          alternatives:["SheaMoisture","Camille Rose","Eden Bodyworks"]},
+
+  // ── MAUI MOISTURE already covered (Church & Dwight) ───────────
+
+  // ── LOVE BEAUTY AND PLANET already covered (Unilever) ─────────
+
+  // ── BRIOGEO already covered (Henkel 2023) ─────────────────────
+
+  // ── OUAI already covered (P&G 2022) ──────────────────────────
+
+  // ── TARTE HAIR (Tarte Cosmetics — L Catterton PE) ────────────
+  "tarte hair":         {owner:"Tarte — L Catterton (PE-backed)",tier:0,pe:true,
+                          note:"Tarte Cosmetics has received PE investment from L Catterton. Any Tarte hair products fall under this ownership.",
+                          alternatives:["Davines","Surface Hair","Maria Nila"]},
+
+  // ── UNITE HAIR already covered (L Catterton PE) ───────────────
+
+  // ── AMIKA (Bain Capital PE) already covered ───────────────────
+
+  // ── DPR-BARCELONA (independently owned, Spain) ───────────────
+  "dpr barcelona":      {owner:"dpr-barcelona — independently owned, Spain",tier:4,pe:false,indie:true,
+                          note:"Spanish independent professional color and care brand. No corporate parent identified.",
+                          alternatives:["Framesi","Oway","Davines"]},
+
+  // ── LONDA PROFESSIONAL (KKR/Wella) ───────────────────────────
+  "londa":              {owner:"Londa Professional — KKR investor-owned (Wella Company)",tier:0,pe:true},
+  "londa professional": {owner:"Londa Professional — KKR investor-owned (Wella Company)",tier:0,pe:true},
+
+  // ── SASSOON PROFESSIONAL (KKR/Wella) ─────────────────────────
+  "sassoon professional":{owner:"Sassoon Professional — KKR investor-owned (Wella Company)",tier:0,pe:true},
+  "vidal sassoon professional":{owner:"Sassoon Professional — KKR investor-owned (Wella Company)",tier:0,pe:true},
+
+  // ── COTA BY ICON (independently owned) ───────────────────────
+  "cota":               {owner:"Cota by ICON — independently owned professional brand",tier:4,pe:false,indie:true,
+                          note:"Independent professional hair care brand. No corporate parent identified.",
+                          alternatives:["Davines","Surface Hair","Paul Mitchell"]},
+
+  // ── RESTYLE SALON ESSENTIALS (Sally Beauty house brand) ───────
+  "restyle":            {owner:"Restyle — Sally Beauty Holdings (NYSE: SBH) house brand",tier:1,pe:false},
+
+  // ── WELLA EIMI ALREADY COVERED ────────────────────────────────
+
+  // ── BIOMEGA (independently owned) ────────────────────────────
+  "biomega":            {owner:"Biomega — independently owned professional brand",tier:4,pe:false,indie:true,
+                          note:"Independent sustainable professional hair care brand. No corporate parent identified.",
+                          alternatives:["Davines","Oway","Surface Hair"]},
+
+  // ── SEXY HAIR CONCEPTS already covered (Henkel) ───────────────
+
+  // ── KENRA SMOOTHING (Henkel) ──────────────────────────────────
+  "kenra smoothing":    {owner:"Kenra Professional — Henkel AG (publicly traded)",tier:1,pe:false},
+
+  // ── PERM / RELAXER BRANDS ─────────────────────────────────────
+
+  // ── MIZANI (L'Oréal) already covered ──────────────────────────
+
+  // ── AFFIRM FIBER GUARD (Avlon Industries — Black-owned) ───────
+  "affirm":             {owner:"Affirm Fiber Guard — Avlon Industries (Black-owned, privately held)",tier:4,pe:false,indie:true},
+
+  // ── OLIVE OIL FOR NATURALS (Namaste Labs) ────────────────────
+  "olive oil for naturals":{owner:"Olive Oil for Naturals — Namaste Laboratories",tier:3,pe:false},
+
+  // ── ORGANICS (already in context of Soft Sheen) ───────────────
+
+  // ── TIGI ROCKAHOLIC (Unilever via TIGI) ──────────────────────
+  "rockaholic":         {owner:"TIGI Rockaholic — Unilever (via TIGI acquisition 2009)",tier:1,pe:false},
+  "tigi catwalk":       {owner:"TIGI Catwalk — Unilever (via TIGI acquisition 2009)",tier:1,pe:false},
+
+  // ── BIOTERA (Chattem / Sanofi) ────────────────────────────────
+  "biotera":            {owner:"Biotera — Chattem / Sanofi (publicly traded)",tier:1,pe:false,
+                          note:"Biotera is distributed by Chattem, a subsidiary of French pharmaceutical giant Sanofi.",
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+
+
+  // ═══════════════════════════════════════════════════════════
+  // FINAL BATCH — REACHING 500+
+  // ═══════════════════════════════════════════════════════════
+
+  // ── HERBATINT (independently owned, Italy) ───────────────────
+  "herbatint":          {owner:"Herbatint — independently owned, Italy (Indola/Brelil parent, verify)",tier:3,pe:false,
+                          note:"Italian professional color brand. Family/private ownership structure. No PE identified.",
+                          alternatives:["Oway","Framesi","Davines"]},
+
+  // ── NATURIGIN (independently owned, Denmark) ─────────────────
+  "naturigin":          {owner:"Naturigin — independently owned, Denmark",tier:4,pe:false,indie:true,
+                          note:"Danish independent organic hair color brand. No corporate parent or PE investors identified.",
+                          alternatives:["Oway","Framesi","Davines"]},
+
+  // ── EUFORA INTERNATIONAL (independently owned) ───────────────
+  "eufora":             {owner:"Eufora International — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent professional hair care brand based in San Diego. No corporate parent identified.",
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+
+  // ── CRAMER (independently owned, Netherlands) ─────────────────
+  "cramer":             {owner:"Cramer — independently owned, Netherlands",tier:4,pe:false,indie:true,
+                          alternatives:["Olivia Garden","Framar","Fromm"]},
+
+  // ── BALMAIN PARIS HAIR COUTURE (independently owned) ─────────
+  "balmain hair":       {owner:"Balmain Hair Couture — independently owned (Balmain family license)",tier:3,pe:false,
+                          note:"Licensed use of the Balmain name for a hair extensions and care brand. Privately operated, separate from Balmain fashion house.",
+                          alternatives:["Great Lengths","Hairtalk","Drop Dead Extensions"]},
+
+  // ── HAARVITAL FALENGREEN (independently owned, Norway) ───────
+  "falengreen":         {owner:"Falengreen — independently owned, Norway",tier:4,pe:false,indie:true,
+                          note:"Norwegian independent professional hair care brand. No corporate parent or PE investors identified.",
+                          alternatives:["Davines","Maria Nila","Surface Hair"]},
+
+  // ── MINERAL FUSION (independently owned) ─────────────────────
+  "mineral fusion":     {owner:"Mineral Fusion — independently owned",tier:4,pe:false,indie:true,
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+
+  // ── REVIVE (independently owned) ─────────────────────────────
+  "revive hair":        {owner:"Revive Professional — independently owned hair care",tier:4,pe:false,indie:true,
+                          alternatives:["Davines","Surface Hair","Paul Mitchell"]},
+
+  // ── JOUVIANCE (independently owned, Canada) ───────────────────
+  "jouviance":          {owner:"Jouviance — independently owned, Canada",tier:4,pe:false,indie:true,
+                          alternatives:["Maria Nila","Davines","Surface Hair"]},
+
+  // ── HAIR RULES (Black-owned, independently) ──────────────────
+  "hair rules":         {owner:"Hair Rules — independently owned, Black-founded",tier:4,pe:false,indie:true,
+                          note:"Founded by Anthony Dickey, celeb stylist and natural hair expert. Black-founded professional brand.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Design Essentials"]},
+
+  // ── MIELLE ORGANICS already corrected (P&G) ───────────────────
+
+  // ── EDEN BODYWORKS already in DB ─────────────────────────────
+
+  // ── HAIRFIN (independently owned) ────────────────────────────
+  "hairfin":            {owner:"Hairfin — independently owned professional brand",tier:4,pe:false,indie:true,
+                          alternatives:["Olivia Garden","Framar","Fromm"]},
+
+  // ── SALON SELECTIVES (Unilever — discontinued) ───────────────
+  "salon selectives":   {owner:"Salon Selectives — Unilever (discontinued/sold, complex history)",tier:2,pe:false,
+                          alternatives:["Davines","Surface Hair","Paul Mitchell"]},
+
+  // ── PANTENE PRO-V REPAIR & PROTECT (P&G) ──────────────────────
+  "pantene gold series":{owner:"Pantene Gold Series — Procter & Gamble (NYSE: PG)",tier:1,pe:false},
+
+  // ── BOUNCE (Procter & Gamble) ────────────────────────────────
+  "bounce":             {owner:"Bounce — Procter & Gamble (NYSE: PG)",tier:1,pe:false},
+
+  // ── CLAIROL NICE'N EASY (Wella/KKR) ──────────────────────────
+  "nice n easy":        {owner:"Nice'n Easy — Wella Company / KKR (investor-owned)",tier:0,pe:true},
+  "nice'n easy":        {owner:"Nice'n Easy — Wella Company / KKR (investor-owned)",tier:0,pe:true},
+  "clairol color":      {owner:"Clairol — Wella Company / KKR (investor-owned)",tier:0,pe:true},
+
+  // ── GOLDWELL TOPCHIC (Kao) ───────────────────────────────────
+  "topchic":            {owner:"Goldwell Topchic — Kao Corporation (TYO: 4452)",tier:1,pe:false},
+  "goldwell colorance": {owner:"Goldwell Colorance — Kao Corporation (TYO: 4452)",tier:1,pe:false},
+  "goldwell dualsenses":{owner:"Goldwell Dualsenses — Kao Corporation (TYO: 4452)",tier:1,pe:false},
+
+  // ── MATRIX SOCOLOR (L'Oréal) ─────────────────────────────────
+  "socolor":            {owner:"Matrix SoColor — L'Oréal Professional Products",tier:1,pe:false},
+  "matrix socolor":     {owner:"Matrix SoColor — L'Oréal Professional Products",tier:1,pe:false},
+
+  // ── REDKEN CHROMATICS (L'Oréal) ──────────────────────────────
+  "chromatics":         {owner:"Redken Chromatics — L'Oréal Professional Products",tier:1,pe:false},
+
+  // ── SCHWARZKOPF FIBREPLEX (Henkel) ───────────────────────────
+  "fibreplex":          {owner:"Schwarzkopf Fibreplex — Henkel AG",tier:1,pe:false},
+  "olaplex bond multiplier equivalent":  {owner:"Schwarzkopf — Henkel AG",tier:1,pe:false},
+
+  // ── WELLA FUSION (KKR) ───────────────────────────────────────
+  "wella fusion":       {owner:"Wella Fusion — KKR investor-owned (Wella Company)",tier:0,pe:true},
+  "wella elements":     {owner:"Wella Elements — KKR investor-owned (Wella Company)",tier:0,pe:true},
+  "wella nutri enrich": {owner:"Wella Nutri-Enrich — KKR investor-owned (Wella Company)",tier:0,pe:true},
+
+  // ── GLOSS GENIUS (L Catterton — salon software) ───────────────
+  "glossgenius":        {owner:"GlossGenius — L Catterton PE-backed",tier:0,pe:true,
+                          note:"Salon booking and management software backed by L Catterton PE since 2023. Not hair products but a major salon business tool.",
+                          alternatives:["Square Appointments","Vagaro","Booksy"]},
+
+  // ── VAGARO (independently owned, Frederic Guitton) ───────────
+  "vagaro":             {owner:"Vagaro — independently owned (Frederic Guitton, founder-CEO)",tier:4,pe:false,indie:true,
+                          note:"Salon and spa management software. Independently owned, founder-led by Frederic Guitton. No PE backing identified.",
+                          alternatives:["GlossGenius","Square","Booksy"]},
+
+  // ── SHORTCUTS SOFTWARE (acquired by Timely) ───────────────────
+  "shortcuts":          {owner:"Shortcuts Software — Timely (PE-backed)",tier:0,pe:true,
+                          note:"Salon management software company acquired. Complex corporate ownership.",
+                          alternatives:["Vagaro","Square","Booksy"]},
+
+  // ── AVEDA already covered (Estée Lauder) ──────────────────────
+
+  // ── LA BIOSTHETIQUE (independently owned, France) ─────────────
+  "la biosthetique":    {owner:"La Biosthetique — independently owned, France (founded 1948)",tier:4,pe:false,indie:true,
+                          note:"French independent professional hair and skin care brand since 1948. No corporate parent or PE investors identified.",
+                          alternatives:["Davines","Keune","Alfaparf"]},
+  "la biosthétique":    {owner:"La Biosthetique — independently owned, France",tier:4,pe:false,indie:true},
+
+  // ── LEON DE CASTILLO (independently owned, Spain) ─────────────
+  "leon de castillo":   {owner:"Leon de Castillo — independently owned, Spain",tier:4,pe:false,indie:true,
+                          note:"Spanish independent professional hair color brand. No corporate parent identified.",
+                          alternatives:["Framesi","Oway","Davines"]},
+
+  // ── COLORPROOF (independently owned) ─────────────────────────
+  "colorproof":         {owner:"ColorProof — independently owned professional brand",tier:4,pe:false,indie:true,
+                          note:"Independent professional color-protecting hair care brand. No corporate parent identified.",
+                          alternatives:["Pureology","Surface Hair","Davines"]},
+
+  // ── BOLDIFY (independently owned) ────────────────────────────
+  "boldify":            {owner:"Boldify — independently owned",tier:4,pe:false,indie:true,
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+
+  // ── RENPURE (independently owned) ────────────────────────────
+  "renpure":            {owner:"Renpure — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent plant-based hair care brand. No corporate parent identified.",
+                          alternatives:["Giovanni","Davines","Surface Hair"]},
+
+  // ── BURT'S BEES (Clorox) ────────────────────────────────────
+  "burts bees":         {owner:"Burt's Bees — Clorox Company (NYSE: CLX), acquired 2007",tier:1,pe:false,
+                          note:"Despite natural/indie branding, Burt's Bees is owned by Clorox, a publicly traded household products company.",
+                          alternatives:["Giovanni","Davines","Surface Hair"]},
+  "burt's bees":        {owner:"Burt's Bees — Clorox Company (NYSE: CLX)",tier:1,pe:false},
+
+  // ── DR. BRONNER'S (independently owned, family) ───────────────
+  "dr bronners":        {owner:"Dr. Bronner's — independently owned, All-One family business",tier:5,pe:false,indie:true,
+                          note:"Privately owned by the Bronner family. B-Corp certified, certified organic, fair trade. One of the great independent family businesses. No corporate parent.",
+                          alternatives:["Giovanni","Davines","Surface Hair"]},
+  "dr. bronner's":      {owner:"Dr. Bronner's — independently owned, All-One family business",tier:5,pe:false,indie:true},
+
+  // ── ACURE (independently owned, clean beauty) ────────────────
+  "acure":              {owner:"Acure — independently owned clean beauty brand",tier:4,pe:false,indie:true,
+                          note:"Independent clean beauty brand. No corporate parent or PE investors identified.",
+                          alternatives:["Davines","Giovanni","Surface Hair"]},
+
+  // ── JASON NATURAL (Hain Celestial) ───────────────────────────
+  "jason":              {owner:"Jason Natural — Hain Celestial Group (NASDAQ: HAIN)",tier:1,pe:false,
+                          note:"Natural products brand owned by publicly traded Hain Celestial Group.",
+                          alternatives:["Giovanni","Dr. Bronner's","Davines"]},
+  "jason natural":      {owner:"Jason Natural — Hain Celestial Group (NASDAQ: HAIN)",tier:1,pe:false},
+
+  // ── ALBA BOTANICA (Hain Celestial) ───────────────────────────
+  "alba botanica":      {owner:"Alba Botanica — Hain Celestial Group (NASDAQ: HAIN)",tier:1,pe:false},
+
+  // ── GIOVANNI HAIR CARE already added above ────────────────────
+
+  // ── SHIKAI (independently owned) ─────────────────────────────
+  "shikai":             {owner:"ShiKai — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent natural hair and body care brand. Family-owned and independently operated. No corporate parent.",
+                          alternatives:["Giovanni","Davines","Surface Hair"]},
+
+  // ── WELEDA (independently owned, biodynamic) ──────────────────
+  "weleda":             {owner:"Weleda — independently owned, biodynamic (Weleda AG, Switzerland)",tier:4,pe:false,indie:true,
+                          note:"Swiss independent biodynamic natural beauty company since 1921. Owned by the Anthroposophic movement. No PE or corporate parent.",
+                          alternatives:["Davines","Oway","Dr. Bronner's"]},
+
+  // ── ANDALOU NATURALS (Hain Celestial) ────────────────────────
+  "andalou naturals":   {owner:"Andalou Naturals — Hain Celestial Group (NASDAQ: HAIN)",tier:1,pe:false},
+
+  // ── JUICE BEAUTY (PE-backed) ─────────────────────────────────
+  "juice beauty":       {owner:"Juice Beauty — PE-backed investors",tier:0,pe:true,
+                          note:"Clean beauty brand with PE investor backing. Not independently owned.",
+                          alternatives:["Davines","Oway","Innersense"]},
+
+  // ── KENRA MOISTURE (Henkel) ───────────────────────────────────
+  "kenra moisturizing": {owner:"Kenra Professional — Henkel AG",tier:1,pe:false},
+
+  // ── ALTERNA BAMBOO (Unilever/Henkel) ─────────────────────────
+  "alterna bamboo":     {owner:"Alterna Bamboo — Henkel AG (acquired from Unilever/TSG 2014)",tier:1,pe:false},
+  "alterna caviar":     {owner:"Alterna Caviar — Henkel AG",tier:1,pe:false},
+
+  // ── LIVING PROOF PHD (Unilever) ──────────────────────────────
+  "living proof phd":   {owner:"Living Proof PhD — Unilever (NYSE: UL)",tier:1,pe:false},
+  "living proof full":  {owner:"Living Proof Full — Unilever (NYSE: UL)",tier:1,pe:false},
+
+  // ── PUREOLOGY HYDRATE (L'Oréal) ──────────────────────────────
+  "pureology hydrate":  {owner:"Pureology — L'Oréal Professional Products",tier:1,pe:false},
+  "pureology strength cure":{owner:"Pureology — L'Oréal Professional Products",tier:1,pe:false},
+
+  // ── REDKEN FRIZZ DISMISS (L'Oréal) ───────────────────────────
+  "frizz dismiss":      {owner:"Redken Frizz Dismiss — L'Oréal Professional Products",tier:1,pe:false},
+  "redken one united":  {owner:"Redken One United — L'Oréal Professional Products",tier:1,pe:false},
+
+  // ── MATRIX BRASS OFF (L'Oréal) ───────────────────────────────
+  "brass off":          {owner:"Matrix Brass Off — L'Oréal Professional Products",tier:1,pe:false},
+  "matrix mega sleek":  {owner:"Matrix Mega Sleek — L'Oréal Professional Products",tier:1,pe:false},
+
+  // ── JOICO MOISTURE RECOVERY (Henkel) ─────────────────────────
+  "joico moisture recovery":{owner:"Joico — Henkel AG",tier:1,pe:false},
+  "joico color balance": {owner:"Joico — Henkel AG",tier:1,pe:false},
+
+  // ── KENRA VOLUME (Henkel) ─────────────────────────────────────
+  "kenra volume":       {owner:"Kenra Professional Volume — Henkel AG",tier:1,pe:false},
+
+  // ── NEXXUS COLOR ASSURE (Unilever) ───────────────────────────
+  "nexxus color assure":{owner:"Nexxus Color Assure — Unilever (NYSE: UL)",tier:1,pe:false},
+  "nexxus therappe":    {owner:"Nexxus Therappe — Unilever (NYSE: UL)",tier:1,pe:false},
+
+  // ── TRESEMME KERATIN SMOOTH (Unilever) ───────────────────────
+  "tresemme keratin":   {owner:"TRESemmé Keratin Smooth — Unilever (NYSE: UL)",tier:1,pe:false},
+
+  // ── DOVE OXYGEN MOISTURE (Unilever) ──────────────────────────
+  "dove oxygen":        {owner:"Dove — Unilever (NYSE: UL)",tier:1,pe:false},
+
+  // ── SUKI SKINCARE / HAIR (independently owned) ────────────────
+  "suki":               {owner:"Suki Skincare — independently owned",tier:4,pe:false,indie:true,
+                          alternatives:["Davines","Innersense","Surface Hair"]},
+
+  // ── SWEET ALMOND OIL / WILD GROWTH (independently owned) ──────
+  "wild growth":        {owner:"Wild Growth Hair Oil — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent hair growth oil brand. No corporate parent identified.",
+                          alternatives:["Mielle Organics","Camille Rose","Eden Bodyworks"]},
+
+  // ── JAMAICAN MANGO & LIME (independently owned) ───────────────
+  "jamaican mango":     {owner:"Jamaican Mango & Lime — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent ethnic hair care brand. No corporate parent identified.",
+                          alternatives:["Design Essentials","Avlon","Luster Products"]},
+  "jamaican mango and lime":{owner:"Jamaican Mango & Lime — independently owned",tier:4,pe:false,indie:true},
+
+  // ── DARK AND LOVELY AU NATURALE (L'Oréal) ────────────────────
+  "dark and lovely au naturale":{owner:"Dark & Lovely Au Naturale — L'Oréal (SoftSheen-Carson)",tier:1,pe:false},
+
+  // ── MOTIONS HAIR (Alberto-Culver/Unilever) ────────────────────
+  "motions hair":       {owner:"Motions Professional — complex, previously Alberto-Culver/Unilever",tier:2,pe:false,
+                          note:"Textured hair brand with complex ownership history through Alberto-Culver and Unilever sales.",
+                          alternatives:["Design Essentials","Avlon","Camille Rose"]},
+
+  // ── WORLDS OF CURLS (independently owned) ────────────────────
+  "worlds of curls":    {owner:"World of Curls — independently owned",tier:4,pe:false,indie:true,
+                          alternatives:["Camille Rose","Curl Junkie","Ouidad"]},
+
+  // ── KINKY CURLY KNOT TODAY (Kinky Curly brand) ────────────────
+  "knot today":         {owner:"Kinky Curly (Knot Today) — independently owned",tier:4,pe:false,indie:true},
+
+  // ── ECO STYLER (Wella/KKR? — verify) ──────────────────────────
+  "eco styler":         {owner:"Ecoco / Eco Styler — independently owned",tier:4,pe:false,indie:true,
+                          note:"Eco Styler gel brand by Ecoco. Appears to be independently owned. No corporate parent identified.",
+                          alternatives:["Camille Rose","Ouidad","Jessicurl"]},
+  "eco gel":            {owner:"Eco Styler Gel — Ecoco, independently owned",tier:4,pe:false,indie:true},
+
+  // ── GOT2B (Henkel/Schwarzkopf) ───────────────────────────────
+  "got2b glued":        {owner:"got2b — Henkel AG Schwarzkopf consumer brand",tier:1,pe:false},
+
+  // ── AUSSIE MIRACLE MOIST (P&G) ───────────────────────────────
+  "aussie miracle":     {owner:"Aussie — Procter & Gamble (NYSE: PG)",tier:1,pe:false},
+
+  // ── JOICO DEFY DAMAGE (Henkel) ───────────────────────────────
+  "defy damage":        {owner:"Joico Defy Damage — Henkel AG",tier:1,pe:false},
+
+  // ── PRAVANA NEVO (Henkel) ─────────────────────────────────────
+  "pravana nevo":       {owner:"Pravana NEVO — Henkel AG (acquired 2018)",tier:1,pe:false},
+
+  // ── SEXY HAIR BIG SEXY (Henkel) ──────────────────────────────
+  "big sexy hair":      {owner:"Big Sexy Hair — Henkel AG (acquired 2014)",tier:1,pe:false},
+  "healthy sexy hair":  {owner:"Healthy Sexy Hair — Henkel AG",tier:1,pe:false},
+
+  // ── ALTERNA MY HAIR MY CANVAS (Henkel) ───────────────────────
+  "my hair my canvas":  {owner:"Alterna My Hair My Canvas — Henkel AG",tier:1,pe:false},
+
+  // ── BUMBLE AND BUMBLE SURF (L'Oréal) ────────────────────────
+  "bumble surf":        {owner:"Bumble and bumble Surf — L'Oréal (acquired 2007)",tier:1,pe:false},
+
+  // ── KERASTASE CHRONOLOGISTE (L'Oréal) ────────────────────────
+  "chronologiste":      {owner:"Kérastase Chronologiste — L'Oréal Professional Products",tier:1,pe:false},
+  "nutritive":          {owner:"Kérastase Nutritive — L'Oréal Professional Products",tier:1,pe:false},
+
+
+  // ═══════════════════════════════════════════════════════════
+  // NAIL BRANDS — FULLY VERIFIED
+  // ═══════════════════════════════════════════════════════════
+
+  // ── CND / CREATIVE NAIL DESIGN (Revlon Professional) ────────
+  "cnd":                {owner:"CND (Creative Nail Design) — Revlon Professional Brands",tier:2,pe:false,
+                          note:"Founded in 1979 in San Diego. Now part of Revlon Professional's portfolio. Revlon emerged from Chapter 11 bankruptcy in 2023, making ownership complex but still corporate.",
+                          alternatives:["Zoya","ORLY","Gelish"]},
+  "creative nail design":{owner:"CND — Revlon Professional Brands",tier:2,pe:false},
+  "cnd shellac":        {owner:"CND Shellac — Revlon Professional Brands",tier:2,pe:false},
+  "cnd vinylux":        {owner:"CND Vinylux — Revlon Professional Brands",tier:2,pe:false},
+
+  // ── ESSIE (L'Oréal) ──────────────────────────────────────────
+  "essie":              {owner:"Essie — L'Oréal (Euronext: OR, acquired 2010)",tier:1,pe:false,womenFounded:true,
+                          note:"Founded by Essie Weingarten in 1981. Acquired by L'Oréal in 2010. A woman-founded brand now fully corporate-owned.",
+                          alternatives:["Zoya","ORLY","Deborah Lippmann"]},
+  "essie gel couture":  {owner:"Essie Gel Couture — L'Oréal",tier:1,pe:false},
+
+  // ── SALLY HANSEN (Coty — NYSE: COTY) ─────────────────────────
+  "sally hansen":       {owner:"Sally Hansen — Coty Inc. (NYSE: COTY, acquired 2007 from Del Labs)",tier:1,pe:false,
+                          note:"Sally Hansen the woman founded the brand in the 1940s. Sold multiple times. Coty acquired it in 2007. Now part of a publicly traded beauty conglomerate.",
+                          alternatives:["Zoya","ORLY","Butter London"]},
+  "sally hansen miracle gel":{owner:"Sally Hansen — Coty Inc. (NYSE: COTY)",tier:1,pe:false},
+
+  // ── ZOYA (Art of Beauty — independently owned) ───────────────
+  "zoya":               {owner:"Zoya — Art of Beauty, Inc., independently owned (Zoya & Michael Reyzis)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded in 1986 by immigrant refugees Zoya and Michael Reyzis from the USSR. Woman co-founded and co-owned. Made in the USA. First toxin-free professional nail brand. Still fully independently owned.",
+                          alternatives:["ORLY","Deborah Lippmann","Butter London"]},
+  "art of beauty":      {owner:"Art of Beauty — independently owned (Zoya & Michael Reyzis)",tier:5,pe:false,indie:true,womenOwned:true},
+  "qtica":              {owner:"Qtica (Art of Beauty brand) — independently owned",tier:5,pe:false,indie:true},
+
+  // ── GELISH / HAND & NAIL HARMONY (independently owned) ───────
+  "gelish":             {owner:"Gelish — Hand & Nail Harmony, independently owned (founder Danny Haile, Brea CA)",tier:4,pe:false,indie:true,
+                          note:"Invented and owned by Danny Haile, who created the first brush-in-bottle gel polish in 2009. Independently owned, 300+ employees, sold in 80+ countries. No corporate parent.",
+                          alternatives:["CND Shellac","Zoya","ORLY"]},
+  "morgan taylor":      {owner:"Morgan Taylor — Hand & Nail Harmony, independently owned (Danny Haile)",tier:4,pe:false,indie:true,
+                          note:"Sister lacquer brand to Gelish, launched by Danny Haile and David Daniel. Independently owned through Nail Alliance North America.",
+                          alternatives:["Zoya","ORLY","Essie"]},
+  "hand and nail harmony":{owner:"Hand & Nail Harmony — independently owned (Danny Haile)",tier:4,pe:false,indie:true},
+  "nail harmony":       {owner:"Nail Alliance / Hand & Nail Harmony — independently owned",tier:4,pe:false,indie:true},
+
+  // ── ORLY (independently owned, family — Jeff Pink) ───────────
+  "orly":               {owner:"ORLY Beauty — family-owned since 1975, founder Jeff Pink (Los Angeles)",tier:4,pe:false,indie:true,
+                          note:"Founded by Jeff Pink in 1975. Invented the Original French Manicure. Family-owned and independently operated ever since. Made in Los Angeles. No corporate parent.",
+                          alternatives:["Zoya","Gelish","Deborah Lippmann"]},
+
+  // ── CHINA GLAZE (American International Industries — large private) ──
+  "china glaze":        {owner:"China Glaze — American International Industries (AII), large privately held",tier:3,pe:false,
+                          note:"Acquired by American International Industries (AII) in 2005. AII is a large private company owning 60+ beauty brands including Ardell and EzFlow. Not PE-backed but not indie.",
+                          alternatives:["Zoya","ORLY","Gelish"]},
+
+  // ── AMERICAN INTERNATIONAL INDUSTRIES + brands ────────────────
+  "ardell":             {owner:"Ardell — American International Industries (AII), large privately held",tier:3,pe:false,
+                          note:"World's best-selling lash brand. Owned by AII since founding. Large privately held company.",
+                          alternatives:["Velour Lashes","House of Lashes","Kiss"]},
+  "ezflow":             {owner:"EzFlow — American International Industries (AII)",tier:3,pe:false},
+  "ibd":                {owner:"IBD (International Beauty Design) — American International Industries (AII)",tier:3,pe:false},
+  "supernail":          {owner:"SuperNail — American International Industries (AII)",tier:3,pe:false},
+  "gigi wax":           {owner:"GiGi — American International Industries (AII)",tier:3,pe:false},
+  "seche vite":         {owner:"Seche Vite — American International Industries (AII)",tier:3,pe:false},
+  "nail tek":           {owner:"Nail Tek — American International Industries (AII)",tier:3,pe:false},
+
+  // ── DEBORAH LIPPMANN (independently owned) ───────────────────
+  "deborah lippmann":   {owner:"Deborah Lippmann — independently owned",tier:4,pe:false,indie:true,
+                          note:"Founded by celebrity manicurist Deborah Lippmann. Independent luxury nail brand. No corporate parent or PE investors identified.",
+                          alternatives:["Zoya","ORLY","Butter London"]},
+
+  // ── BUTTER LONDON (Helen of Troy) ────────────────────────────
+  "butter london":      {owner:"Butter London — Helen of Troy (NASDAQ: HELE)",tier:1,pe:false,
+                          note:"British nail brand acquired by Helen of Troy, the publicly traded consumer goods company that also owns Drybar, Vidal Sassoon tools, and OXO.",
+                          alternatives:["Zoya","ORLY","Deborah Lippmann"]},
+
+  // ── KIARA SKY (independently owned) ──────────────────────────
+  "kiara sky":          {owner:"Kiara Sky — independently owned professional nail brand",tier:4,pe:false,indie:true,
+                          note:"Independent professional nail supply brand for nail techs and DIYers. No corporate parent identified.",
+                          alternatives:["Gelish","ORLY","Zoya"]},
+
+  // ── OLIVE & JUNE (PE-backed) ─────────────────────────────────
+  "olive and june":     {owner:"Olive & June — investor-backed",tier:0,pe:true,
+                          note:"Fast-growing consumer nail brand that has received significant outside investment. Not independently owned.",
+                          alternatives:["Zoya","ORLY","Gelish"]},
+  "olive & june":       {owner:"Olive & June — investor-backed",tier:0,pe:true},
+
+  // ── JINSOON (independently owned, woman-founded) ─────────────
+  "jinsoon":            {owner:"JINsoon — independently owned, founded by Jin Soon Choi",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by celebrity manicurist Jin Soon Choi in 2012. Woman-owned, 10-free formulas, independently operated. No corporate parent.",
+                          alternatives:["Zoya","ORLY","Deborah Lippmann"]},
+  "jin soon":           {owner:"JINsoon — independently owned, woman-founded",tier:5,pe:false,indie:true,womenOwned:true},
+
+  // ── CIRQUE COLORS (independently owned) ──────────────────────
+  "cirque colors":      {owner:"Cirque Colors — independently owned",tier:4,pe:false,indie:true,
+                          note:"Small independent nail polish brand. No corporate parent or PE investors identified.",
+                          alternatives:["Zoya","ORLY","JINsoon"]},
+
+  // ── STATIC NAILS (independently owned) ───────────────────────
+  "static nails":       {owner:"Static Nails — independently owned",tier:4,pe:false,indie:true,
+                          alternatives:["Kiara Sky","Zoya","ORLY"]},
+
+  // ── MANIOLOGY (independently owned) ─────────────────────────
+  "maniology":          {owner:"Maniology — independently owned nail stamping brand",tier:4,pe:false,indie:true,
+                          note:"Independent nail art stamping brand. No corporate parent identified.",
+                          alternatives:["Zoya","Kiara Sky","ORLY"]},
+
+  // ── SUNDAYS NAIL (independently owned) ───────────────────────
+  "sundays nail":       {owner:"Sundays Nail — independently owned wellness nail brand",tier:4,pe:false,indie:true,
+                          note:"Wellness-focused independent nail brand with 10-free formulas. No corporate parent identified.",
+                          alternatives:["Zoya","JINsoon","ORLY"]},
+  "sundays":            {owner:"Sundays Nail Studio — independently owned",tier:4,pe:false,indie:true},
+
+  // ── NAIL ALLIANCE already covered (Gelish/Hand & Nail Harmony) ─
+
+  // ── KISS NAILS (Kiss Products / Kissusa) ─────────────────────
+  "kiss nails":         {owner:"Kiss Products — privately held, large company",tier:3,pe:false,
+                          note:"Kiss Products is a large privately held beauty company making nails, lashes, and hair tools. No PE backing identified but not indie.",
+                          alternatives:["Ardell","Velour Lashes","Zoya"]},
+  "kiss":               {owner:"Kiss Products — privately held",tier:3,pe:false},
+  "impress nails":      {owner:"imPRESS Press-On Nails — Kiss Products, privately held",tier:3,pe:false},
+  "red carpet manicure":{owner:"Red Carpet Manicure — Kiss Products / American International",tier:3,pe:false},
+
+  // ── VELOUR LASHES (woman-owned indie) ────────────────────────
+  "velour lashes":      {owner:"Velour Lashes — independently owned, woman-founded (Estee Lalonde)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Estee Lalonde. Woman-owned independent luxury lash brand. No corporate parent.",
+                          alternatives:["Ardell","House of Lashes","Kiss"]},
+
+  // ── HOUSE OF LASHES (independently owned) ────────────────────
+  "house of lashes":    {owner:"House of Lashes — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent luxury lash brand. No corporate parent or PE investors identified.",
+                          alternatives:["Ardell","Velour Lashes","Kiss"]},
+
+  // ═══════════════════════════════════════════════════════════
+  // SALON EQUIPMENT & FURNITURE — KEY BRANDS
+  // ═══════════════════════════════════════════════════════════
+
+  // ── TAKARA BELMONT (privately held, Japan) ───────────────────
+  "takara belmont":     {owner:"Takara Belmont — privately held, Japan (founded 1921)",tier:3,pe:false,
+                          note:"Japanese manufacturer of professional salon chairs and equipment. Privately held. No PE investors identified. Premium salon furniture.",
+                          alternatives:["Pibbs","Kaemark","Collins"]},
+
+  // ── PIBBS INDUSTRIES (independently owned) ───────────────────
+  "pibbs":              {owner:"Pibbs Industries — independently owned, New York (since 1956)",tier:4,pe:false,indie:true,
+                          note:"Family-owned American salon equipment manufacturer since 1956. No corporate parent identified.",
+                          alternatives:["Takara Belmont","Collins","Kaemark"]},
+
+  // ── COLLINS MANUFACTURING (independently owned) ───────────────
+  "collins":            {owner:"Collins Manufacturing — independently owned, USA",tier:4,pe:false,indie:true,
+                          note:"American salon furniture and equipment manufacturer. Independently owned. No corporate parent identified.",
+                          alternatives:["Pibbs","Takara Belmont","Kaemark"]},
+
+  // ═══════════════════════════════════════════════════════════
+  // COLOR / TONING ACCESSORIES
+  // ═══════════════════════════════════════════════════════════
+
+  // ── CELEB LUXURY (independently owned) ───────────────────────
+  "celeb luxury":       {owner:"Celeb Luxury — independently owned color depositing brand",tier:4,pe:false,indie:true,
+                          note:"Independent color depositing and gem lites brand. No corporate parent or PE investors identified.",
+                          alternatives:["Arctic Fox","Manic Panic","Overtone"]},
+
+  // ── ARCTIC FOX already in DB (woman-founded indie) ───────────
+
+  // ── MANIC PANIC already in DB (woman-founded indie) ──────────
+
+  // ── PRAVANA CHROMASILK already covered (Henkel) ───────────────
+
+  // ── GOLDWELL NECTAYA (Kao) ───────────────────────────────────
+  "nectaya":            {owner:"Goldwell Nectaya — Kao Corporation (TYO: 4452)",tier:1,pe:false,
+                          note:"Goldwell's ammonia-free color line under Kao Corporation."},
+
+  // ── REDKEN COVER FUSION already covered ──────────────────────
+
+  // ─── SALERM COSMETICS (independently owned, Spain) ───────────
+  "salerm":             {owner:"Salerm Cosmetics — independently owned, Spain",tier:4,pe:false,indie:true,
+                          note:"Spanish independent professional hair and beauty brand. No corporate parent or PE investors identified.",
+                          alternatives:["Framesi","Davines","Oway"]},
+  "salerm cosmetics":   {owner:"Salerm Cosmetics — independently owned, Spain",tier:4,pe:false,indie:true},
+
+  // ── REVLON COLORSILK (Revlon consumer) ───────────────────────
+  "colorsilk":          {owner:"ColorSilk — Revlon consumer brand (complex post-bankruptcy)",tier:2,pe:false},
+  "revlon colorsilk":   {owner:"ColorSilk — Revlon consumer brand",tier:2,pe:false},
+
+  // ── CLAIROL HAIR COLOR (KKR/Wella) ───────────────────────────
+  "clairol nice easy":  {owner:"Clairol Nice 'n Easy — Wella Company / KKR",tier:0,pe:true},
+  "clairol age defy":   {owner:"Clairol — Wella Company / KKR",tier:0,pe:true},
+  "clairol root touch up":{owner:"Clairol Root Touch-Up — Wella Company / KKR",tier:0,pe:true},
+
+  // ── GARNIER NUTRISSE (L'Oréal consumer) ──────────────────────
+  "garnier nutrisse":   {owner:"Garnier Nutrisse — L'Oréal consumer division",tier:1,pe:false},
+
+  // ── L'OREAL SUPERIOR PREFERENCE (L'Oréal consumer) ───────────
+  "superior preference":{owner:"L'Oréal Superior Preference — L'Oréal consumer division",tier:1,pe:false},
+  "loreal preference":  {owner:"L'Oréal Preference — L'Oréal consumer division",tier:1,pe:false},
+
+  // ── SCHWARZKOPF KERATIN COLOR (Henkel consumer) ──────────────
+  "keratin color":      {owner:"Schwarzkopf Keratin Color — Henkel AG consumer brand",tier:1,pe:false},
+
+  // ── JOICO LUMISHINE (Henkel) ──────────────────────────────────
+  "lumishine":          {owner:"Joico LumiShine — Henkel AG",tier:1,pe:false},
+
+  // ── MATRIX LIGHT MASTER (L'Oréal) ─────────────────────────────
+  "light master":       {owner:"Matrix Light Master — L'Oréal Professional Products",tier:1,pe:false},
+
+  // ── WELLA BLONDOR (KKR) ───────────────────────────────────────
+  "blondor":            {owner:"Wella Blondor — KKR investor-owned (Wella Company)",tier:0,pe:true},
+  "wella blondor":      {owner:"Wella Blondor — KKR investor-owned (Wella Company)",tier:0,pe:true},
+
+  // ── SCHWARZKOPF BLONDME (Henkel) ─────────────────────────────
+  "blondme":            {owner:"BlondMe — Henkel AG Schwarzkopf Professional",tier:1,pe:false},
+
+  // ── KENRA LIGHTENER (Henkel) ──────────────────────────────────
+  "kenra lightener":    {owner:"Kenra Professional Lightener — Henkel AG",tier:1,pe:false},
+
+  // ── PAUL MITCHELL FLASH FINISH (indie) ────────────────────────
+  "flash finish":       {owner:"Paul Mitchell Flash Finish — independently owned",tier:4,pe:false,indie:true},
+
+  // ── KERACOLOR (independently owned) ──────────────────────────
+  "keracolor":          {owner:"Keracolor — independently owned color depositing brand",tier:4,pe:false,indie:true,
+                          note:"Independent color depositing conditioner brand. No corporate parent or PE investors identified.",
+                          alternatives:["Arctic Fox","Celeb Luxury","Manic Panic"]},
+
+  // ── PULP RIOT already in DB (L'Oréal) ────────────────────────
+
+  // ── PRAVANA ARTIFICIAL already covered (Henkel) ──────────────
+
+  // ── FRAMESI MORFOSE already covered (indie) ──────────────────
+
+  // ── COLOR RADIANCE / COLORANCE (Goldwell/Kao) ────────────────
+  "colorance":          {owner:"Goldwell Colorance — Kao Corporation (TYO: 4452)",tier:1,pe:false},
+
+  // ── LISAPLEX (Lisa Cosmetic — independently owned, Italy) ─────
+  "lisaplex":           {owner:"Lisap Milano — independently owned, Italy",tier:4,pe:false,indie:true,
+                          note:"Italian independent professional hair care and color brand. No corporate parent or PE investors identified.",
+                          alternatives:["Framesi","Davines","Alfaparf"]},
+  "lisap":              {owner:"Lisap Milano — independently owned, Italy",tier:4,pe:false,indie:true},
+  "lisap milano":       {owner:"Lisap Milano — independently owned, Italy",tier:4,pe:false,indie:true},
+
+  // ── JOICO VERO K-PAK (Henkel) ────────────────────────────────
+  "vero k-pak":         {owner:"Joico Vero K-PAK — Henkel AG",tier:1,pe:false},
+  "vero":               {owner:"Joico Vero — Henkel AG",tier:1,pe:false},
+
   // ── IVY ANN SHEARS ────────────────────────────────────────
   "ivy ann shears":     {owner:"Ivy Ann Shears — woman-owned, independently operated (Wilmington, NC)",tier:5,pe:false,indie:true,womenOwned:true,
                           note:"Cold-forged ATS-314 Japanese steel, handcrafted in Sanjo, Japan. Direct-to-consumer, no commissioned reps. Woman-owned, cosmetologist-operated."},
