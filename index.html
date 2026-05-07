@@ -48,7 +48,7 @@ input:focus,button:focus{outline:none}
 }
 
 /* Logo lockup — Concept 5A */
-.slogo{text-align:left;margin-bottom:26px;display:flex;align-items:center;gap:16px}
+.slogo{text-align:center;margin-bottom:26px;display:flex;flex-direction:column;align-items:center;gap:16px}
 .slogo-mark{
   width:58px;height:58px;border-radius:16px;
   background:var(--green);flex-shrink:0;
@@ -62,10 +62,9 @@ input:focus,button:focus{outline:none}
 }
 .slogo-mark .Dx{font-size:26px;color:#fff}
 .slogo-text{display:flex;flex-direction:column;gap:2px}
-.slogo-eyebrow{font-size:9px;font-weight:800;letter-spacing:4px;color:var(--green-accent);text-transform:uppercase}
 .slogo-name{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:900;color:var(--ink);letter-spacing:-1px;line-height:1}
 .slogo-name em{color:var(--gold);font-style:normal}
-.slogo-tag{font-size:10px;font-weight:700;color:#aaa;letter-spacing:.5px;margin-top:2px}
+.slogo-tag{font-size:16px;font-weight:900;color:var(--gold);letter-spacing:2px;margin-top:4px;text-align:center;text-transform:uppercase}
 
 .setup-rule{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:20px 0}
 
@@ -127,32 +126,33 @@ input:focus,button:focus{outline:none}
 .htop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
 
 /* Header logo — compact horizontal */
-.hlogo{display:flex;align-items:center;gap:12px}
+.hlogo{display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none}
 .hlogo-mark{
-  width:42px;height:42px;border-radius:11px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(200,169,110,.25);
+  width:52px;height:52px;border-radius:14px;
+  background:rgba(255,255,255,.1);
+  border:1.5px solid rgba(200,169,110,.4);
   display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;position:relative;overflow:hidden
+  flex-shrink:0;position:relative;overflow:hidden;
+  transition:background .2s
 }
+.hlogo:hover .hlogo-mark{background:rgba(255,255,255,.18)}
 .hlogo-mark::after{
   content:'';position:absolute;bottom:0;left:0;right:0;
   height:2.5px;background:linear-gradient(90deg,var(--gold),var(--gold-dark))
 }
-.hlogo-mark .Dx{font-size:19px;color:#fff}
+.hlogo-mark .Dx{font-size:23px;color:#fff}
 .hlogo-text{display:flex;flex-direction:column;gap:1px}
-.hlogo-name{font-family:'DM Sans',sans-serif;font-size:17px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1}
+.hlogo-name{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1}
 .hlogo-name em{color:var(--gold);font-style:normal}
-.hlogo-sub{font-size:8px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.3);text-transform:uppercase}
+.hlogo-sub{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--gold);opacity:.7;text-transform:uppercase}
 
 .hright{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
 .ibadge{background:rgba(255,255,255,.08);border-radius:11px;padding:8px 12px;text-align:right}
 .ibadge .inum{font-size:20px;font-weight:900;color:var(--gold)}
 .ibadge .ilbl{font-size:8px;color:rgba(255,255,255,.5);line-height:1.4}
-.new-search-btn{font-size:9px;color:rgba(255,255,255,.4);background:transparent;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:underline;padding:0;font-weight:600}
+.new-search-btn{font-size:11px;font-weight:800;color:var(--green);background:var(--gold);border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:7px 14px;border-radius:20px;letter-spacing:.3px;transition:all .15s}
+.new-search-btn:hover{background:#b8982e;transform:scale(1.03)}
 
-.hdr-query{background:rgba(255,255,255,.06);border-radius:10px;padding:9px 13px;margin-bottom:12px;font-size:11px;color:rgba(255,255,255,.6)}
-.hdr-query strong{color:#fff}
 
 .filter-row{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
 .fpill{padding:6px 13px;border-radius:20px;border:none;cursor:pointer;white-space:nowrap;font-weight:700;font-size:10px;font-family:'DM Sans',sans-serif;transition:all .15s}
@@ -249,15 +249,15 @@ input:focus,button:focus{outline:none}
   border-top:1px solid var(--border);padding:10px 20px 24px;
   box-shadow:0 -4px 20px rgba(0,0,0,.07);z-index:200;text-align:center
 }
-.footer-logo{display:inline-flex;align-items:center;gap:8px;margin-bottom:3px}
+.footer-logo{display:inline-flex;align-items:center;gap:8px;margin-bottom:2px}
 .footer-mark{
-  width:22px;height:22px;border-radius:6px;background:var(--green);
+  width:26px;height:26px;border-radius:7px;background:var(--green);
   display:flex;align-items:center;justify-content:center;
   position:relative;overflow:hidden;flex-shrink:0
 }
 .footer-mark::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold)}
-.footer-mark .Dx{font-size:9px;color:#fff}
-.footer-name{font-size:11px;font-weight:900;color:var(--green);letter-spacing:-.3px}
+.footer-mark .Dx{font-size:11px;color:#fff}
+.footer-name{font-size:15px;font-weight:900;color:var(--green);letter-spacing:-.3px}
 .footer-name em{color:var(--gold);font-style:normal}
 .footer p{font-size:10px;color:#bbb;line-height:1.6}
 .footer-about-btn{
@@ -266,6 +266,17 @@ input:focus,button:focus{outline:none}
   font-family:'DM Sans',sans-serif;letter-spacing:.5px;
   margin-top:4px;text-decoration:underline;padding:0
 }
+
+
+/* ── CARD PHOTO ─────────────────────────────────────────── */
+.card-photo{width:100%;height:140px;overflow:hidden;position:relative;border-radius:14px 14px 0 0;flex-shrink:0}
+.card-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.card:hover .card-photo img{transform:scale(1.04)}
+.card-photo-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.1) 0%,rgba(0,0,0,.5) 100%)}
+.card-tier-badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);border-radius:20px;padding:4px 10px;font-size:10px;font-weight:800;color:#fff;letter-spacing:.5px}
+.card-brand-logo{position:absolute;bottom:10px;left:12px;width:36px;height:36px;border-radius:9px;background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.card-brand-logo img{width:100%;height:100%;object-fit:contain;padding:3px}
+.card-brand-logo-err{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--green);background:#f0ebe2}
 
 /* ── ABOUT PANEL ─────────────────────────────────────────── */
 #about-overlay{
@@ -439,7 +450,6 @@ input:focus,button:focus{outline:none}
         <span class="Dx" style="font-size:26px;color:#fff"><span class="d">D</span><span class="x">x</span></span>
       </div>
       <div class="slogo-text">
-        <div class="slogo-eyebrow">BackBar</div>
         <div class="slogo-name">BackBar <em>Detox</em></div>
         <div class="slogo-tag">WHO OWNS YOUR SHELF?</div>
       </div>
@@ -505,7 +515,7 @@ input:focus,button:focus{outline:none}
 <div id="app">
   <div class="hdr">
     <div class="htop">
-      <div class="hlogo">
+      <div class="hlogo" onclick="goSetup()" title="New Search">
         <div class="hlogo-mark">
           <span class="Dx" style="font-size:19px;color:#fff"><span class="d">D</span><span class="x">x</span></span>
         </div>
@@ -519,10 +529,9 @@ input:focus,button:focus{outline:none}
           <div class="inum" id="indie-count">0</div>
           <div class="ilbl">indie or<br>women-owned</div>
         </div>
-        <button class="new-search-btn" onclick="goSetup()">← New Search</button>
+        <button class="new-search-btn" onclick="goSetup()">New Search</button>
       </div>
     </div>
-    <div class="hdr-query" id="hdr-query"></div>
     <div class="hdr-search">
       <span class="hdr-search-icon">🔍</span>
       <input type="text" id="hdr-brand-input"
@@ -561,7 +570,8 @@ input:focus,button:focus{outline:none}
       </div>
       <span class="footer-name">BackBar <em>Detox</em></span>
     </div>
-    <p>WHO OWNS YOUR SHELF? · AI-powered · Community verified · Built for stylists</p>
+    <p style="font-size:11px;font-weight:800;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1px">WHO OWNS YOUR SHELF?</p>
+    <p>AI-powered · Community verified · Built for stylists</p>
     <button class="footer-about-btn" onclick="openAbout()">About &amp; How It Works</button>
   </div>
 </div>
@@ -617,16 +627,6 @@ input:focus,button:focus{outline:none}
 
     <div class="about-rule"></div>
 
-    <div class="about-built-by">
-      <div class="about-built-mark">✂️</div>
-      <div class="about-built-text">
-        <strong>Built by Ivy Ann Shears</strong>
-        <span>Woman-owned · Cosmetologist-operated · Wilmington, NC<br>
-        Cold-forged ATS-314 Japanese steel, handcrafted in Sanjo, Japan.<br>
-        <a href="https://ivyannshears.com" target="_blank">ivyannshears.com</a></span>
-      </div>
-    </div>
-
     <div class="about-sister">
       <div class="about-sister-icon">🩺</div>
       <div class="about-sister-text">
@@ -642,12 +642,12 @@ input:focus,button:focus{outline:none}
 
 // ── CATEGORY → BRANDS MAPPING ─────────────────────────────
 const CAT_BRANDS = {
-  shampoo:  ['Redken','Matrix','Pureology','Biolage','Kerastase','Nexxus','TRESemmé','Davines','Paul Mitchell','Surface Hair'],
-  color:    ['Wella','Redken','Matrix','Schwarzkopf','Pulp Riot','Pravana','Igora','Manic Panic','Arctic Fox','Oway','Framesi'],
-  styling:  ['Redken','Matrix','Wella','Sebastian Professional','Schwarzkopf','Paul Mitchell','Davines'],
-  tools:    ['Ivy Ann Shears','Framar','Pink Pewter','Sam Villa','Wahl','Andis','Olivia Garden','Chi','Conair'],
-  treatment:['Olaplex','K18','Kerastase','Briogeo','Davines','Surface Hair'],
-  retail:   ['Sally Beauty','CosmoProf','Ulta Beauty','Regis'],
+  shampoo:  ['Redken','Matrix','Pureology','Biolage','Kerastase','Nexxus','TRESemmé','Davines','Paul Mitchell','Surface Hair','Joico','Kenra','Alterna','Schwarzkopf','Wella','Bumble and Bumble','Amika','Aveda','TIGI','Living Proof','Ouai','Briogeo','Innersense','Malibu C','Sachajuan','Maria Nila','Philip Kingsley','AG Hair','Aquage','Rusk','Scruples','Eufora','Loma','It\'s a 10','Camille Rose','Rizos Curls','Carol\'s Daughter','SheaMoisture','Cantu'],
+  color:    ['Wella','Redken','Matrix','Schwarzkopf','Pulp Riot','Pravana','Igora','Manic Panic','Arctic Fox','Oway','Framesi','Goldwell','Kenra Color','Joico','Alfaparf','Oligo Professionnel','Madison Reed','Celeb Luxury','Good Dye Young','Lunar Tides','Keune','Lisap','DFI','Tressa','Naturigin','mydentity','Aloxxi','Revlon Professional','Ion','Clairol','Color Charm'],
+  styling:  ['Redken','Matrix','Wella','Sebastian Professional','Schwarzkopf','Paul Mitchell','Davines','Kenra','Joico','Bumble and Bumble','Amika','Reuzel','Suavecito','Layrite','Uppercut Deluxe','Slick Gorilla','Surface Hair','Innersense','AG Hair','Aquage','Rusk','American Crew','It\'s a 10','Sachajuan','Maria Nila'],
+  tools:    ['Ivy Ann Shears','Framar','Pink Pewter','Sam Villa','Wahl','Andis','Olivia Garden','Chi','Conair','BaByliss Pro','GHD','Dyson','Beachwaver','Bio Ionic','Parlux','Elchim','Tangle Teezer','Wet Brush','Fromm','Product Club','Colortrak','Oster','Vidal Sassoon'],
+  treatment:['Olaplex','K18','Kerastase','Briogeo','Davines','Surface Hair','Virtue','Joico','Kenra','Malibu C','It\'s a 10','Innersense','Philip Kingsley','Act+Acre','Divi','Vegamour','Nutrafol','Rahua','Oway','AG Hair','Aquage','Redken','Matrix','Bumble and Bumble','Amika'],
+  retail:   ['Sally Beauty','CosmoProf','Ulta Beauty','Regis','SalonCentric'],
 };
 
 // ── SPONSORED INDIE BRANDS ─────────────────────────────────
@@ -776,6 +776,50 @@ const INDIE_DIR = [
 // ── STATE ──────────────────────────────────────────────────
 const S = {results:[],votes:{},filter:'all',categories:[],currentCategory:null};
 
+
+// ── FOUNDER PHOTO MAP ─────────────────────────────────────
+const FOUNDER_PHOTOS = {
+  "it's a 10":     'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Carolyn_Aronson_2019.jpg/440px-Carolyn_Aronson_2019.jpg',
+  "its a 10":      'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Carolyn_Aronson_2019.jpg/440px-Carolyn_Aronson_2019.jpg',
+  "camille rose":  'https://media.licdn.com/dms/image/v2/C4D03AQGqJanell_stephens/profile-displayphoto/profile-displayphoto/0/1516942774958?e=1753920000&v=beta&t=zMOVwkuXOjLrQiVEGJMpMnzHu2Sh7RDI5o3UQOZ04CM',
+  "carol's daughter":'https://media.licdn.com/dms/image/v2/C4E03AQLisa_price_photo/profile-displayphoto/0?e=1753920000',
+  "rizos curls":   'https://media.licdn.com/dms/image/v2/C4E03AQJulissa_prado/profile-displayphoto/0?e=1753920000',
+  "manic panic":   'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tish_and_Snooky.jpg/440px-Tish_and_Snooky.jpg',
+  "gisou":         'https://media.licdn.com/dms/image/v2/C4D03AQNegin_mirsalehi/profile-displayphoto/0?e=1753920000',
+  "framar":        'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&q=85',
+  "pink pewter":   'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&q=85',
+  "davines":       'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=85',
+  "drop dead":     'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=85',
+  "mourning hair": 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=85',
+  "kreyol essence":'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=85',
+  "eden bodyworks":'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=85',
+  "ouidad":        'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=85',
+  "beachwaver":    'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&q=85',
+};
+
+// ── CATEGORY PHOTO MAP ────────────────────────────────────
+const CAT_PHOTOS = {
+  color:     ['https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=85','https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=85','https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&q=85','https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&q=85'],
+  shampoo:   ['https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=85','https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=85','https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800&q=85','https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=800&q=85'],
+  styling:   ['https://images.unsplash.com/photo-1512690459411-b9245aed614b?w=800&q=85','https://images.unsplash.com/photo-1559599189-fe84dea4eb79?w=800&q=85','https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=85','https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&q=85'],
+  tools:     ['https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&q=85','https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=800&q=85','https://images.unsplash.com/photo-1559599189-fe84dea4eb79?w=800&q=85','https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=85'],
+  treatment: ['https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=800&q=85','https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=85','https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=85','https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=85'],
+  retail:    ['https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=85','https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=85'],
+  default:   ['https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=85','https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&q=85','https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=85','https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=800&q=85'],
+};
+
+function getCardPhoto(r) {
+  const name = (r.name||'').toLowerCase();
+  // Check founder photo map first
+  for (const [key, url] of Object.entries(FOUNDER_PHOTOS)) {
+    if (name.includes(key) || key.includes(name)) return { url, isFounder: true };
+  }
+  // Fall back to category-matched Unsplash
+  const cats = CAT_PHOTOS[S.currentCategory] || CAT_PHOTOS.default;
+  const idx = Math.abs(name.split('').reduce((a,c)=>a+c.charCodeAt(0),0)) % cats.length;
+  return { url: cats[idx], isFounder: false };
+}
+
 // ── KNOWN BRAND DATABASE ───────────────────────────────────
 // Sources: WWD, Beauty Inc, Cosmetify, PE disclosures 2023–2025
 const KNOWN = {
@@ -826,11 +870,11 @@ const KNOWN = {
   "dove":               {owner:"Unilever (NYSE: UL)",tier:1,pe:false},
   "nexxus":             {owner:"Unilever (NYSE: UL)",tier:1,pe:false},
   "living proof":       {owner:"Unilever (NYSE: UL)",tier:1,pe:false},
-  "k18":                {owner:"Unilever (acquired Jan 2024)",tier:1,pe:false,
+  "k18":                {owner:"K18 — Unilever (NYSE: UL, acquired January 2024)",tier:1,pe:false,
                           note:"Indie-founded, acquired by Unilever in 2024. Quality may remain for now — worth watching."},
 
   // ── PE-BACKED ─────────────────────────────────────────────
-  "amika":              {owner:"Bain Capital (PE)",tier:0,pe:true},
+  "amika":              {owner:"Amika — Bansk Group (PE-backed, majority stake acquired 2022)",tier:0,pe:true},
   "moroccanoil":        {owner:"General Atlantic (PE)",tier:0,pe:true},
   "igk":                {owner:"L Catterton (LVMH-affiliated PE)",tier:0,pe:true},
   "kevin murphy":       {owner:"Permira (PE, acquired 2019)",tier:0,pe:true},
@@ -867,12 +911,15 @@ const KNOWN = {
   "framesi":            {owner:"Framesi — Italian family-owned",tier:4,pe:false,indie:true},
   "chi":                {owner:"Farouk Systems — privately held",tier:4,pe:false,indie:true},
   "farouk":             {owner:"Farouk Systems — privately held (Farouk Shami, founder)",tier:4,pe:false,indie:true},
-  "wahl":               {owner:"Wahl Clipper Corporation — family-owned since 1919",tier:4,pe:false,indie:true},
+  "wahl":               {owner:"Wahl Clipper Corporation — large private family-owned company since 1919",tier:3,pe:false,indie:false,
+                          note:"Founded by Leo Wahl in 1919. Still family-owned with no PE or corporate parent. However with $500M+ revenue and global operations, Wahl is a large private company — not a small indie brand."},
   "andis":              {owner:"Andis Company — privately held, family-owned",tier:4,pe:false,indie:true},
   "olivia garden":      {owner:"Olivia Garden — privately held, Belgium",tier:4,pe:false,indie:true},
   "surface hair":       {owner:"Surface Hair — independently owned, B-Corp certified",tier:5,pe:false,indie:true,
                           note:"Certified B-Corp. Independently owned. One of the cleanest sustainability stories in pro beauty."},
-  "conair":             {owner:"Conair Corporation — privately held (Rizzuto family)",tier:3,pe:false},
+  "conair":             {owner:"Conair Corporation — American Securities LLC PE (acquired May 2021; Rizzuto family minority)",tier:0,pe:true,
+                          note:"Founded 1959 by Leandro Rizzuto. Acquired by American Securities LLC (US private equity) in May 2021. Rizzuto family retains minority stake. Brands include BaByliss, Cuisinart, Scunci, Waring.",
+                          alternatives:["Wahl","Andis","Olivia Garden"]},
 
 
   // ── FRAMAR (woman-founded, family-owned, Canada) ──────────
@@ -1116,12 +1163,12 @@ const KNOWN = {
   // ── ORIGINAL MINERAL / O&M already above ──────────────────
 
   // ── HAIRTALK (German indie extensions) ───────────────────
-  "hairtalk":           {owner:"hairtalk — independently owned, Germany",tier:4,pe:false,indie:true,
-                          note:"German professional hair extension brand, independently owned. No PE or corporate parent identified.",
+  "hairtalk":           {owner:"hairtalk — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true,
+                          note:"hairtalk is a brand within Beauty Industry Group (BIG), majority-owned by L Catterton PE since 2021. Originally German-founded but now PE-owned.",
                           alternatives:["Framar","Olivia Garden","Pink Pewter"]},
 
   // ── GREAT LENGTHS (hair extensions — indie Italian) ───────
-  "great lengths":      {owner:"Great Lengths — independently owned, Italy",tier:4,pe:false,indie:true,
+  "great lengths":      {owner:"Great Lengths — DBAG Fund VIII PE-backed (invested December 2024); founding family minority stake",tier:2,pe:false,indie:false,
                           note:"Italian hair extension brand, independently owned. Premium professional extensions with ethical sourcing claims. No corporate parent identified.",
                           alternatives:["Hairtalk","Framar"]},
 
@@ -1371,10 +1418,10 @@ const KNOWN = {
                           alternatives:["Drop Dead Extensions","Great Lengths","Hairtalk"]},
 
   // ── DONNA BELLA HAIR (independently owned) ───────────────────
-  "donna bella":        {owner:"Donna Bella Hair — independently owned",tier:4,pe:false,indie:true,
+  "donna bella":        {owner:"Donna Bella Hair — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true,
                           note:"Independent professional hair extension brand. No corporate parent or PE investors identified.",
                           alternatives:["Drop Dead Extensions","Great Lengths","Hairtalk"]},
-  "donna bella hair":   {owner:"Donna Bella Hair — independently owned",tier:4,pe:false,indie:true},
+  "donna bella hair":   {owner:"Donna Bella Hair — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true},
 
   // ── LUXURY FOR PRINCESS (LFP — independently owned) ──────────
   "luxury for princess":{owner:"Luxury For Princess — independently owned professional extensions",tier:4,pe:false,indie:true,
@@ -1393,7 +1440,7 @@ const KNOWN = {
                           alternatives:["Maria Nila","Davines","Surface Hair"]},
 
   // ── GISOU (independently owned, honey-based) ─────────────────
-  "gisou":              {owner:"Gisou — independently owned, founded by Negin Mirsalehi",tier:4,pe:false,indie:true,
+  "gisou":              {owner:"Gisou — Eurazeo minority investor (2022); founders Negin Mirsalehi & Maurits Stibbe retain majority",tier:2,pe:false,indie:false,
                           note:"Founded by Negin Mirsalehi and family, based on multi-generational Iranian beekeeping heritage. Independently owned with no PE parent identified. Premium honey-infused hair care.",
                           alternatives:["Davines","Maria Nila","Surface Hair"]},
 
@@ -1557,9 +1604,9 @@ const KNOWN = {
                           alternatives:["Camille Rose","Eden Bodyworks","Rizos Curls"]},
 
   // ── DONNA BELLA HAIR (independently owned) ───────────────────
-  "donna bella":        {owner:"Donna Bella Hair — independently owned professional extensions",tier:4,pe:false,indie:true,
-                          alternatives:["Drop Dead Extensions","Mourning Hair","Great Lengths"]},
-  "donna bella hair":   {owner:"Donna Bella Hair — independently owned",tier:4,pe:false,indie:true},
+  "donna bella":        {owner:"Donna Bella Hair — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true,
+                          alternatives:["Drop Dead Extensions","Mourning Hair","DreamCatchers"]},
+  "donna bella hair":   {owner:"Donna Bella Hair — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true},
 
   // ── HIDDEN CROWN (L Catterton via BIG) ───────────────────────
   "hidden crown":       {owner:"Hidden Crown Hair — L Catterton PE-backed (via Beauty Industry Group)",tier:0,pe:true,
@@ -1573,8 +1620,8 @@ const KNOWN = {
                           alternatives:["Maria Nila","Davines","Surface Hair"]},
 
   // ── GISOU (independently owned) ──────────────────────────────
-  "gisou":              {owner:"Gisou — independently owned, founded by Negin Mirsalehi",tier:4,pe:false,indie:true,
-                          note:"Founded by Negin Mirsalehi and family, based on multi-generational Iranian beekeeping heritage. Honey-infused hair care. No PE parent identified.",
+  "gisou":              {owner:"Gisou — Eurazeo minority investor since 2022; founders Negin Mirsalehi & Maurits Stibbe retain majority",tier:2,pe:false,indie:false,
+                          note:"Founded by Negin Mirsalehi based on her family's Iranian beekeeping heritage. Eurazeo (French PE/investment firm) took a minority stake in April 2022. Founders remain majority owners and operators. Not fully indie but not corporate-owned.",
                           alternatives:["Davines","Maria Nila","Surface Hair"]},
 
   // ── KEUNE (family-owned Netherlands since 1922) ───────────────
@@ -1725,7 +1772,7 @@ const KNOWN = {
   "oster professional": {owner:"Oster Professional — Newell Brands (NASDAQ: NWL)",tier:1,pe:false},
 
   // ── BABYLISS PRO (Conair — large private) ────────────────────
-  "babyliss pro":       {owner:"BaByliss Pro — Conair Corporation (privately held, Rizzuto family)",tier:3,pe:false,
+  "babyliss pro":       {owner:"BaByliss Pro — Conair Corporation (American Securities LLC PE, acquired 2021)",tier:0,pe:true,
                           alternatives:["Beachwaver","Olivia Garden","Ivy Ann Shears"]},
 
   // ── PARLUX (independently owned, Italy) ──────────────────────
@@ -1864,10 +1911,10 @@ const KNOWN = {
   "ors":                {owner:"ORS (Olive Oil for Naturals) — Namaste Laboratories",tier:3,pe:false},
 
   // ── CAROL'S DAUGHTER (L'Oréal) ───────────────────────────────
-  "carols daughter":    {owner:"Carol's Daughter — L'Oréal (acquired 2014)",tier:1,pe:false,womenFounded:true,
+  "carols daughter":    {owner:"Carol's Daughter — independently owned (Lisa Price President + Joe Wong, sold by L'Oréal March 2025)",tier:4,pe:false,indie:true,womenFounded:true,
                           note:"Founded by Lisa Price in her Brooklyn kitchen in 1993. Acquired by L'Oréal in 2014. A beloved Black woman-founded brand now corporate-owned.",
                           alternatives:["Camille Rose","Eden Bodyworks","Taliah Waajid"]},
-  "carol's daughter":   {owner:"Carol's Daughter — L'Oréal (acquired 2014)",tier:1,pe:false,womenFounded:true},
+  "carol's daughter":   {owner:"Carol's Daughter — independently owned (Lisa Price + Joe Wong, March 2025)",tier:4,pe:false,indie:true,womenFounded:true},
 
   // ── CURL JUNKIE (Black woman-owned indie) ────────────────────
   "curl junkie":        {owner:"Curl Junkie — Black woman-owned, independently owned (Marsha Coulton)",tier:5,pe:false,indie:true,womenOwned:true,
@@ -1901,14 +1948,14 @@ const KNOWN = {
   // ── GREAT LENGTHS already in DB ──────────────────────────────
 
   // ── BABE HAIR EXTENSIONS (independently owned) ────────────────
-  "babe hair":          {owner:"Babe Hair Extensions — independently owned",tier:4,pe:false,indie:true,
-                          note:"Independent professional hair extension brand. No corporate parent or PE investors identified.",
+  "babe hair":          {owner:"Babe Hair Extensions — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true,
+                          note:"Babe is a brand within Beauty Industry Group (BIG), majority-owned by L Catterton PE since 2021.",
                           alternatives:["Drop Dead Extensions","Mourning Hair","DreamCatchers"]},
-  "babe extensions":    {owner:"Babe Hair Extensions — independently owned",tier:4,pe:false,indie:true},
+  "babe extensions":    {owner:"Babe Hair Extensions — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true},
 
   // ── HOTHEADS EXTENSIONS (independently owned) ────────────────
-  "hotheads":           {owner:"Hotheads Hair Extensions — independently owned",tier:4,pe:false,indie:true,
-                          note:"Independent professional tape-in extension brand. No corporate parent identified.",
+  "hotheads":           {owner:"Hotheads — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true,
+                          note:"Hotheads is a brand within Beauty Industry Group (BIG), which is majority-owned by L Catterton (LVMH-affiliated PE) since 2021. Not independently owned.",
                           alternatives:["Drop Dead Extensions","Babe Hair","DreamCatchers"]},
 
   // ── EASIHAIR PRO (independently owned) ───────────────────────
@@ -2584,10 +2631,10 @@ const KNOWN = {
                           alternatives:["Gelish","ORLY","Zoya"]},
 
   // ── OLIVE & JUNE (PE-backed) ─────────────────────────────────
-  "olive and june":     {owner:"Olive & June — investor-backed",tier:0,pe:true,
-                          note:"Fast-growing consumer nail brand that has received significant outside investment. Not independently owned.",
+  "olive and june":     {owner:"Olive & June — Helen of Troy (NASDAQ: HELE, acquired December 2024)",tier:1,pe:false,
+                          note:"Founded by Sarah Gibson Tuttle in 2013. Sold to Helen of Troy for $240M in December 2024. Same corporate parent as Drybar, Butter London, OXO, Hydro Flask, and Vicks.",
                           alternatives:["Zoya","ORLY","Gelish"]},
-  "olive & june":       {owner:"Olive & June — investor-backed",tier:0,pe:true},
+  "olive & june":       {owner:"Olive & June — Helen of Troy (NASDAQ: HELE, acquired December 2024)",tier:1,pe:false},
 
   // ── JINSOON (independently owned, woman-founded) ─────────────
   "jinsoon":            {owner:"JINsoon — independently owned, founded by Jin Soon Choi",tier:5,pe:false,indie:true,womenOwned:true,
@@ -2744,6 +2791,221 @@ const KNOWN = {
   "vero k-pak":         {owner:"Joico Vero K-PAK — Henkel AG",tier:1,pe:false},
   "vero":               {owner:"Joico Vero — Henkel AG",tier:1,pe:false},
 
+
+  // ═══════════════════════════════════════════════════════════
+  // BATCH 5 — VERIFIED NEW ADDITIONS
+  // ═══════════════════════════════════════════════════════════
+
+  // ── EVA NYC (Bansk Group PE — same as Amika) ─────────────────
+  "eva nyc":            {owner:"Eva NYC — Bansk Group (PE-backed, majority stake acquired 2022)",tier:0,pe:true,
+                          note:"Founded in 2012. Bansk Group (a private investment firm) acquired a majority stake in May 2022 alongside Amika. Despite sustainable/indie presentation, now PE-majority owned.",
+                          alternatives:["Davines","Maria Nila","Surface Hair"]},
+
+  // ── PROSE HAIR (VC-backed, $25M raised) ──────────────────────
+  "prose":              {owner:"Prose — venture capital backed ($25.3M raised, investors include Forerunner Ventures, Lerer Hippeau)",tier:0,pe:true,
+                          note:"French-founded customizable hair care brand based in NYC. Has raised $25.3M across 4 rounds from VC investors. Not independently owned.",
+                          alternatives:["Davines","Function of Beauty","Surface Hair"]},
+  "prose hair":         {owner:"Prose — venture capital backed",tier:0,pe:true},
+
+  // ── DIVI SCALP (Norwest minority, founder Dani Austin majority) ─
+  "divi":               {owner:"Divi Scalp & Hair Health — founder-majority (Dani Austin), Norwest minority investor (Nov 2024)",tier:2,pe:false,indie:false,
+                          note:"Founded in 2021 by influencer Dani Austin after personal hair loss. Norwest (VC/growth equity) took minority stake Nov 2024. Founder retains majority. High-growth scalp-first brand.",
+                          alternatives:["Malibu C","Act+Acre","Surface Hair"]},
+  "divi scalp":         {owner:"Divi — founder-majority, Norwest minority investor (2024)",tier:2,pe:false},
+
+  // ── FABLE & MANE (independently owned, South Asian siblings) ──
+  "fable and mane":     {owner:"Fable & Mane — independently owned, founded by siblings Akash and Nikita Mehta",tier:4,pe:false,indie:true,
+                          note:"Founded by South Asian sibling duo Akash (CEO) and Nikita Mehta. Ayurvedic hair care brand. No confirmed investor deal as of 2025. Independently operated.",
+                          alternatives:["Rahua","Davines","Oway"]},
+  "fable mane":         {owner:"Fable & Mane — independently owned, Ayurvedic hair care",tier:4,pe:false,indie:true},
+  "fable & mane":       {owner:"Fable & Mane — independently owned, South Asian-founded",tier:4,pe:false,indie:true},
+
+  // ── CROWN AFFAIR (VC-backed — True Beauty Ventures, Greycroft) ─
+  "crown affair":       {owner:"Crown Affair — VC-backed ($16M raised: True Beauty Ventures, Greycroft, Gwyneth Paltrow)",tier:0,pe:true,
+                          note:"Founded by Dianna Cohen in 2020. Raised ~$16M across 5 rounds from venture investors. Despite artisanal brand positioning, investor-backed.",
+                          alternatives:["Sachajuan","Philip Kingsley","Davines"]},
+
+  // ── MADISON REED (VC-backed, $250M+) ─────────────────────────
+  "madison reed":       {owner:"Madison Reed — venture capital backed ($250M+ raised, 32 investors)",tier:0,pe:true,
+                          note:"Founded by Amy Errett in 2013. Has raised over $250M from 32 venture investors. Operates hair color bars and retail. Not independently owned.",
+                          alternatives:["Davines","Oway","Framesi"]},
+
+  // ── DRYBAR (Helen of Troy) — confirm alias ────────────────────
+  "drybar products":    {owner:"Drybar — Helen of Troy (NASDAQ: HELE)",tier:1,pe:false},
+  "drybar tools":       {owner:"Drybar — Helen of Troy (NASDAQ: HELE)",tier:1,pe:false},
+
+  // ── BEAUTY WORKS (BIG / L Catterton) ─────────────────────────
+  "beauty works":       {owner:"Beauty Works — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true,
+                          note:"UK-based hair extension and care brand under Beauty Industry Group, majority-owned by L Catterton PE since 2021.",
+                          alternatives:["Drop Dead Extensions","Mourning Hair","DreamCatchers"]},
+
+  // ── GLAM SEAMLESS (BIG / L Catterton) ─────────────────────────
+  "glam seamless":      {owner:"Glam Seamless — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true,
+                          alternatives:["Drop Dead Extensions","Mourning Hair","DreamCatchers"]},
+
+  // ── LUXY HAIR (BIG / L Catterton) ────────────────────────────
+  "luxy hair":          {owner:"Luxy Hair — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true,
+                          note:"Clip-in extension brand under Beauty Industry Group, majority-owned by L Catterton PE since 2021.",
+                          alternatives:["Drop Dead Extensions","DreamCatchers","Mourning Hair"]},
+  "luxy":               {owner:"Luxy Hair — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true},
+
+  // ── ZALA EXTENSIONS (BIG / L Catterton) ──────────────────────
+  "zala":               {owner:"Zala Hair Extensions — Beauty Industry Group / L Catterton PE-backed",tier:0,pe:true,
+                          alternatives:["Drop Dead Extensions","Mourning Hair","DreamCatchers"]},
+
+  // ── K18 (Unilever — acquired 2024) ───────────────────────────
+  "k18":                {owner:"K18 — Unilever (NYSE: UL, acquired 2024)",tier:1,pe:false,
+                          note:"Biotech-based bond repair brand founded by Suveen Sahib. Acquired by Unilever in 2024. Now fully corporate-owned despite its innovative indie origins.",
+                          alternatives:["Olaplex","Malibu C","Davines"]},
+  "k18 hair":           {owner:"K18 — Unilever (NYSE: UL, acquired 2024)",tier:1,pe:false},
+
+  // ── LOLAVIE (Jennifer Aniston — VC-backed) ───────────────────
+  "lolavie":            {owner:"LolaVie — Jennifer Aniston, investor-backed",tier:0,pe:true,
+                          note:"Celebrity hair care brand founded by Jennifer Aniston. Backed by investors. Celebrity brands typically carry undisclosed investor backing — not independently owned.",
+                          alternatives:["Davines","Surface Hair","Maria Nila"]},
+
+  // ── DAE HAIR (independently owned, Arizona-inspired) ─────────
+  "dae hair":           {owner:"Dae Hair — independently owned, founded by Amber Fillerup Clark",tier:4,pe:false,indie:true,
+                          note:"Founded by influencer and blogger Amber Fillerup Clark. Desert-botanical hair care brand. No confirmed PE or corporate investment identified.",
+                          alternatives:["Davines","Surface Hair","Fable & Mane"]},
+  "dae":                {owner:"Dae Hair — independently owned, founder Amber Fillerup Clark",tier:4,pe:false,indie:true},
+
+  // ── GOOD DYE YOUNG (Hayley Williams — independent) ───────────
+  "good dye young":     {owner:"Good Dye Young — independently owned, co-founded by Hayley Williams",tier:4,pe:false,indie:true,
+                          note:"Co-founded by Paramore frontwoman Hayley Williams and business partner Brian O'Connor. Vegan, cruelty-free vivid hair color. No PE or corporate investment identified.",
+                          alternatives:["Arctic Fox","Manic Panic","Celeb Luxury"]},
+
+  // ── KREYOL ESSENCE (Black woman-owned, Haitian) ──────────────
+  "kreyol essence":     {owner:"Kreyol Essence — Black woman-founded, independently owned (Yve-Car Momperousse)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Yve-Car Momperousse, a Haitian-American entrepreneur. Castor oil and Haitian beauty heritage brand. Black woman-owned, independently operated.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Rizos Curls"]},
+
+  // ── COCO & EVE (PE-backed — Juggernaut Capital) ──────────────
+  "coco and eve":       {owner:"Coco & Eve — Juggernaut Capital Partners (PE-backed)",tier:0,pe:true,
+                          note:"Australian hair and beauty brand backed by Juggernaut Capital Partners PE. Not independently owned.",
+                          alternatives:["Davines","Surface Hair","Fable & Mane"]},
+  "coco & eve":         {owner:"Coco & Eve — Juggernaut Capital Partners (PE-backed)",tier:0,pe:true},
+
+  // ── LUNAR TIDES (independently owned, vivid color) ────────────
+  "lunar tides":        {owner:"Lunar Tides Hair Color — independently owned",tier:4,pe:false,indie:true,
+                          note:"Independent vivid hair color brand. No PE or corporate parent identified.",
+                          alternatives:["Arctic Fox","Manic Panic","Good Dye Young"]},
+
+  // ── SOL DE JANEIRO (L'Oréal — acquired 2023) ─────────────────
+  "sol de janeiro":     {owner:"Sol de Janeiro — L'Oréal (Euronext: OR, acquired 2023)",tier:1,pe:false,
+                          note:"Brazilian-inspired body and hair care brand. Acquired by L'Oréal in 2023. Major PE windfall exit by L Catterton who had previously invested.",
+                          alternatives:["Davines","Camille Rose","Surface Hair"]},
+
+  // ── NATURALL CLUB (Black woman-owned) ────────────────────────
+  "naturall club":      {owner:"NaturAll Club — Black woman-founded, independently owned (Muhga Eltigani)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Muhga Eltigani. Fresh, refrigerated kitchen-made natural hair products. Black woman-owned and independently operated.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Oyin Handmade"]},
+
+  // ── PATTERN BEAUTY correction (General Atlantic VC not indie) ─
+  "pattern":            {owner:"Pattern Beauty — General Atlantic (VC-backed), co-founded by Tracy Ellis Ross",tier:0,pe:true},
+
+  // ── THE ROOTIST (independently owned) ────────────────────────
+  "the rootist":        {owner:"The Rootist — independently owned scalp-first brand",tier:4,pe:false,indie:true,
+                          note:"Independent biology-based scalp and hair care brand. No PE or corporate parent identified.",
+                          alternatives:["Divi","Act+Acre","Malibu C"]},
+
+  // ── ILES FORMULA (independently owned, luxury) ───────────────
+  "iles formula":       {owner:"Iles Formula — independently owned (Wendy Iles)",tier:4,pe:false,indie:true,
+                          note:"Luxury professional hair care brand founded by celebrity hairstylist Wendy Iles. Independently owned and operated. No corporate parent identified.",
+                          alternatives:["Philip Kingsley","Sachajuan","Davines"]},
+
+  // ── ETHIQUE (Bansk Group PE — same as Amika/Eva NYC) ─────────
+  "ethique":            {owner:"Ethique — Bansk Group (PE-backed, acquired 2020)",tier:0,pe:true,
+                          note:"New Zealand waterless, plastic-free beauty brand. Bansk Group's first beauty acquisition in 2020. Despite strong sustainability mission, now PE-owned.",
+                          alternatives:["Davines","Dr. Bronner's","Surface Hair"]},
+
+  // ── BEACHWAVER already in DB ──────────────────────────────────
+
+  // ── SLMD SKINCARE (independently owned — Sandra Lee) ─────────
+  "slmd skincare":      {owner:"SLMD Skincare — independently owned, founded by Dr. Sandra Lee",tier:4,pe:false,indie:true,
+                          alternatives:["Dermalogica","Aveda","Surface Hair"]},
+
+  // ── CELEB LUXURY (independently owned) — update/add alias ────
+  "celeb luxury gems":  {owner:"Celeb Luxury — independently owned",tier:4,pe:false,indie:true},
+
+  // ── SUNDAY II SUNDAY (Black woman-owned) ─────────────────────
+  "sunday ii sunday":   {owner:"Sunday II Sunday — Black woman-founded, independently owned",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Keenan Beasley, a Black woman entrepreneur. Clean scalp care for active women. Independently owned and operated.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Taliah Waajid"]},
+
+  // ── MELANIN HAIRCARE (Black woman-owned) ─────────────────────
+  "melanin haircare":   {owner:"Melanin Haircare — Black woman-owned (Whitney White, aka Naptural85)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Founded by Whitney White, known as Naptural85. Built from a beloved YouTube channel into an independently owned brand. Black woman-owned.",
+                          alternatives:["Camille Rose","Kinky Curly","Rizos Curls"]},
+
+  // ── BOUCLEME (independently owned, curly hair) ───────────────
+  "boucleme":           {owner:"BouClème — independently owned, UK curly hair brand",tier:4,pe:false,indie:true,
+                          note:"UK-based independent curly hair brand co-founded by Michele Scott-Lynch. No PE or corporate parent identified.",
+                          alternatives:["Rizos Curls","Ouidad","Camille Rose"]},
+
+  // ── DOUX (Black woman-founded, indie) ────────────────────────
+  "doux":               {owner:"DOUX — Black woman-founded, independently owned (Emileigh Nguyen & TaNeika Driver-Moultrie)",tier:5,pe:false,indie:true,womenOwned:true,
+                          note:"Co-founded by Black women Emileigh Nguyen and TaNeika Driver-Moultrie. Clean natural hair care. Independently owned and operated.",
+                          alternatives:["Camille Rose","Eden Bodyworks","Kinky Curly"]},
+
+  // ── DAVINES GROUP BRANDS ─────────────────────────────────────
+  "oi":                 {owner:"Davines OI — Davines Group (B-Corp, family-owned Italy)",tier:5,pe:false,indie:true},
+  "davines oi":         {owner:"Davines OI — Davines Group (B-Corp, family-owned Italy)",tier:5,pe:false,indie:true},
+  "naturaltech":        {owner:"NaturalTech — Davines Group (B-Corp, family-owned Italy)",tier:5,pe:false,indie:true},
+
+  // ── PULP RIOT correction note (L'Oréal since 2018) ───────────
+  "pulp riot hair":     {owner:"Pulp Riot — L'Oréal (Euronext: OR, acquired May 2018)",tier:1,pe:false},
+
+  // ── RUSK (Revlon complex) ─────────────────────────────────────
+  "rusk":               {owner:"Rusk — Transom Capital Group PE (via Beauty Quest Group, acquired from Conair 2019)",tier:0,pe:true,
+                          note:"Founded by Irvine Rusk. Acquired by Conair in 2003, then sold to PE firm Transom Capital Group in 2019 as part of Beauty Quest Group alongside Aquage and One 'n Only.",
+                          alternatives:["Davines","Paul Mitchell","Surface Hair"]},
+
+  // ── KENRA ALREADY COVERED (Henkel) ───────────────────────────
+
+  // ── MIZANI ALREADY COVERED (L'Oréal) ──────────────────────────
+
+  // ── WELLA BRANDS SUB-LINES ────────────────────────────────────
+  "sebastian professional":{owner:"Sebastian Professional — KKR investor-owned (Wella Company)",tier:0,pe:true,
+                          note:"Part of the Wella Company portfolio, majority-owned by KKR PE since 2020. Sebastian was once a salon icon — now investor-owned.",
+                          alternatives:["Davines","Paul Mitchell","Surface Hair"]},
+
+
+  // ── BEAUTY QUEST GROUP brands (Transom Capital PE) ───────────
+  // Rusk corrected above — also fixing aliases and related brands:
+  "rusk hair":          {owner:"Rusk — Transom Capital Group PE (via Beauty Quest Group)",tier:0,pe:true},
+  "aquage":             {owner:"Aquage — Transom Capital Group PE (via Beauty Quest Group, acquired 2019)",tier:0,pe:true,
+                          note:"Marine botanical professional brand. Part of Beauty Quest Group, owned by PE firm Transom Capital since 2019. Previously under Conair Corporation.",
+                          alternatives:["Davines","Surface Hair","Malibu C"]},
+  "one n only":         {owner:"One 'n Only — Transom Capital Group PE (via Beauty Quest Group)",tier:0,pe:true,
+                          note:"Professional argan oil and color brand. Part of Beauty Quest Group, owned by PE firm Transom Capital since 2019.",
+                          alternatives:["Davines","Framesi","Oway"]},
+  "one 'n only":        {owner:"One 'n Only — Transom Capital Group PE (via Beauty Quest Group)",tier:0,pe:true},
+  "biomega":            {owner:"Biomega — Transom Capital Group PE (via Beauty Quest Group)",tier:0,pe:true,
+                          note:"Was listed as independently owned but is part of the Beauty Quest Group portfolio under Transom Capital PE."},
+
+  // ── REVLON GROUP HOLDINGS (lender-owned post-bankruptcy 2023) ─
+  "revlon":             {owner:"Revlon Group Holdings — privately held by former lenders (Glendon, King Street, Angelo Gordon, Oak Hill)",tier:3,pe:false,
+                          note:"Emerged from Chapter 11 bankruptcy in 2023. Former lenders now own the company — not PE-backed but not public. Owns CND, American Crew, Revlon Professional.",
+                          alternatives:["Davines","Paul Mitchell","Surface Hair"]},
+  "revlon professional":{owner:"Revlon Professional — Revlon Group Holdings (lender-owned post-bankruptcy 2023)",tier:3,pe:false,
+                          note:"Part of Revlon's portfolio, now owned by its former lenders after exiting Chapter 11 in 2023."},
+  "american crew":      {owner:"American Crew — Revlon Group Holdings (lender-owned post-bankruptcy 2023)",tier:3,pe:false,
+                          note:"Men's grooming brand under Revlon Group Holdings since 2023. Previously publicly traded, now privately held by lender consortium.",
+                          alternatives:["Reuzel","Suavecito","Layrite"]},
+  "cnd":                {owner:"CND (Creative Nail Design) — Revlon Group Holdings (lender-owned post-bankruptcy 2023)",tier:3,pe:false,
+                          note:"Professional nail brand under Revlon Group Holdings. Revlon exited Chapter 11 in 2023 and is now privately held by former lenders."},
+  "cnd shellac":        {owner:"CND Shellac — Revlon Group Holdings (lender-owned)",tier:3,pe:false},
+  "cnd vinylux":        {owner:"CND Vinylux — Revlon Group Holdings (lender-owned)",tier:3,pe:false},
+  "creative nail design":{owner:"CND — Revlon Group Holdings (lender-owned post-bankruptcy 2023)",tier:3,pe:false},
+
+
+  // ── DANGER JONES (independently owned — David & Alexis Thurston, LA) ─
+  "danger jones":       {owner:"Danger Jones — independently owned, co-founded by David & Alexis Thurston (Los Angeles, launched April 2023)",tier:4,pe:false,indie:true,
+                          note:"Founded by David and Alexis Thurston, who previously co-founded Pulp Riot (sold to L'Oréal 2018). Danger Jones launched April 2023 as a direct response to corporate takeovers. Self-funded 95% by founders. Based at Butterfly Loft salon in LA. Available in 43 countries through CosmoProf. Built to last, not to sell.",
+                          alternatives:["Pulp Riot","Arctic Fox","Manic Panic","Celeb Luxury"]},
+  "dangerjones":        {owner:"Danger Jones — independently owned, David & Alexis Thurston",tier:4,pe:false,indie:true},
+
   // ── IVY ANN SHEARS ────────────────────────────────────────
   "ivy ann shears":     {owner:"Ivy Ann Shears — woman-owned, independently operated (Wilmington, NC)",tier:5,pe:false,indie:true,womenOwned:true,
                           note:"Cold-forged ATS-314 Japanese steel, handcrafted in Sanjo, Japan. Direct-to-consumer, no commissioned reps. Woman-owned, cosmetologist-operated."},
@@ -2795,7 +3057,7 @@ const KNOWN = {
   "walker tape":        {owner:"Walker Tape Co. — privately held",tier:3,pe:false},
 
   // ── COLOR WOW ────────────────────────────────────────────
-  "color wow":          {owner:"Henkel AG (acquired 2021)",tier:1,pe:false,indie:false,
+  "color wow":          {owner:"Color Wow — L'Oréal (Euronext: OR, acquired September 2025)",tier:1,pe:false,indie:false,
                           note:"Was independently owned. Acquired by Henkel in 2021. Now fully corporate-owned."},
 
   // ── INSIGHT COSMETICS ────────────────────────────────────
@@ -2882,7 +3144,7 @@ async function runLookup(brands, queryLabel){
   document.getElementById('app').style.display='block';
   document.getElementById('loading').style.display='block';
   document.getElementById('cards').innerHTML='';
-  document.getElementById('hdr-query').innerHTML=`Checking: <strong>${queryLabel}</strong>`;
+  // query display removed
 
   const found=[], toAI=[];
   for(const b of brands){
@@ -2936,7 +3198,12 @@ RESEARCH RULES FOR OBSCURE BRANDS:
 - If sold at major distributors but small team: may still be indie-owned
 - Do NOT default everything unknown to tier 3 — reason it out first
 - Alternatives must be REAL brands in the EXACT same product category
-- Never invent names or dates — omit if uncertain, but do not refuse to engage`;
+- CRITICAL: Never invent or guess founder names, locations, founding stories, or acquisition details. If you do not have verified knowledge of a specific fact, omit it entirely — do not fill in plausible-sounding details.
+- If you are not confident, say so with a low confidence score (1-2) and a note like "Limited information available — treat with caution"
+- Do NOT assume a brand is indie just because it sounds indie — research it
+- Do NOT assume a brand is corporate just because it is large — verify it
+- When uncertain about ownership, default to confidence:2 and note the uncertainty rather than guessing`;
+
 
   try{
     const res=await fetch("https://api.anthropic.com/v1/messages",{
@@ -3095,13 +3362,21 @@ function buildCard(r,i){
   const wBadge=r.womenOwned?' · 👩 Woman-Owned':(r.womenFounded?' · 👩 Women-Founded':'');
   const bCert=r.note&&r.note.toLowerCase().includes('b-corp')?' · 🌿 B-Corp':'';
   const sub=(r.owner||'Unknown ownership').slice(0,60)+((r.owner||'').length>60?'…':'');
-
   const conf=Array.from({length:5},(_,j)=>`<div style="width:7px;height:7px;border-radius:50%;background:${j<(r.confidence||3)?'#c8a96e':'#e8dece'}"></div>`).join('');
+  const photo=getCardPhoto(r);
+  const clearbitLogo=`https://logo.clearbit.com/${(r.name||'').toLowerCase().replace(/[^a-z0-9]/g,'')}.com`;
 
   return `<div class="card" style="animation-delay:${i*.07}s">
-    <div class="card-head">
-      <div class="brand-icon" style="background:${tc.bg}">${tc.icon}</div>
-      <div class="brand-info">
+    <div class="card-photo">
+      <img src="${photo.url}" alt="${r.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=85'"/>
+      <div class="card-photo-overlay"></div>
+      <div class="card-tier-badge">${tc.icon} ${tc.label}</div>
+      <div class="card-brand-logo">
+        <img src="${clearbitLogo}" alt="${r.name} logo" onerror="this.parentElement.style.display='none'"/>
+      </div>
+    </div>
+    <div class="card-head" style="border-radius:0">
+      <div class="brand-info" style="width:100%">
         <div class="brand-name">${r.name}</div>
         <div class="brand-sub">${sub}${wBadge}${bCert}</div>
       </div>
@@ -3127,6 +3402,7 @@ function buildCard(r,i){
     </div>
     <button class="expand-btn" onclick="toggleDetail(${i})" id="exbtn-${i}">▼ Full analysis &amp; alternatives</button>
     <div class="card-detail" id="det-${i}">
+      ${photo.isFounder?`<div style="margin-bottom:12px;border-radius:10px;overflow:hidden;height:180px;position:relative"><img src="${photo.url}" alt="Founder" style="width:100%;height:100%;object-fit:cover;object-position:top" onerror="this.parentElement.style.display='none'"/><div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.6));padding:8px 10px;font-size:10px;color:#fff;font-weight:700">Founder / Owner</div></div>`:''}
       ${r.note?`<div class="detail-row"><div class="detail-icon">ℹ️</div><div class="detail-text">${r.note}</div></div>`:''}
       <div class="detail-row"><div class="detail-icon">🏛️</div><div class="detail-text"><strong>Full owner:</strong> ${r.owner||'Not verified'}</div></div>
       <div class="detail-row"><div class="detail-icon">🎯</div><div class="detail-text">${TIER_WHY[r.tier??3]}</div></div>
