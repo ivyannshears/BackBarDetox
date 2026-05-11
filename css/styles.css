@@ -215,3 +215,11 @@ input:focus,button:focus{outline:none}
 .hdr-search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;opacity:.6}
 .hdr-search-go{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:var(--gold);border:none;border-radius:8px;padding:4px 10px;font-size:10px;font-weight:800;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:.5px;transition:all .15s}
 .hdr-search-go:hover{background:var(--gold-dark)}
+
+/* Ownership badges on result cards */
+.ownership-badges{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0 10px}
+.ownership-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.3px}
+.ownership-badge.esop{background:#e0f2fe;color:#0c5a7a;border:1px solid #b3e0f5}
+.ownership-badge.wled{background:#fce7f3;color:#8b1a4a;border:1px solid #f9b8d6}
+.ownership-badge.wown{background:#ede9fe;color:#5b21b6;border:1px solid #d8b4fe}
+.ownership-badge.wfnd{background:#fef3c7;color:#78450b;border:1px solid #fcd34d}

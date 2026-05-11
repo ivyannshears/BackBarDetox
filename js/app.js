@@ -42,11 +42,12 @@ async function runLookup(brands) {
 
 function getFiltered() {
   return S.results.filter(r => {
-    if (S.filter === 'all') return true;
-    if (S.filter === 'pe') return r.tier === 0;
-    if (S.filter === 'corp') return r.tier <= 1;
-    if (S.filter === 'indie') return r.tier >= 4;
-    if (S.filter === 'women') return r.womenOwned || r.womenFounded;
+    if (S.filter === 'all')    return true;
+    if (S.filter === 'pe')     return r.tier === 0;
+    if (S.filter === 'corp')   return r.tier <= 1;
+    if (S.filter === 'indie')  return r.tier >= 4;
+    if (S.filter === 'esop')   return r.esop === true;
+    if (S.filter === 'women')  return r.womenOwned || r.womenFounded || r.womanLed;
     return true;
   });
 }
@@ -121,9 +122,24 @@ function getCardPhoto(r) {
 function buildCard(r, i) {
   const tc = TIERS[r.tier ?? 3];
   const photo = getCardPhoto(r);
-  const wBadge = r.womenOwned ? ' · 👩 Woman-Owned' : (r.womenFounded ? ' · 👩 Women-Founded' : '');
+
+  // Ownership badges
+  const esopBadge   = r.esop       ? `<span class="ownership-badge esop">🤝 Employee Owned</span>` : '';
+  const wLedBadge   = r.womanLed   ? `<span class="ownership-badge wled">👩 ${r.womanLedName ? r.womanLedName + (r.womanLedTitle ? ', ' + r.womanLedTitle : '') : 'Woman-Led'}</span>` : '';
+  const wOwnBadge   = r.womenOwned ? `<span class="ownership-badge wown">👩 Woman-Owned</span>` : '';
+  const wFndBadge   = (!r.womenOwned && r.womenFounded) ? `<span class="ownership-badge wfnd">👩 Women-Founded</span>` : '';
+  const badges      = [esopBadge, wLedBadge, wOwnBadge, wFndBadge].filter(Boolean).join('');
+
   const sub = (r.owner || 'Unknown ownership').slice(0, 60) + ((r.owner || '').length > 60 ? '…' : '');
   const conf = Array.from({length: 5}, (_, j) => `<div style="width:7px;height:7px;border-radius:50%;background:${j < (r.confidence || 3) ? '#c8a96e' : '#e8dece'}"></div>`).join('');
+
+  // Woman-led cell text
+  let wLedText, wLedClass;
+  if (r.womenOwned)       { wLedText = '✓ Yes (Owner)';   wLedClass = 'good'; }
+  else if (r.womanLed)    { wLedText = `✓ ${r.womanLedName || 'Yes'} (${r.womanLedTitle || 'Leadership'})`; wLedClass = 'good'; }
+  else if (r.womenFounded){ wLedText = '~ Women-Founded';  wLedClass = 'warn'; }
+  else                    { wLedText = '✗ Not confirmed';  wLedClass = 'bad';  }
+
   return `<div class="card" style="animation-delay:${i * 0.07}s">
     <div class="card-photo">
       <img src="${photo}" alt="${r.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=85'"/>
@@ -132,7 +148,8 @@ function buildCard(r, i) {
     </div>
     <div class="card-body">
       <div class="brand-name">${r.name}</div>
-      <div class="brand-sub">${sub}${wBadge}</div>
+      <div class="brand-sub">${sub}</div>
+      ${badges ? `<div class="ownership-badges">${badges}</div>` : ''}
       <div class="score-bar-wrap">
         <div class="score-bar-label">
           <span class="sleft" style="color:${tc.color}">${tc.icon} ${tc.label}</span>
@@ -142,8 +159,8 @@ function buildCard(r, i) {
       </div>
       <div class="analysis-grid">
         <div class="ag-cell"><div class="ag-label">Corporate Owned</div><div class="ag-val ${r.tier <= 1 ? 'bad' : 'good'}">${r.tier <= 1 ? '✗ Yes' : '✓ No'}</div></div>
-        <div class="ag-cell"><div class="ag-label">Woman-Owned</div><div class="ag-val ${r.womenOwned ? 'good' : r.womenFounded ? 'warn' : 'bad'}">${r.womenOwned ? '✓ Yes' : r.womenFounded ? '~ Women-Founded' : '✗ Not confirmed'}</div></div>
-        <div class="ag-cell"><div class="ag-label">Independent</div><div class="ag-val ${r.indie ? 'good' : 'bad'}">${r.indie ? '✓ Yes' : '✗ No'}</div></div>
+        <div class="ag-cell"><div class="ag-label">Woman in Leadership</div><div class="ag-val ${wLedClass}">${wLedText}</div></div>
+        <div class="ag-cell"><div class="ag-label">${r.esop ? 'Employee Owned' : 'Independent'}</div><div class="ag-val ${r.esop || r.indie ? 'good' : 'bad'}">${r.esop ? '✓ ESOP/Co-op' : (r.indie ? '✓ Yes' : '✗ No')}</div></div>
         <div class="ag-cell"><div class="ag-label">Confidence</div><div style="display:flex;gap:3px;margin-top:3px">${conf}</div></div>
       </div>
       <div class="vote-row">
@@ -155,6 +172,8 @@ function buildCard(r, i) {
     <div class="card-detail" id="det-${i}">
       ${r.note ? `<div class="detail-row"><div class="detail-icon">ℹ️</div><div class="detail-text">${r.note}</div></div>` : ''}
       <div class="detail-row"><div class="detail-icon">🏛️</div><div class="detail-text"><strong>Full owner:</strong> ${r.owner || 'Not verified'}</div></div>
+      ${r.esop ? `<div class="detail-row"><div class="detail-icon">🤝</div><div class="detail-text"><strong>Employee Owned:</strong> Workers hold equity through an ESOP or co-op structure. No outside investor extraction.</div></div>` : ''}
+      ${r.womanLed && r.womanLedName ? `<div class="detail-row"><div class="detail-icon">👩</div><div class="detail-text"><strong>${r.womanLedTitle || 'Leadership'}:</strong> ${r.womanLedName}</div></div>` : ''}
       <div class="detail-row"><div class="detail-icon">🎯</div><div class="detail-text">${TIER_EXPLANATIONS[r.tier ?? 3]}</div></div>
     </div>
   </div>`;

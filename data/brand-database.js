@@ -46,7 +46,8 @@ const KNOWN = {
   'salon care': {owner:'L\'Oréal Salon',tier:1,pe:false,indie:false},
   'tomb45': {owner:'Tomb45 LLC (Founder-owned, Indie)',tier:5,pe:false,indie:true,womenOwned:true},
   'danger jones': {owner:'Jones Beauty (Independent, Indie)',tier:5,pe:false,indie:true,womenOwned:true},
-  'ivy ann shears': {owner:'Ivy Ann (Founder: Ivy Ann, Independent)',tier:5,pe:false,indie:true,womenOwned:true}
+  'malibu c': {owner:'Malibu Wellness Inc (100% employee-owned ESOP; founded by Tom & Deb Porter, 1985; current CEO Loretta Mottram)',tier:6,pe:false,indie:true,esop:true,womenOwned:false,womenFounded:false,womanLed:true,womanLedName:'Loretta Mottram',womanLedTitle:'CEO',confidence:5,note:'Malibu C is 100% employee-owned through an ESOP implemented by founder Tom Porter to protect the brand\'s legacy. Current CEO is Loretta Mottram.'},
+  'ivy ann shears': {owner:'Ivy Ann (Founder: Ivy Ann, Independent)',tier:5,pe:false,indie:true,womenOwned:true,womenFounded:true,womanLed:true,womanLedName:'Ivy Ann',womanLedTitle:'Founder & Owner',esop:false,confidence:5}
 };
 
 function lookupBrand(name) {

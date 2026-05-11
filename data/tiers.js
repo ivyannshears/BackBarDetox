@@ -4,7 +4,8 @@ const TIERS = {
   2: { label: '⚠️ Recently Acquired', icon: '⚠️', score: 35, color: '#5bc0de', bar: '#5bc0de' },
   3: { label: '🔵 Large Private', icon: '🔵', score: 55, color: '#8b7355', bar: '#9d8b7e' },
   4: { label: '✅ Independent', icon: '✅', score: 80, color: '#2d6e45', bar: '#4caf50' },
-  5: { label: '⭐ Indie+Woman/B-Corp', icon: '⭐', score: 100, color: '#28a745', bar: '#1b5e20' }
+  5: { label: '⭐ Indie + Woman-Led', icon: '⭐', score: 95, color: '#28a745', bar: '#1b5e20' },
+  6: { label: '🤝 Employee Owned', icon: '🤝', score: 90, color: '#2c7a9e', bar: '#3a9cc4' }
 };
 
 const TIER_EXPLANATIONS = {
@@ -13,5 +14,6 @@ const TIER_EXPLANATIONS = {
   2: 'This brand was recently acquired. It may have been independent when you fell in love with it. Check the owner now.',
   3: 'Held by a larger private company or founding family. More stability than PE, but not truly independent. May prioritize growth over quality.',
   4: 'No corporate parent or outside investors found. These brands reinvest in product quality and stylist support rather than shareholder returns.',
-  5: 'The gold standard. Independently owned, woman-led, or B-Corp certified. Every dollar stays in independent hands. Profit = reinvestment.'
+  5: 'Woman-led and independently owned. The people making decisions look like the people using the products. Every dollar supports independent ownership.',
+  6: 'Employee-owned through an ESOP or co-op structure. The workers ARE the shareholders. No outside investors, no PE extraction — profit stays with the people doing the work.'
 };
