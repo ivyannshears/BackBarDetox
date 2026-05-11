@@ -43,8 +43,8 @@ async function runLookup(brands) {
 function getFiltered() {
   return S.results.filter(r => {
     if (S.filter === 'all') return true;
-    if (S.filter === 'pe') return r.tier <= 1;
-    if (S.filter === 'corp') return r.tier === 1;
+    if (S.filter === 'pe') return r.tier === 0;
+    if (S.filter === 'corp') return r.tier <= 1;
     if (S.filter === 'indie') return r.tier >= 4;
     if (S.filter === 'women') return r.womenOwned || r.womenFounded;
     return true;
@@ -225,7 +225,7 @@ function doVote(name, type, idx) {
 }
 
 function doLookup() {
-  const brands = document.getElementById('brand-input').value.split(',').filter(b => b.trim());
+  const brands = document.getElementById('brand-input').value.split(',').map(b => b.trim()).filter(b => b.length > 0);
   if (!brands.length) return;
   startSearch(brands, document.getElementById('brand-input').value);
 }
