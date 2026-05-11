@@ -621,14 +621,14 @@ input:focus,button:focus{outline:none}
 
     <div class="about-section">
       <h3>How It Works</h3>
-      <p>Known brands resolve instantly from our curated database of 500+ professional beauty brands with sourced ownership data. Unknown brands are researched in real time via AI. Community voting lets working stylists confirm or flag any rating. No login required — works in any mobile browser.</p>
+      <p>Known brands resolve instantly from our curated database of 60+ professional beauty brands with sourced ownership data. Unknown brands are researched in real time via AI. Community voting lets working stylists confirm or flag any rating. No login required — works in any mobile browser.</p>
     </div>
 
     <div class="about-rule"></div>
 
     <div class="about-section">
       <h3>Data Sources</h3>
-      <p>Ownership data sourced from WWD, Beauty Inc, corporate acquisition records, investor portfolio disclosures, SEC filings, and company press releases 2001–2025. Always verify independently for business decisions.</p>
+      <p>Ownership data sourced from WWD, Beauty Inc, corporate acquisition records, investor portfolio disclosures, SEC filings, and company press releases 2020–2025. Always verify independently for business decisions.</p>
     </div>
 
     <div class="about-rule"></div>
@@ -2350,10 +2350,10 @@ const KNOWN = {
                           note:"Small independent curly hair care brand. Founder-operated. No corporate parent identified.",
                           alternatives:["Ouidad","Rizos Curls","Curl Junkie"]},
 
-  // ── BOUNCE CURL (independently owned) ────────────────────────
-  "bounce curl":        {owner:"Bounce Curl — independently owned",tier:4,pe:false,indie:true,
-                          note:"Independent curly hair care brand. No corporate parent or PE investors identified.",
-                          alternatives:["Curlsmith","Rizos Curls","Jessicurl"]},
+  // ── BOUNCE CURL (woman-owned indie) ─────────────────────────
+  "bounce curl":        {displayName:"Bounce Curl",owner:"Bounce Curl — woman-owned, family-run brand founded by Merian Odesho",tier:5,pe:false,indie:true,womenOwned:true,womenFounded:true,
+                          note:"Woman-owned curly hair care brand founded in 2015 by Merian Odesho. Independently operated; no corporate parent or PE investors identified.",
+                          alternatives:["Rizos Curls","Camille Rose","Melanin Haircare"],aliases:["bouncecurl","bounce curls"]},
 
   // ── NATURALL CLUB (Black woman-owned) ────────────────────────
   "naturall club":      {displayName:"NaturAll Club",owner:"NaturAll Club — Black woman-founded, independently owned (Muhga Eltigani)",tier:5,pe:false,indie:true,womenOwned:true,
@@ -3514,11 +3514,49 @@ function buildLogoMark(size='26px',color='#fff'){
   return `<span class="Dx" style="font-size:${size};color:${color}"><span class="d">D</span><span class="x">x</span></span>`;
 }
 
+function normalizeBrandKey(value){
+  return (value||'')
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/&/g,' and ')
+    .replace(/[^a-z0-9\s]/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
+function compactBrandKey(value){
+  return normalizeBrandKey(value).replace(/\s+/g,'');
+}
+
+function hydrateOwnershipFlags(data){
+  if(!data) return data;
+  const text=`${data.owner||''} ${data.note||''}`.toLowerCase();
+
+  // Prevent "woman-owned" and "women-owned" brands from being mislabeled as merely independent.
+  if(/\b(woman|women|female)[ -]owned\b/.test(text)){
+    data.womenOwned=true;
+    data.womenFounded=true;
+    if(data.indie!==false && (data.tier===undefined || data.tier>=4)) data.tier=5;
+  }
+  if(/\b(woman|women|female)[ -]founded\b/.test(text)){
+    data.womenFounded=true;
+    if(data.indie!==false && (data.tier===undefined || data.tier>=4)) data.tier=5;
+  }
+  if(data.womenOwned && data.indie!==false && (data.tier===undefined || data.tier>=4)) data.tier=5;
+  if(data.tier>=4 && data.indie===undefined) data.indie=true;
+  if(data.tier<=1 && data.pe===undefined) data.pe=data.tier===0;
+  return data;
+}
+
 function initBrandIndex(){
   S.brandIndex={};
   Object.entries(KNOWN).forEach(([key,data])=>{
-    const norm=key.toLowerCase().replace(/[^\w\s]/g,'').trim();
-    S.brandIndex[norm]=data;
+    hydrateOwnershipFlags(data);
+    const keys=[key,data.displayName,...(data.aliases||[])].filter(Boolean);
+    keys.forEach(k=>{
+      S.brandIndex[normalizeBrandKey(k)]=data;
+      S.brandIndex[compactBrandKey(k)]=data;
+    });
   });
 }
 
@@ -3584,14 +3622,18 @@ async function runLookup(brands, queryLabel){
   const found=[], toAI=[];
   for(const b of brands){
     const lo=b.toLowerCase();
-    const norm=lo.replace(/[^\w\s]/g,'').trim();
-    // Try index exact match first (fast), then fall back to fuzzy scan
-    let data=S.brandIndex[norm]||S.brandIndex[lo];
+    const norm=normalizeBrandKey(b);
+    const compact=compactBrandKey(b);
+    // Try exact/alias/compact matches first, then fall back to fuzzy scan.
+    let data=S.brandIndex[norm]||S.brandIndex[compact]||S.brandIndex[lo];
     if(!data){
-      const key=Object.keys(KNOWN).find(k=>lo===k||lo.includes(k)||k.includes(lo));
+      const key=Object.keys(KNOWN).find(k=>{
+        const nk=normalizeBrandKey(k), ck=compactBrandKey(k);
+        return norm===nk || compact===ck || norm.includes(nk) || nk.includes(norm) || compact.includes(ck) || ck.includes(compact);
+      });
       if(key) data=KNOWN[key];
     }
-    if(data) found.push({name:data.displayName||(b.replace(/\b\w/g,c=>c.toUpperCase())),...data,fromDB:true});
+    if(data) found.push({name:data.displayName||(b.replace(/\b\w/g,c=>c.toUpperCase())),...hydrateOwnershipFlags(data),fromDB:true});
     else toAI.push(b);
   }
 
@@ -3599,7 +3641,7 @@ async function runLookup(brands, queryLabel){
   if(toAI.length>0){
     document.getElementById('loading-sub').innerHTML=`Researching ${toAI.join(', ')}<br>via live lookup/fallback...`;
     aiResults=await aiLookup(toAI);
-    aiResults=aiResults.map(r=>({...r,indie:r.tier>=4,pe:r.tier===0}));
+    aiResults=aiResults.map(r=>hydrateOwnershipFlags({...r,indie:r.tier>=4,pe:r.tier===0}));
   }
 
   S.results=[...found,...aiResults];
