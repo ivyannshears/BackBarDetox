@@ -1312,6 +1312,12 @@ const KNOWN = {
   "supercuts":          {owner:"Regis Corporation (NYSE: RGS)",tier:1,pe:false},
 
   // ── TRULY INDEPENDENT ─────────────────────────────────────
+  "tomb45":             {displayName:"Tomb45",owner:"Tomb45 — independent barbering brand",tier:4,pe:false,indie:true,
+                          note:"Barber-focused tools, cordless charging systems, enhancements, and education. No public corporate parent or private-equity ownership is listed in this app database; verify independently for business decisions.",
+                          alternatives:["Wahl","Andis","Ivy Ann Shears"],confidence:3},
+  "tomb 45":            {displayName:"Tomb45",owner:"Tomb45 — independent barbering brand",tier:4,pe:false,indie:true,
+                          note:"Barber-focused tools, cordless charging systems, enhancements, and education. No public corporate parent or private-equity ownership is listed in this app database; verify independently for business decisions.",
+                          alternatives:["Wahl","Andis","Ivy Ann Shears"],confidence:3},
   "davines":            {owner:"Davines Group — Italian family-owned Benefit Corp",tier:5,pe:false,indie:true,
                           note:"Certified B-Corp. Family owned since 1983. The gold standard for indie in professional beauty."},
   "paul mitchell":      {owner:"John Paul Mitchell Systems — privately held, founding family",tier:4,pe:false,indie:true,
@@ -3591,7 +3597,7 @@ async function runLookup(brands, queryLabel){
 
   let aiResults=[];
   if(toAI.length>0){
-    document.getElementById('loading-sub').innerHTML=`Researching ${toAI.join(', ')}<br>via AI brand intelligence...`;
+    document.getElementById('loading-sub').innerHTML=`Researching ${toAI.join(', ')}<br>via live lookup/fallback...`;
     aiResults=await aiLookup(toAI);
     aiResults=aiResults.map(r=>({...r,indie:r.tier>=4,pe:r.tier===0}));
   }
@@ -3601,68 +3607,72 @@ async function runLookup(brands, queryLabel){
   renderResults();
 }
 
-// ── AI LOOKUP ──────────────────────────────────────────────
-async function aiLookup(brands){
-  const prompt=`You are the world's most thorough professional beauty industry analyst. You have encyclopedic knowledge of brand ownership across ALL segments — not just major brands, but niche accessories, wedding hair, bridal, salon tools, foils, clips, color accessories, ethnic hair care, barbering, and every founder-led brand at every scale.
-
-For EVERY brand — famous or completely obscure — dig as deep as possible. For lesser-known brands, reason through: Who founded it? Is the founder still running it? Has it been acquired? Is there any press about investment? Niche beauty brands are almost always independent unless acquired.
-
-Brands: ${brands.join(', ')}
-
-Return ONLY a valid JSON array, no explanation, no markdown:
-[{
-  "name": "brand name exactly as given",
-  "owner": "maximally specific — founder name and company if indie, PE firm if investor-backed, public company ticker if corporate, or 'Independently owned by [founder]' if known",
-  "tier": 0-5,
-  "pe": true or false,
-  "indie": true or false,
-  "womenOwned": true only if currently woman-owned and you are certain,
-  "womenFounded": true if founded by a woman even if now sold,
-  "note": "2-3 sentences — founder story if indie, parent company impact if corporate. Be specific.",
-  "alternatives": ["3-4 real indie or woman-owned alternatives in the exact same product category"],
-  "confidence": 1-5
-}]
-
-TIERS: 0=private equity owned, 1=publicly traded corp, 2=recently acquired/was indie, 3=large private company, 4=independent founder-owned, 5=indie AND woman-owned or B-Corp certified.
-
-RESEARCH RULES FOR OBSCURE BRANDS:
-- Hair accessory brands (clips, pins, foils, jewelry): almost always indie unless acquired
-- Brands named after a person: likely still founder-owned — confirm this
-- Latina/Black/minority-founded brands: research carefully, most are still indie
-- Wedding and bridal hair brands: niche, almost always indie
-- If sold at major distributors but small team: may still be indie-owned
-- Do NOT default everything unknown to tier 3 — reason it out first
-- Alternatives must be REAL brands in the EXACT same product category
-- CRITICAL: Never invent or guess founder names, locations, founding stories, or acquisition details. If you do not have verified knowledge of a specific fact, omit it entirely — do not fill in plausible-sounding details.
-- If you are not confident, say so with a low confidence score (1-2) and a note like "Limited information available — treat with caution"
-- Do NOT assume a brand is indie just because it sounds indie — research it
-- Do NOT assume a brand is corporate just because it is large — verify it
-- When uncertain about ownership, default to confidence:2 and note the uncertainty rather than guessing`;
-
-
-  try{
-    const res=await fetch("https://api.anthropic.com/v1/messages",{
-      method:"POST",
-      headers:{"Content-Type":"application/json","anthropic-dangerous-direct-browser-access":"true","anthropic-version":"2023-06-01"},
-      body:JSON.stringify({
-        model:"claude-sonnet-4-20250514",
-        max_tokens:1000,
-        messages:[{role:"user",content:prompt}]
-      })
-    });
-    const data=await res.json();
-    const text=data.content?.find(c=>c.type==='text')?.text||'[]';
-    const parsed=JSON.parse(text.replace(/```json|```/g,'').trim());
-    return Array.isArray(parsed)?parsed:[];
-  }catch(e){
-    return brands.map(name=>({
-      name,owner:"Could not verify — check independently",
-      tier:3,pe:false,indie:false,
-      note:"AI lookup failed. Treat as unverified.",confidence:1
-    }));
-  }
+// ── UNKNOWN BRAND FALLBACK HELPERS ──────────────────────────
+function makeSearchUrl(name){
+  return `https://www.google.com/search?q=${encodeURIComponent(name+' brand ownership founder acquired private equity')}`;
 }
 
+function inferCategoryFromName(name){
+  const n=(name||'').toLowerCase();
+  if(/barber|clipper|trimmer|blade|razor|shear|scissor|tomb\s?45/.test(n)) return 'barbering tools';
+  if(/color|dye|tone|developer|bleach|lightener/.test(n)) return 'color';
+  if(/shampoo|conditioner|mask|treatment|bond/.test(n)) return 'hair care';
+  return 'professional beauty';
+}
+
+function fallbackBrandResult(name, reason){
+  const cat=inferCategoryFromName(name);
+  return {
+    name,
+    owner:'Ownership not verified yet',
+    tier:3,
+    pe:false,
+    indie:false,
+    womenOwned:false,
+    womenFounded:false,
+    note:`${reason||'Live AI/search is not connected in this static HTML file.'} Tap the research link below or connect a backend search endpoint to verify this ${cat} brand.`,
+    alternatives:cat==='barbering tools' ? ['Wahl','Andis','Ivy Ann Shears'] : ['Davines','Paul Mitchell','Ivy Ann Shears'],
+    confidence:1,
+    researchUrl:makeSearchUrl(name)
+  };
+}
+
+// ── AI LOOKUP ──────────────────────────────────────────────
+async function aiLookup(brands){
+  // Static HTML cannot safely call Anthropic/OpenAI/Google directly because API keys
+  // would be exposed and most APIs block browser CORS. Optional fix: define
+  // window.BACKBAR_AI_ENDPOINT = 'https://your-domain.com/api/brand-lookup'
+  // and have that serverless endpoint return the JSON array described below.
+  const prompt=`You are a professional beauty industry ownership analyst.
+Return ONLY a valid JSON array for these brands: ${brands.join(', ')}
+Each item must include: name, owner, tier, pe, indie, womenOwned, womenFounded, note, alternatives, confidence.
+Tiers: 0=private equity, 1=public corp, 2=recently acquired, 3=large/unknown private, 4=independent, 5=indie woman-owned or B-Corp.`;
+
+  const endpoint=window.BACKBAR_AI_ENDPOINT||'';
+  if(!endpoint){
+    return brands.map(name=>fallbackBrandResult(name,'Live AI/search is not connected yet.'));
+  }
+
+  try{
+    const res=await fetch(endpoint,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({brands,prompt})
+    });
+    if(!res.ok) throw new Error(`Lookup endpoint failed: ${res.status}`);
+    const data=await res.json();
+    const parsed=Array.isArray(data)?data:(Array.isArray(data.results)?data.results:[]);
+
+    // Guarantee every typed brand creates a card, even if the backend only returns partial results.
+    const byName=new Map(parsed.map(r=>[(r.name||'').toLowerCase().replace(/[^a-z0-9]/g,''),r]));
+    return brands.map(name=>{
+      const key=name.toLowerCase().replace(/[^a-z0-9]/g,'');
+      return byName.get(key)||fallbackBrandResult(name,'The live lookup did not return this brand.');
+    });
+  }catch(e){
+    return brands.map(name=>fallbackBrandResult(name,'Live lookup failed.'));
+  }
+}
 // ── RENDER ─────────────────────────────────────────────────
 function renderResults(){
   const filtered=getFiltered();
@@ -3854,6 +3864,7 @@ function buildCard(r,i){
       ${photo.isFounder?`<div style="margin-bottom:12px;border-radius:10px;overflow:hidden;height:180px;position:relative"><img src="${photo.url}" alt="Founder" style="width:100%;height:100%;object-fit:cover;object-position:top" onerror="this.parentElement.style.display='none'"/><div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.6));padding:8px 10px;font-size:10px;color:#fff;font-weight:700">Founder / Owner</div></div>`:''}
       ${r.note?`<div class="detail-row"><div class="detail-icon">ℹ️</div><div class="detail-text">${r.note}</div></div>`:''}
       <div class="detail-row"><div class="detail-icon">🏛️</div><div class="detail-text"><strong>Full owner:</strong> ${r.owner||'Not verified'}</div></div>
+      ${r.researchUrl?`<div class="detail-row"><div class="detail-icon">🔎</div><div class="detail-text"><strong>Research link:</strong> <a href="${r.researchUrl}" target="_blank" style="color:var(--green-accent);font-weight:700">Verify this brand on Google</a></div></div>`:''}
       <div class="detail-row"><div class="detail-icon">🎯</div><div class="detail-text">${TIER_WHY[r.tier??3]}</div></div>
     </div>
   </div>`;
