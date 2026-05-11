@@ -440,7 +440,45 @@ input:focus,button:focus{outline:none}
   transition:all .15s
 }
 .hdr-search-go:hover{background:var(--gold-dark)}
+
+
+/* ── USER ACCOUNTS / CLAIM PORTAL ───────────────────────── */
+.account-row{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.account-btn,.tiny-account-btn{
+  border:none;border-radius:999px;cursor:pointer;font-family:'DM Sans',sans-serif;
+  font-weight:800;letter-spacing:.3px;transition:all .18s
+}
+.account-btn{padding:10px 14px;font-size:11px;background:var(--green);color:#fff}
+.account-btn.secondary{background:var(--mist);color:var(--ink);border:1px solid var(--border)}
+.account-btn:hover,.tiny-account-btn:hover{transform:translateY(-1px)}
+.tiny-account-btn{padding:7px 11px;font-size:10px;background:rgba(255,255,255,.1);color:var(--gold);border:1px solid rgba(200,169,110,.24)}
+.user-chip{font-size:9px;color:rgba(255,255,255,.55);max-width:150px;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.portal-overlay{display:none;position:fixed;inset:0;z-index:800;background:rgba(10,18,9,.74);backdrop-filter:blur(5px)}
+.portal-modal{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:801;width:calc(100% - 28px);max-width:460px;max-height:88vh;overflow-y:auto;background:var(--paper);border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.45);border:1px solid rgba(200,169,110,.22)}
+.portal-head{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.portal-head h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--ink);line-height:1.15}
+.portal-head p{font-size:11px;color:#8a7a60;margin-top:3px;line-height:1.4}
+.portal-close{margin-left:auto;border:none;background:var(--mist);width:32px;height:32px;border-radius:999px;cursor:pointer;font-weight:900;color:var(--ink)}
+.portal-body{padding:18px 20px 22px}
+.portal-field{margin-bottom:12px}
+.portal-field label{display:block;font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--green-accent);margin-bottom:6px}
+.portal-field input,.portal-field textarea,.portal-field select{width:100%;border:1.5px solid var(--border);background:#fff;border-radius:12px;padding:12px 13px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink)}
+.portal-field textarea{min-height:90px;resize:vertical;line-height:1.5}
+.portal-help{font-size:11px;color:#9a8a70;line-height:1.55;margin:8px 0 14px}
+.portal-actions{display:flex;gap:9px;margin-top:8px;flex-wrap:wrap}
+.portal-submit{flex:1;min-width:150px;border:none;border-radius:13px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;font-weight:900;padding:13px;font-family:'DM Sans',sans-serif;cursor:pointer}
+.portal-muted{flex:1;min-width:120px;border:1.5px solid var(--border);border-radius:13px;background:#fff;color:#6a5a40;font-weight:800;padding:13px;font-family:'DM Sans',sans-serif;cursor:pointer}
+.portal-status{font-size:12px;line-height:1.55;margin-top:12px;color:#5a4a30;background:var(--mist);border-radius:12px;padding:10px 12px;display:none}
+.claim-row{display:flex;gap:8px;margin-top:9px}
+.claim-btn{width:100%;border:1.5px solid var(--border);background:#fff;border-radius:11px;padding:9px 10px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:800;color:var(--green);cursor:pointer;transition:all .18s}
+.claim-btn:hover{border-color:var(--gold);color:var(--gold-dark);background:var(--mist)}
+.activity-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.activity-item{background:#fff;border:1px solid var(--border);border-radius:13px;padding:10px 12px;font-size:12px;color:#5a4a30;line-height:1.45}
+.activity-item strong{color:var(--ink)}
+.config-warning{font-size:11px;line-height:1.5;color:#8a5a20;background:#fff7e8;border:1px solid #ead2a4;border-radius:12px;padding:10px 12px;margin-bottom:12px}
+
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -511,6 +549,11 @@ input:focus,button:focus{outline:none}
       </div>
     </div>
 
+    <div class="account-row">
+      <button class="account-btn" onclick="openAuthModal()">Sign In / Create Account</button>
+      <button class="account-btn secondary" onclick="openDashboard()">My Claims & Flags</button>
+    </div>
+
   </div>
 </div>
 
@@ -535,6 +578,8 @@ input:focus,button:focus{outline:none}
           <div class="ilbl">indie or<br>women-owned</div>
         </div>
         <button class="new-search-btn" onclick="goSetup()">New Search</button>
+        <button class="tiny-account-btn" id="auth-chip-btn" onclick="openAuthModal()">Sign In</button>
+        <div class="user-chip" id="user-chip"></div>
       </div>
     </div>
     <div class="hdr-search">
@@ -577,7 +622,8 @@ input:focus,button:focus{outline:none}
     </div>
     <p style="font-size:11px;font-weight:800;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1px">WHO OWNS YOUR SHELF?</p>
     <p>AI-powered · Community verified · Built for stylists</p>
-    <button class="footer-about-btn" onclick="openAbout()">About &amp; How It Works</button>
+    <button class="footer-about-btn" onclick="openAbout()">About &amp; How It Works</button><br>
+    <button class="footer-about-btn" onclick="openDashboard()">Brand Portal / My Activity</button>
   </div>
 </div>
 
@@ -643,7 +689,201 @@ input:focus,button:focus{outline:none}
   </div>
 </div>
 
+
+
+<!-- ── ACCOUNT / CLAIM MODALS ─────────────────────────────── -->
+<div class="portal-overlay" id="portal-overlay" onclick="closePortalModals()"></div>
+
+<div class="portal-modal" id="auth-modal">
+  <div class="portal-head">
+    <div>
+      <h3>Brand Portal</h3>
+      <p>Create an account to track flags, claims, and submitted corrections.</p>
+    </div>
+    <button class="portal-close" onclick="closePortalModals()">✕</button>
+  </div>
+  <div class="portal-body">
+    <div id="supabase-warning" class="config-warning" style="display:none">Supabase is not connected yet. Add your project URL and anon key inside the CONFIG block near the top of the script.</div>
+    <div class="portal-field"><label>Email</label><input id="auth-email" type="email" placeholder="you@brand.com"></div>
+    <div class="portal-field"><label>Password</label><input id="auth-password" type="password" placeholder="At least 6 characters"></div>
+    <p class="portal-help">Your public app never needs to show an email address. Brand owners can use this portal to submit verification privately.</p>
+    <div class="portal-actions">
+      <button class="portal-submit" onclick="signInUser()">Sign In</button>
+      <button class="portal-muted" onclick="signUpUser()">Create Account</button>
+      <button class="portal-muted" onclick="signOutUser()">Sign Out</button>
+    </div>
+    <div class="portal-status" id="auth-status"></div>
+  </div>
+</div>
+
+<div class="portal-modal" id="claim-modal">
+  <div class="portal-head">
+    <div>
+      <h3>Claim or Correct Card</h3>
+      <p id="claim-subtitle">Submit verification for this brand card.</p>
+    </div>
+    <button class="portal-close" onclick="closePortalModals()">✕</button>
+  </div>
+  <div class="portal-body">
+    <div id="claim-warning" class="config-warning" style="display:none">Supabase is not connected yet. This form will save locally for testing only.</div>
+    <input type="hidden" id="claim-brand-name">
+    <div class="portal-field"><label>Official brand website</label><input id="claim-website" type="url" placeholder="https://brand.com"></div>
+    <div class="portal-field"><label>Your relationship to the brand</label><select id="claim-role"><option value="owner_founder">Owner / Founder</option><option value="employee">Employee / Team Member</option><option value="agency_rep">Agency / PR Representative</option><option value="customer_correction">Customer submitting a correction</option><option value="other">Other</option></select></div>
+    <div class="portal-field"><label>Verification proof link</label><input id="claim-proof" type="url" placeholder="LinkedIn, press article, ownership page, public filing, etc."></div>
+    <div class="portal-field"><label>Preferred card image URL</label><input id="claim-image" type="url" placeholder="Optional — product/founder/image URL"></div>
+    <div class="portal-field"><label>Suggested card description</label><textarea id="claim-description" placeholder="Tell us what should be corrected or customized on the card."></textarea></div>
+    <div class="portal-field"><label>Private note to review team</label><textarea id="claim-note" placeholder="Anything we should know before approving this claim?"></textarea></div>
+    <p class="portal-help">Nothing updates live automatically. Claims and card edits stay pending until reviewed.</p>
+    <div class="portal-actions">
+      <button class="portal-submit" onclick="submitBrandClaim()">Submit Claim / Correction</button>
+      <button class="portal-muted" onclick="closePortalModals()">Cancel</button>
+    </div>
+    <div class="portal-status" id="claim-status"></div>
+  </div>
+</div>
+
+<div class="portal-modal" id="dashboard-modal">
+  <div class="portal-head">
+    <div>
+      <h3>My Claims & Flags</h3>
+      <p>Track the brands you’ve verified, flagged, or claimed.</p>
+    </div>
+    <button class="portal-close" onclick="closePortalModals()">✕</button>
+  </div>
+  <div class="portal-body">
+    <div id="dashboard-status" class="portal-status" style="display:block">Sign in to load your activity.</div>
+    <div class="activity-list" id="activity-list"></div>
+  </div>
+</div>
+
 <script>
+
+// ── SUPABASE CONFIG ────────────────────────────────────────
+const SUPABASE_URL = "https://zjvdyufogdyldcdnpema.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_jr1Ih3eMuYPr_OXn0ax7-Q_bia858oW";
+
+
+// ── BACKBAR DATABASE CONFIG ────────────────────────────────
+// 1) Create a Supabase project.
+// 2) Run the SQL schema included with the download.
+// 3) Paste your public project URL and anon key here.
+// The anon key is okay to publish when Row Level Security policies are enabled.
+const BACKBAR_SUPABASE_URL = 'PASTE_SUPABASE_PROJECT_URL_HERE';
+const BACKBAR_SUPABASE_ANON_KEY = 'PASTE_SUPABASE_ANON_KEY_HERE';
+const BACKBAR_DB_ENABLED = BACKBAR_SUPABASE_URL.startsWith('https://') && BACKBAR_SUPABASE_ANON_KEY.length > 40;
+const DB = BACKBAR_DB_ENABLED ? window.supabase.createClient(BACKBAR_SUPABASE_URL, BACKBAR_SUPABASE_ANON_KEY) : null;
+const LOCAL_ACTIVITY_KEY = 'backbar_detox_local_activity_v1';
+let CURRENT_USER = null;
+
+function slugifyBrand(value){return normalizeBrandKey(value).replace(/\s+/g,'-') || 'unknown-brand';}
+function showPortalStatus(id,msg,kind='info'){
+  const el=document.getElementById(id); if(!el) return;
+  el.style.display='block'; el.textContent=msg;
+  el.style.background=kind==='error'?'#fdf1f2':kind==='success'?'#f0fdf5':'var(--mist)';
+  el.style.color=kind==='error'?'#9b2f3a':kind==='success'?'#1a5c38':'#5a4a30';
+}
+function localActivity(){try{return JSON.parse(localStorage.getItem(LOCAL_ACTIVITY_KEY)||'[]')}catch(e){return []}}
+function saveLocalActivity(item){const list=localActivity();list.unshift({...item,created_at:new Date().toISOString()});localStorage.setItem(LOCAL_ACTIVITY_KEY,JSON.stringify(list.slice(0,50)));}
+function openPortalModal(id){document.getElementById('portal-overlay').style.display='block';document.querySelectorAll('.portal-modal').forEach(m=>m.style.display='none');document.getElementById(id).style.display='block';document.body.style.overflow='hidden';}
+function closePortalModals(){document.getElementById('portal-overlay').style.display='none';document.querySelectorAll('.portal-modal').forEach(m=>m.style.display='none');document.body.style.overflow='';}
+async function refreshUser(){
+  if(!DB){CURRENT_USER=null;updateAuthUI();return null;}
+  const {data}=await DB.auth.getUser(); CURRENT_USER=data?.user||null; updateAuthUI(); return CURRENT_USER;
+}
+function updateAuthUI(){
+  const btn=document.getElementById('auth-chip-btn'); const chip=document.getElementById('user-chip');
+  if(!btn||!chip) return;
+  if(CURRENT_USER){btn.textContent='My Portal'; chip.textContent=CURRENT_USER.email||''; btn.onclick=openDashboard;}
+  else{btn.textContent='Sign In'; chip.textContent=''; btn.onclick=openAuthModal;}
+}
+function openAuthModal(){
+  openPortalModal('auth-modal');
+  document.getElementById('supabase-warning').style.display=BACKBAR_DB_ENABLED?'none':'block';
+  showPortalStatus('auth-status', BACKBAR_DB_ENABLED?'Sign in or create an account.':'Database not connected yet. You can still preview the UI, but accounts will not work until Supabase is configured.');
+}
+async function signUpUser(){
+  if(!DB){showPortalStatus('auth-status','Connect Supabase first, then account creation will work.','error');return;}
+  const email=document.getElementById('auth-email').value.trim(); const password=document.getElementById('auth-password').value;
+  const {error}=await DB.auth.signUp({email,password});
+  if(error){showPortalStatus('auth-status',error.message,'error');return;}
+  showPortalStatus('auth-status','Account created. Check your email if confirmation is enabled, then sign in.','success');
+}
+async function signInUser(){
+  if(!DB){showPortalStatus('auth-status','Connect Supabase first, then sign in will work.','error');return;}
+  const email=document.getElementById('auth-email').value.trim(); const password=document.getElementById('auth-password').value;
+  const {error}=await DB.auth.signInWithPassword({email,password});
+  if(error){showPortalStatus('auth-status',error.message,'error');return;}
+  await refreshUser(); showPortalStatus('auth-status','Signed in. You can now claim cards and track flags.','success');
+}
+async function signOutUser(){
+  if(DB) await DB.auth.signOut(); CURRENT_USER=null; updateAuthUI(); showPortalStatus('auth-status','Signed out.','success');
+}
+async function requireUser(){
+  if(!BACKBAR_DB_ENABLED) return null;
+  if(CURRENT_USER) return CURRENT_USER;
+  return await refreshUser();
+}
+function openClaimModal(brandName){
+  document.getElementById('claim-brand-name').value=brandName;
+  document.getElementById('claim-subtitle').textContent=`Submit a private claim, correction, or card edit for ${brandName}.`;
+  document.getElementById('claim-website').value=''; document.getElementById('claim-proof').value=''; document.getElementById('claim-image').value='';
+  document.getElementById('claim-description').value=''; document.getElementById('claim-note').value='';
+  document.getElementById('claim-warning').style.display=BACKBAR_DB_ENABLED?'none':'block';
+  openPortalModal('claim-modal');
+  showPortalStatus('claim-status', BACKBAR_DB_ENABLED?'Claims are private and stay pending until reviewed.':'Preview mode: claim will save locally because Supabase is not configured.');
+}
+async function submitBrandClaim(){
+  const brandName=document.getElementById('claim-brand-name').value.trim();
+  const payload={
+    brand_key:slugifyBrand(brandName), brand_name:brandName,
+    website:document.getElementById('claim-website').value.trim(),
+    relationship:document.getElementById('claim-role').value,
+    proof_url:document.getElementById('claim-proof').value.trim(),
+    requested_card_json:{
+      image_url:document.getElementById('claim-image').value.trim(),
+      description:document.getElementById('claim-description').value.trim(),
+      private_note:document.getElementById('claim-note').value.trim()
+    },
+    status:'pending'
+  };
+  if(!payload.brand_name){showPortalStatus('claim-status','Missing brand name.','error');return;}
+  if(!BACKBAR_DB_ENABLED){saveLocalActivity({type:'claim',...payload});showPortalStatus('claim-status','Saved locally for testing. Connect Supabase to save real claims.','success');return;}
+  const user=await requireUser();
+  if(!user){openAuthModal();showPortalStatus('auth-status','Please sign in before submitting a brand claim.','error');return;}
+  const {error}=await DB.from('brand_claims').insert({...payload,user_id:user.id});
+  if(error){showPortalStatus('claim-status',error.message,'error');return;}
+  showPortalStatus('claim-status','Submitted. This claim is now pending review.','success');
+}
+async function recordFlagOrConfirm(brandName,type){
+  const payload={brand_key:slugifyBrand(brandName),brand_name:brandName,flag_type:type,status:'new'};
+  if(!BACKBAR_DB_ENABLED){saveLocalActivity({type:'flag',...payload});return;}
+  const user=await requireUser();
+  if(!user){saveLocalActivity({type:'flag',...payload,anonymous:true});return;}
+  await DB.from('brand_flags').insert({...payload,user_id:user.id});
+}
+async function openDashboard(){
+  openPortalModal('dashboard-modal');
+  const listEl=document.getElementById('activity-list'); listEl.innerHTML='';
+  if(!BACKBAR_DB_ENABLED){
+    const list=localActivity();
+    document.getElementById('dashboard-status').textContent=list.length?'Local preview activity. Connect Supabase for real accounts.':'No local preview activity yet.';
+    listEl.innerHTML=list.map(item=>`<div class="activity-item"><strong>${item.type||'activity'}:</strong> ${item.brand_name||item.brandName||'Brand'}<br>Status: ${item.status||item.flag_type||'saved'}<br><small>${new Date(item.created_at).toLocaleString()}</small></div>`).join('');
+    return;
+  }
+  const user=await requireUser();
+  if(!user){document.getElementById('dashboard-status').textContent='Sign in to load your claims and flags.';return;}
+  document.getElementById('dashboard-status').textContent='Loading your activity...';
+  const [claims,flags]=await Promise.all([
+    DB.from('brand_claims').select('brand_name,status,created_at,relationship').eq('user_id',user.id).order('created_at',{ascending:false}).limit(20),
+    DB.from('brand_flags').select('brand_name,status,flag_type,created_at').eq('user_id',user.id).order('created_at',{ascending:false}).limit(20)
+  ]);
+  const rows=[...(claims.data||[]).map(x=>({...x,type:'claim'})),...(flags.data||[]).map(x=>({...x,type:x.flag_type||'flag'}))]
+    .sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
+  document.getElementById('dashboard-status').textContent=rows.length?'Your recent activity':'No claims or flags yet.';
+  listEl.innerHTML=rows.map(item=>`<div class="activity-item"><strong>${item.type}:</strong> ${item.brand_name}<br>Status: ${item.status||'new'}${item.relationship?` · ${item.relationship}`:''}<br><small>${new Date(item.created_at).toLocaleString()}</small></div>`).join('');
+}
+window.addEventListener('DOMContentLoaded',()=>{refreshUser(); if(DB){DB.auth.onAuthStateChange((_event,session)=>{CURRENT_USER=session?.user||null;updateAuthUI();});}});
+
 
 // ── CATEGORY → BRANDS MAPPING ─────────────────────────────
 const CAT_BRANDS = {
@@ -3820,6 +4060,8 @@ function buildIndieCard(b,i){
         <a href="${b.website}" target="_blank" class="icard-btn primary">🌐 Visit Website</a>
         <button class="icard-btn secondary" onclick="toggleMore('${b.id}')">More Info ▾</button>
       </div>
+      <div class="claim-row"><button class="claim-btn" onclick="openClaimModal(decodeURIComponent('${encodeURIComponent(b.name)}'))">Claim / Customize Card</button>
+      </div>
       <div class="icard-more" id="imore-${b.id}">
         <div class="icard-more-inner">
           <div class="icard-more-row"><div class="icard-more-icon">💡</div><div>${b.more}</div></div>
@@ -3891,6 +4133,7 @@ function buildCard(r,i){
         <button class="vbtn vc ${vote==='confirm'?'on':''}" onclick="doVote('${r.name}','confirm',${i})" ${vote?'disabled':''}>${vote==='confirm'?'✓ Confirmed!':'✅ Confirm Rating'}</button>
         <button class="vbtn vf ${vote==='flag'?'on':''}" onclick="doVote('${r.name}','flag',${i})" ${vote?'disabled':''}>${vote==='flag'?'⚑ Flagged!':'🚩 Flag Inaccurate'}</button>
       </div>
+      <div class="claim-row"><button class="claim-btn" onclick="openClaimModal(decodeURIComponent('${encodeURIComponent(r.name)}'))">Claim or Correct This Card</button></div>
     </div>
     <button class="expand-btn" onclick="toggleDetail(${i})" id="exbtn-${i}">▼ Full analysis &amp; alternatives</button>
     <div class="card-detail" id="det-${i}">
@@ -3917,8 +4160,9 @@ function toggleDetail(i){
   el.style.display=open?'none':'block';
   btn.textContent=open?'▼ Full analysis & alternatives':'▲ Close';
 }
-function doVote(name,type,idx){
+async function doVote(name,type,idx){
   if(S.votes[name])return;
+  recordFlagOrConfirm(name,type);
   S.votes[name]=type;
   const card=document.querySelectorAll('.card')[idx];
   if(!card)return;
