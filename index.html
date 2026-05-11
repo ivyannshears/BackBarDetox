@@ -440,11 +440,6 @@ input:focus,button:focus{outline:none}
   transition:all .15s
 }
 .hdr-search-go:hover{background:var(--gold-dark)}
-
-/* ── OWNERSHIP BADGES ───────────────────────────────────── */
-.ownership-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.2px;margin-right:4px}
-.ownership-badge.esop{background:#e0f2fe;color:#0c5a7a}
-.ownership-badge.wled{background:#fce7f3;color:#8b1a4a}
 </style>
 </head>
 <body>
@@ -555,8 +550,7 @@ input:focus,button:focus{outline:none}
       <button class="fpill off" onclick="setFilter('pe',this)">🚩 Investor Owned</button>
       <button class="fpill off" onclick="setFilter('corp',this)">🏢 Corporate</button>
       <button class="fpill off" onclick="setFilter('indie',this)">✅ Indie</button>
-      <button class="fpill off" onclick="setFilter('esop',this)">🤝 Employee Owned</button>
-      <button class="fpill off" onclick="setFilter('women',this)">👩 Woman-Led</button>
+      <button class="fpill off" onclick="setFilter('women',this)">👩 Women-Owned</button>
     </div>
   </div>
 
@@ -832,7 +826,7 @@ const BRAND_DOMAINS = {
   "dyson":"dyson.com","aunt jackie's":"auntjackiescurlsandcoils.com",
   "maria nila":"marianila.com","virtue labs":"virtuelabs.com",
   "frédéric fekkai":"fekkai.com","hask":"hask.com","davines":"davines.com",
-  "paul mitchell":"paulmitchell.com","chi":"chichair.com","andis":"andis.com",
+  "paul mitchell":"paulmitchell.com","chi":"farouk.com","andis":"andis.com",
   "olivia garden":"oliviagarden.com","framesi":"framesi.com",
   "keune":"keune.com","malibu c":"malibuc.com","oway":"oway.it",
   "philip kingsley":"philipkingsley.com","sachajuan":"sachajuan.com",
@@ -917,6 +911,8 @@ const BRAND_PHOTOS = {
   "naturigin": "https://naturigin.com/cdn/shop/files/NATURIGIN-GREEN-2024.png",
   "salerm": "https://salerm.imgix.net/media/home/default-landing.png",
   "oligo professionnel": "http://oligoprofessionnel.com/cdn/shop/files/Calura-Gloss-two-models---horizontal_grande.jpg",
+  "mydentity": "https://img.logo.dev/mydentity.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
+  "#mydentity": "https://img.logo.dev/mydentity.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   // ── PROFESSIONAL CARE
   "davines": "https://cdn.shopify.com/s/files/1/0570/5079/2094/files/bundle5_landscape_68dbbbbf-35eb-48ab-9672-85922ec5f282.jpg",
   "kerastase": "https://img.logo.dev/kerastase.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
@@ -983,6 +979,9 @@ const BRAND_PHOTOS = {
   "authentic beauty concept": "https://img.logo.dev/authenticbeautyconcept.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   "iles formula": "https://ilesformula.com/cdn/shop/files/Logo_-_Rectangle_copy.png",
   "boldify": "https://img.logo.dev/boldify.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
+  "aiir": "https://aiirprofessional.com/cdn/shop/files/finals-22_b6aa579f-428f-4e7a-b477-5cc13a0ea5df.jpg",
+  "aiir professional": "https://aiirprofessional.com/cdn/shop/files/finals-22_b6aa579f-428f-4e7a-b477-5cc13a0ea5df.jpg",
+  "redavid": "https://img.logo.dev/redavidsalonproducts.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   // ── TEXTURED & CURLY
   "camille rose": "https://www.camillerose.com/cdn/shop/files/Home.jpg",
   "rizos curls": "http://rizoscurls.com/cdn/shop/files/Logo_50_Smaller_copy.png",
@@ -1014,16 +1013,18 @@ const BRAND_PHOTOS = {
   "wild growth": "https://img.logo.dev/wildgrowthhair.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   "jamaican mango": "https://img.logo.dev/jamaicamango.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   "luster products": "https://lusterproducts.com/cdn/shop/files/luster-logo_x100.png",
+  "as i am": "https://img.logo.dev/asiam.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
+  "obia naturals": "https://img.logo.dev/obianaturals.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   // ── TOOLS
   "ivy ann shears": "https://static.wixstatic.com/media/12c383_8eb8ca23f4004c47add4098332c13441~mv2.jpg/v1/fill/w_2222,h_1240,al_c/12c383_8eb8ca23f4004c47add4098332c13441~mv2.jpg",
   "ghd": "https://amplience.ghdhair.com/i/ghd/OGHD26_BOH_OMGHairDay_Mobile_Hero_UKIE_V3",
-  "dyson": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=800&q=80",
+  "dyson": "https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/us/images/Hair-Care/airwrap/airwrap-id-plus/airwrap-id-plus-hero.jpg?$responsive$&cropPathE=desktop&fit=stretch,1&wid=1920",
   "beachwaver": "http://beachwaver.com/cdn/shop/files/Beachwaver-Logo-300_1200x628_pad_fdf0f7.png",
-  "olivia garden": "https://img.logo.dev/oliviagarden.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
+  "olivia garden": "https://img.logo.dev/oliviagarden.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=256&format=png",
   "wahl": "https://wahl.com/media/og_image/default/WAHL-USA.jpg",
   "andis": "https://www.andis.com/images/general/Home/hp-rotation-image0-v1.webp",
   "framar": "https://img.logo.dev/framar.ca?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
-  "conair": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=800&q=80",
+  "conair": "https://www.conair.com/dw/image/v2/BCXZ_PRD/on/demandware.static/-/Sites-conair-master-catalog/default/dw1234/hair-care-category.jpg",
   "babyliss pro": "https://babylisspro.com/on/demandware.static/Sites-us-babylisspro-Site/-/default/dw637858f9/images/default-thumbnail.png",
   "tangle teezer": "https://cdn.shopify.com/s/files/1/0781/0514/9772/files/TT.com_Social_Sharing_1200x628_f7cc5a4e-180e-4e4b-979e-da868979cacb.jpg",
   "wet brush": "https://img.logo.dev/thewetbrush.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
@@ -1034,6 +1035,8 @@ const BRAND_PHOTOS = {
   "colortrak": "https://www.colortrak.com/cdn/shop/files/7044-BLK-Bucket-Rubberized-Black-Crop-Clips-Desktop-Banner.jpg",
   "pibbs": "https://img.logo.dev/pibbs.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   "vagaro": "https://vagaro.azureedge.net/static-content/PublicImages/Images/vagaro-og-img-17.png",
+  "parlux": "https://www.parlux.it/cdn/shop/files/setra_evolis.png",
+  "takara belmont": "https://www.takarabelmont.com/asset/img/common/og.png",
   // ── BARBERING
   "reuzel": "http://www.reuzel.com/cdn/shop/files/ShopNewBeard.jpg",
   "suavecito": "http://suavecito.com/cdn/shop/files/suavecito-script_color_0.5x.png",
@@ -1050,6 +1053,7 @@ const BRAND_PHOTOS = {
   "gelish": "https://gelish.com/images/collections/main_collection/summer-2026/colors.webp",
   "cnd": "https://www.cnd.com/cdn/shop/files/CND_With_Tagline_English_BLK.png",
   "sally hansen": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80",
+  "china glaze": "https://chinaglaze.com/cdn/shop/files/CG_-_UP_TO_60_OFF_MOTHERS_DAY_PROMO_-_HP_V2.jpg",
   "morgan taylor": "https://morgantaylornail.com/wp-content/uploads/2024/03/logo.jpg",
   "kiara sky": "https://img.logo.dev/kiaraskybeauty.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   "deborah lippmann": "https://img.logo.dev/deborahlippmann.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
@@ -1060,6 +1064,10 @@ const BRAND_PHOTOS = {
   "ardell": "https://img.logo.dev/ardellbeauty.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   "velour lashes": "https://img.logo.dev/velour-lashes.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   "house of lashes": "https://cdn.shopify.com/s/files/1/0173/4842/files/Screen_Shot_2020-07-20_at_10.30.58_AM.png",
+  "jinsoon": "https://cdn.shopify.com/s/files/1/0606/0471/1127/files/logo.webp",
+  "kiss": "http://www.kissusa.com/cdn/shop/files/340769396_238123392066689_7072111699167671333_n.jpg",
+  "kiss nails": "http://www.kissusa.com/cdn/shop/files/340769396_238123392066689_7072111699167671333_n.jpg",
+  "art of beauty": "https://img.logo.dev/artofbeauty.net?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   // ── EXTENSIONS
   "bellami": "https://cdn.shopify.com/s/files/1/0654/1837/files/REPLACEMENT-TAPE.jpg",
   "dreamcatchers": "https://img.logo.dev/dreamcatchersextensions.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
@@ -1071,6 +1079,8 @@ const BRAND_PHOTOS = {
   "donna bella": "http://donnabellahair.com/cdn/shop/files/Donna_Bella_Hair_Extensions.jpg",
   "babe hair": "https://img.logo.dev/babehair.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   "aqua hair extensions": "https://img.logo.dev/aquaextensions.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
+  "beauty works": "https://beautyworksonline.com/media/og_image/default/beauty-works-logo.png",
+  "balmain hair": "https://img.logo.dev/balmainparis.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   // ── INDIE & CLEAN
   "dr. bronner's": "https://www.drbronner.com/cdn/shop/files/dr-bronners-banner-magic-soap-lavender-3848-2x1.jpg",
   "burt's bees": "https://www.burtsbees.com/public/icons/burts_logo_open_graph_image.png",
@@ -1099,7 +1109,9 @@ const BRAND_PHOTOS = {
   "sally beauty": "https://www.sallybeauty.com/on/demandware.static/-/Library-Sites-SallySharedLibrary/default/dw8a455982/web-assets/2026/05/promotions/b2g1_free-select-hair-care/app_hero-carousel.jpg",
   "ulta beauty": "https://cdn.cookielaw.org/logos/8621deee-797a-4513-9df5-8f408f3caad9/e8864b8f-6cf7-49b3-8af2-29dd7c337de1/1280px-Ulta_Beauty_logo.svg.png",
   "saloncentric": "https://www.saloncentric.com/on/demandware.static/-/Sites-saloncentric-us-Library/default/dw2d4c89b4/sc-logo-black.png",
-  // ── OTHER
+  "glossgenius": "https://cdn.prod.website-files.com/62921128232ba17acf7b6871/68cae69f35e45dc1a03ecbdc_gg-testimonial-visual--jessica-fitzgerald%20(1).jpg",
+  "cosmoprof": "https://www.cosmoprofbeauty.com/on/demandware.static/-/Sites-CosmoProf-Library/default/dw351268dd/2026/05/content/pencil/us-olaplex-m.jpg",
+  // ── CORPORATE OTHER
   "beauty industry group": "http://static1.squarespace.com/static/654adbf35d1f9f0d54efa850/t/654ae056a21ba408bf10056f/1699405910589/BIG-Logo-Stacked-White_300x300.png",
   "coco & eve": "https://cdn.shopify.com/s/files/1/0286/1327/9779/files/strapi-090226_ROW_F_and_F_HOMEPAGE_MOBILE_f8d638c58d_722x.gif",
   "frédéric fekkai": "http://fekkai.com/cdn/shop/files/StorePreference_SocialSharingImage_1.jpg",
@@ -1108,14 +1120,18 @@ const BRAND_PHOTOS = {
   "function of beauty": "https://functionofbeauty.com/cdn/shop/files/FUNCTION_LINK_1200x628_47b7742f-3e1f-47ba-83cb-5182d8d05ebb_1024x1024.png",
   "madison reed": "https://d3ewrnwdcmri66.cloudfront.net/content/images/2018/4/jhtktnyj-social-share-default-image-1200x630/social-share-default-image-1200x630.jpeg",
   "eva nyc": "https://img.logo.dev/evanyc.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
-  "avlon": "https://img.logo.dev/avlon.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
+  "bread beauty": "https://img.logo.dev/breadbeauty.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   // ── ADDITIONAL
+  "avlon": "https://img.logo.dev/avlon.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   "butter london": "http://www.butterlondon.com/cdn/shop/files/LG_HIRES_BL_LOGO.png",
   "colorproof": "https://img.logo.dev/colorproof.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   "drybar": "https://img.logo.dev/drybarproducts.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
   "l'anza": "https://www.lanza.com/cdn/shop/files/2026-Mothers_Day3800x1298_2x-100.jpg",
   "olive & june": "http://oliveandjune.com/cdn/shop/files/main-logo_2x_32c6d76d-f837-4a47-8fae-8b2868b06da5_1200x1200.png",
   "seen haircare": "https://img.logo.dev/seen-haircare.com?token=pk_ZZ41-6AfRRy-8_xhxMWP7w&size=128&format=png",
+  // ── ADDITIONAL
+  "chi": "https://farouk.com/wp-content/uploads/2021/06/CHI-Brand-Logo.jpg",
+  "farouk": "https://farouk.com/wp-content/uploads/2021/06/CHI-Brand-Logo.jpg",
 };
 
 // Category fallback pools — all verified working Unsplash IDs
@@ -1364,8 +1380,10 @@ const KNOWN = {
   "l'anza":             {owner:"DAVEXLABS LLC — PE-backed (Juggernaut Capital Partners)",tier:0,pe:true},
 
   // ── MALIBU C (Malibu Wellness, Inc. — independently owned) ─
-  "malibu c":           {owner:"Malibu Wellness, Inc. — 100% employee-owned ESOP; founded by Tom & Deb Porter 1985; current CEO Loretta Mottram",tier:5,pe:false,indie:true,esop:true,womenOwned:false,womenFounded:false,womanLed:true,womanLedName:"Loretta Mottram",womanLedTitle:"CEO",confidence:5,
-                          note:"Malibu C is 100% employee-owned through an ESOP implemented by founder Tom Porter to protect the brand's legacy. Current CEO is Loretta Mottram. The workers ARE the shareholders — no outside investors, no PE extraction."},
+  "malibu c":           {owner:"Malibu Wellness, Inc. — privately held, independently owned",tier:4,pe:false,indie:true,
+                          note:"Independently owned wellness-focused professional brand. Pioneer of chelating treatments, vegan plant-based formulas. No corporate parent identified.",
+                          alternatives:["Davines","Surface Hair","Oway"]},
+  "malibu wellness":    {owner:"Malibu Wellness, Inc. — privately held, independently owned",tier:4,pe:false,indie:true},
 
   // ── BEACHWAVER (woman-owned, Potempa sisters) ─────────────
   "beachwaver":         {owner:"The Beachwaver Co. — woman-owned, founded by Sarah, Erin & Emily Potempa",tier:5,pe:false,indie:true,womenOwned:true,
@@ -3623,30 +3641,19 @@ RESEARCH RULES FOR OBSCURE BRANDS:
 
 
   try{
-    const isLocal=location.hostname==='localhost'||location.hostname==='127.0.0.1';
-    let resultArray;
-    if(!isLocal){
-      // Production: route through Vercel Edge Function (key stays server-side)
-      const res=await fetch('/api/lookup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({brands})});
-      if(!res.ok) throw new Error('Proxy error: '+res.status);
-      resultArray=await res.json();
-    } else {
     const res=await fetch("https://api.anthropic.com/v1/messages",{
       method:"POST",
-      headers:{"Content-Type":"application/json","x-api-key":window.ANTHROPIC_API_KEY||'',\"anthropic-dangerous-direct-browser-access":"true","anthropic-version":"2023-06-01"},
+      headers:{"Content-Type":"application/json","anthropic-dangerous-direct-browser-access":"true","anthropic-version":"2023-06-01"},
       body:JSON.stringify({
-        model:"claude-haiku-4-5-20251001",
-        max_tokens:2000,
-        tools:[{"type":"web_search_20250305","name":"web_search"}],
+        model:"claude-sonnet-4-20250514",
+        max_tokens:1000,
         messages:[{role:"user",content:prompt}]
       })
     });
     const data=await res.json();
-    const text=[...(data.content||[])].reverse().find(c=>c.type==='text')?.text||'[]';
-    const clean=text.replace(/```[\w]*\n?/g,'').replace(/```/g,'').trim();
-    resultArray=JSON.parse(clean);
-    }
-    return Array.isArray(resultArray)?resultArray:[];
+    const text=data.content?.find(c=>c.type==='text')?.text||'[]';
+    const parsed=JSON.parse(text.replace(/```json|```/g,'').trim());
+    return Array.isArray(parsed)?parsed:[];
   }catch(e){
     return brands.map(name=>({
       name,owner:"Could not verify — check independently",
@@ -3785,11 +3792,10 @@ function buildIndieCard(b,i){
 function getFiltered(){
   return S.results.filter(r=>{
     if(S.filter==='all') return true;
-    if(S.filter==='pe')  return r.tier===0;
-    if(S.filter==='corp')return r.tier<=1;
+    if(S.filter==='pe')  return r.tier<=1;
+    if(S.filter==='corp')return r.tier===1;
     if(S.filter==='indie')return r.tier>=4;
-    if(S.filter==='esop') return r.esop===true;
-    if(S.filter==='women')return r.womenOwned||r.womenFounded||r.womanLed;
+    if(S.filter==='women')return r.womenOwned||r.womenFounded;
     return true;
   });
 }
@@ -3798,8 +3804,7 @@ function getFiltered(){
 function buildCard(r,i){
   const tc=TIERS[r.tier??3];
   const vote=S.votes[r.name];
-  const wBadge=r.womenOwned?' · 👩 Woman-Owned':(r.womenFounded?' · 👩 Women-Founded':(r.womanLed?' · 👩 '+( r.womanLedName||'Woman-Led'):''));
-  const esopBadge=r.esop?' · 🤝 Employee Owned':'';
+  const wBadge=r.womenOwned?' · 👩 Woman-Owned':(r.womenFounded?' · 👩 Women-Founded':'');
   const bCert=r.note&&r.note.toLowerCase().includes('b-corp')?' · 🌿 B-Corp':'';
   const sub=(r.owner||'Unknown ownership').slice(0,60)+((r.owner||'').length>60?'…':'');
   const conf=Array.from({length:5},(_,j)=>`<div style="width:7px;height:7px;border-radius:50%;background:${j<(r.confidence||3)?'#c8a96e':'#e8dece'}"></div>`).join('');
@@ -3822,7 +3827,7 @@ function buildCard(r,i){
     <div class="card-head" style="border-radius:0">
       <div class="brand-info" style="width:100%">
         <div class="brand-name">${r.name}</div>
-        <div class="brand-sub">${sub}${wBadge}${esopBadge}${bCert}</div>
+        <div class="brand-sub">${sub}${wBadge}${bCert}</div>
       </div>
     </div>
     <div class="card-body">
@@ -3835,8 +3840,8 @@ function buildCard(r,i){
       </div>
       <div class="analysis-grid">
         <div class="ag-cell"><div class="ag-label">Corporate Owned</div><div class="ag-val ${r.tier<=1?'bad':'good'}">${r.tier<=1?'✗ Yes':'✓ No'}</div></div>
-        <div class="ag-cell"><div class="ag-label">Woman in Leadership</div><div class="ag-val ${r.womenOwned?'good':r.womanLed?'good':r.womenFounded?'warn':'bad'}">${r.womenOwned?'✓ Owner':r.womanLed?'✓ '+(r.womanLedName||'Yes')+(r.womanLedTitle?' ('+r.womanLedTitle+')':''):r.womenFounded?'~ Founded':'✗ Not confirmed'}</div></div>
-        <div class="ag-cell"><div class="ag-label">${r.esop?'Employee Owned':'Independent'}</div><div class="ag-val ${r.esop||r.indie?'good':'bad'}">${r.esop?'✓ ESOP / Co-op':r.indie?'✓ Yes':'✗ No'}</div></div>
+        <div class="ag-cell"><div class="ag-label">Woman-Owned</div><div class="ag-val ${r.womenOwned?'good':r.womenFounded?'warn':'bad'}">${r.womenOwned?'✓ Yes':r.womenFounded?'~ Women-Founded':'✗ Not confirmed'}</div></div>
+        <div class="ag-cell"><div class="ag-label">Independent</div><div class="ag-val ${r.indie?'good':'bad'}">${r.indie?'✓ Yes':'✗ No'}</div></div>
         <div class="ag-cell"><div class="ag-label">Confidence</div><div style="display:flex;gap:3px;margin-top:3px">${conf}</div></div>
       </div>
       <div class="vote-row">
@@ -3849,8 +3854,6 @@ function buildCard(r,i){
       ${photo.isFounder?`<div style="margin-bottom:12px;border-radius:10px;overflow:hidden;height:180px;position:relative"><img src="${photo.url}" alt="Founder" style="width:100%;height:100%;object-fit:cover;object-position:top" onerror="this.parentElement.style.display='none'"/><div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.6));padding:8px 10px;font-size:10px;color:#fff;font-weight:700">Founder / Owner</div></div>`:''}
       ${r.note?`<div class="detail-row"><div class="detail-icon">ℹ️</div><div class="detail-text">${r.note}</div></div>`:''}
       <div class="detail-row"><div class="detail-icon">🏛️</div><div class="detail-text"><strong>Full owner:</strong> ${r.owner||'Not verified'}</div></div>
-      ${r.esop?`<div class="detail-row"><div class="detail-icon">🤝</div><div class="detail-text"><strong>Employee Owned:</strong> Workers hold equity through an ESOP or co-op. No outside investor extraction — profit stays with the people doing the work.</div></div>`:''}
-      ${r.womanLed&&r.womanLedName?`<div class="detail-row"><div class="detail-icon">👩</div><div class="detail-text"><strong>${r.womanLedTitle||'Leadership'}:</strong> ${r.womanLedName}</div></div>`:''}
       <div class="detail-row"><div class="detail-icon">🎯</div><div class="detail-text">${TIER_WHY[r.tier??3]}</div></div>
     </div>
   </div>`;
