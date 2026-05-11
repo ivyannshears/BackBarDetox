@@ -371,8 +371,8 @@ input:focus,button:focus{outline:none}
   animation:fadeUp .4s ease both;position:relative}
 .icard.sponsored{border-color:rgba(200,169,110,.5);box-shadow:0 4px 24px rgba(200,169,110,.12)}
 .sponsored-tag{position:absolute;top:12px;right:12px;z-index:3;
-  background:rgba(15,31,18,.75);border:1px solid rgba(200,169,110,.5);
-  border-radius:20px;padding:3px 10px;font-size:8px;font-weight:800;
+  background:rgba(15,31,18,.75);border:none;
+  border-radius:20px;padding:2px 8px;font-size:7px;font-weight:700;
   letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;backdrop-filter:blur(4px)}
 .icard-photo{width:100%;height:175px;overflow:hidden;position:relative;
   background:var(--green);cursor:pointer}
@@ -508,7 +508,6 @@ input:focus,button:focus{outline:none}
         <span class="ex-tag" onclick="fillExample('Davines, Kenra, Kevin Murphy')">Davines, Kenra</span>
         <span class="ex-tag" onclick="fillExample('Sally Beauty, CosmoProf, Ulta')">Sally Beauty, Ulta</span>
         <span class="ex-tag" onclick="fillExample('Moroccanoil, Living Proof, IGK')">Moroccanoil, IGK</span>
-        <span class="ex-tag" onclick="fillExample('Ivy Ann Shears')">Ivy Ann Shears ✂️</span>
       </div>
     </div>
 
@@ -657,6 +656,7 @@ const CAT_BRANDS = {
 };
 
 // ── SPONSORED INDIE BRANDS ─────────────────────────────────
+// Temporarily disabled. Add sponsored brands back here when you are ready.
 const SPONSORED = [
   {
     id:'ivy-ann-shears',name:'Ivy Ann Shears',
@@ -3778,22 +3778,13 @@ function getRelevantIndieBrands(){
     });
   }
 
-  // ── TOOLS CATEGORY: Ivy Ann always first, then women-owned, sponsored woven in ──
+  // Tools category: show women-owned indie brands first, then the rest.
   if(cat==='tools'){
-    const ivyAnn   = relevant.filter(b=>b.id==='ivy-ann-shears');
-    const women    = relevant.filter(b=>b.id!=='ivy-ann-shears'&&(b.womenOwned||b.womenFounded)&&!b.sponsored);
-    const sponsored= relevant.filter(b=>b.id!=='ivy-ann-shears'&&b.sponsored);
-    const rest     = relevant.filter(b=>b.id!=='ivy-ann-shears'&&!b.womenOwned&&!b.womenFounded&&!b.sponsored);
-    // Order: Ivy Ann, women-owned, then weave sponsored after position 2, then rest
-    const ordered=[...ivyAnn,...women];
-    sponsored.forEach((s,i)=>ordered.splice(3+i*2,0,s)); // sponsored after position 2
-    relevant=[...ordered,...rest];
+    const women = relevant.filter(b=>(b.womenOwned||b.womenFounded));
+    const rest  = relevant.filter(b=>!b.womenOwned&&!b.womenFounded);
+    relevant=[...women,...rest];
   } else {
-    // All other categories: sponsored woven in after position 1
-    const sponsored=relevant.filter(b=>b.sponsored);
-    const nonSponsored=relevant.filter(b=>!b.sponsored);
-    relevant=[...nonSponsored];
-    sponsored.forEach((s,i)=>relevant.splice(2+i*3,0,s));
+    relevant=[...relevant];
   }
 
   return relevant.slice(0,7);
